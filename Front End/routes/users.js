@@ -9,8 +9,9 @@ router.get('/login', (req, res) => res.render('login'))
 router.get('/register', (req, res) => res.render('register'))
 
 router.post('/register', (req, res) => {
-    const {name, email, password, password2} = req.body
+    const {name, email, password, password2, registeredID} = req.body
     let errors = []
+    let whitelist = ['1111','2222']
 
     if(!name || !email || !password || !password2){
         errors.push({msg: 'Please fill in all fields'})
@@ -24,8 +25,12 @@ router.post('/register', (req, res) => {
         errors.push({msg: 'Password should be at least 6 characters'})
     }
 
+    if(!whitelist.includes(registeredID)){
+        errors.push({msg: 'Medical ID must be valid'})
+    }
+
     if(errors.length > 0){
-        res.render('register', {errors, name, email, password, password2})
+        res.render('register', {errors, name, email, password, password2, registeredID})
     } else {
         User.findOne({email: email})
         .then(user => {
