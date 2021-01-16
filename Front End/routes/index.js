@@ -67,7 +67,11 @@ router.get('/dashboard', ensureAuthenticated, (req, res) =>
 //})
 
 router.post('/send-medical', (req, res) => {
-    console.log(req.body.pdf)
+    //console.log(req.body.pdf)
+    //console.log(req.body.currentStr)
+    
+    var data = req.body.pdf.concat(req.body.separator.concat(req.body.currentStr))
+    console.log(data)
 })
 
 

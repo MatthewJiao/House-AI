@@ -197,10 +197,17 @@
                     </div>
 
                     
+
+                    
                   </div>
                 </div>
+                <label for="w3review"></label>
+
+                <textarea class="colors" id="current" name="current" rows="5" cols="50">
                 
-                <button type="submit" onclick="sendData()" class="btn btn-primary btn-block">Send</button>
+                </textarea>
+                
+                <button type="submit" onclick="sendData()" class="btn btn-primary btn-block">House AI</button>
               
 
 
@@ -297,9 +304,11 @@
 
     const testS = 'hii'
     var pdfString = ''
+    var currentString = ''
     const separator = '. '
     const inpFile = document.querySelector('input[type="file"]')
     inpFile.addEventListener('change', function (e) {
+      pdfString = ''
       console.log(inpFile.files)
 
       for(i=0; i< inpFile.files.length; i++){
@@ -313,14 +322,21 @@
       }
 
     }, true)
+
+    const current = document.getElementById('current')
+    current.addEventListener('change', function (e) {
+      currentString = current.value.trim()
+    })
     
 
     const sendData = () => {
-      console.log(typeof(pdfString) == typeof(testS))
+      console.log(currentString)
       axios({
       method: "POST",
       data: {
         pdf: pdfString,
+        currentStr: currentString,
+        separator: separator
       },
       withCredentials: true,
       url: "http://localhost:5000/send-medical"

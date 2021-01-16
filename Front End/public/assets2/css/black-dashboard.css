@@ -84,6 +84,17 @@ section {
   text-align: center;
 }
 
+.colors{
+  background-color:rgba(34, 42, 66, 0.05);
+  outline: none;
+  color: #D7D7EF;
+  border: 1px dashed rgba(255, 255, 255, 0.4);
+  padding: 1rem;
+  margin: 1rem;
+  border-radius: 3px;
+
+}
+
 .center2{
   border-color: #ffffff;
   border: solid;
@@ -5295,6 +5306,7 @@ input[type="button"].btn-block {
   background-color: #f6f9fc;
   border-bottom: 0.0625rem solid rgba(34, 42, 66, 0.05);
 }
+
 
 .card-header:first-child {
   border-radius: calc(0.2857rem - 0.0625rem) calc(0.2857rem - 0.0625rem) 0 0;
