@@ -3,6 +3,7 @@ const router = express.Router()
 const {ensureAuthenticated} = require('../config/auth')
 const fs = require('fs')
 const pdfparse = require('pdf-parse')
+const axios = require('axios')
 
 
 
@@ -70,8 +71,16 @@ router.post('/send-medical', (req, res) => {
     //console.log(req.body.pdf)
     //console.log(req.body.currentStr)
     
-    var data = req.body.pdf.concat(req.body.separator.concat(req.body.currentStr))
-    console.log(data)
+    var input = req.body.pdf.concat(req.body.separator.concat(req.body.currentStr))
+    //console.log(input)
+    var urlID = "http://127.0.0.1:5000/predict/".concat(input)
+    //console.log(urlID)
+    axios({
+        method: "GET",
+        withCredentials: true,
+        url: urlID
+      }).then((te) => res.send(te.data))
+    
 })
 
 

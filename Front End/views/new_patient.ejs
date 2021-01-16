@@ -208,7 +208,67 @@
                 </textarea>
                 
                 <button type="submit" onclick="sendData()" class="btn btn-primary btn-block">House AI</button>
-              
+                <div id="conditions"></div>
+
+                <script>
+                  const displayData = (info) =>{
+                    var info2 = []
+                    var colorInfo = []
+                    info = info.slice(1,info.length-1)
+                    info = info.split("'")
+                    for (var i = 1; i < info.length; i+=2){
+                      //info[i] = info[i].splice(1,info[i].length-1)
+                      //info.splice(i,i)
+                      info2[(i-1)/2] = info[i]  
+                      var temp = info[i].split(':')[info[i].split(':').length-1]
+                      var len = temp.length-1
+                      temp = temp.slice(0,len)
+                      temp = parseFloat(temp)
+
+                      colorInfo[(i-1)/2] = temp
+
+                    }
+                    //console.log(info2)
+                    console.log(colorInfo)
+
+
+                    var myDiv = document.getElementById("conditions");  
+                  
+                    for (var i = 0; i< info2.length; i++){
+                      var button = document.createElement('BUTTON');  
+                      button.style.borderRadius = '0.2rem';
+                      button.style.border = '1px dashed rgba(255, 255, 255, 0.4)';
+                      button.style.outline = 'none';
+                     //s button.style.color = 'rgba(34, 42, 66, 0.05)'
+                      
+                     if(colorInfo[i]>90){
+                        button.style.backgroundColor = '00FF00';
+                     } else if(colorInfo[i]>80) {
+                      button.style.backgroundColor = '#35FF00';
+                     } else if(colorInfo[i]>70) {
+                      button.style.backgroundColor = '#6AFF00';
+                     } else if(colorInfo[i]>60) {
+                      button.style.backgroundColor = '#9FFF00';
+                     } else if(colorInfo[i]>50) {
+                      button.style.backgroundColor = '#D4FF00';
+                     } else if(colorInfo[i]>40) {
+                      button.style.backgroundColor = '#FFF600';
+                     } else if(colorInfo[i]>30) {
+                      button.style.backgroundColor = '#FFC100';
+                     } else if(colorInfo[i]>20) {
+                      button.style.backgroundColor = '#FF8C00';
+                     } else if(colorInfo[i]>10) {
+                      button.style.backgroundColor = '#FF5700';
+                     } else {
+                      button.style.backgroundColor = '#FF0000';
+                     }
+
+                      var text = document.createTextNode(info2[i]); 
+                      button.appendChild(text);      
+                      myDiv.appendChild(button);
+                    }
+                   }
+                </script>
 
 
             </div>
@@ -340,8 +400,13 @@
       },
       withCredentials: true,
       url: "http://localhost:5000/send-medical"
-    }).then((res) => console.log(res))
+    }).then((res) => displayData(res.data))
     }
+
+    
+    
+
+
     
 
 // pdf start
