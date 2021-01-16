@@ -35,7 +35,7 @@
   <link href="assets2/demo/demo.css" rel="stylesheet" />
 </head>
 
-<body class="">
+<body onload="display()" class="">
   <div class="wrapper">
     <div class="sidebar">
       <!--
@@ -178,139 +178,79 @@
         <div class="row">
           <div class="col-md-12">
             <div class="card">
-              <div class="card-header mb-5">
-                <h5 class="card-category">Black Table Heading</h5>
-                <h3 class="card-title">Created using Poppins Font Family</h3>
+              <div class="card-header mb-2">
+                <h5 class="card-category">Data</h5>
+                <h3 class="card-title">Memory Banks</h3>
               </div>
               <div class="card-body">
-                <div class="typography-line">
-                  <h1><span>Header 1</span>The Life of Black Dashboard </h1>
+                
+                
+                <div id="memory" class="">
+                 
+                  
                 </div>
-                <div class="typography-line">
-                  <h2><span>Header 2</span>The Life of Black Dashboard </h2>
-                </div>
-                <div class="typography-line">
-                  <h3><span>Header 3</span>The Life of Black Dashboard </h3>
-                </div>
-                <div class="typography-line">
-                  <h4><span>Header 4</span>The Life of Black Dashboard </h4>
-                </div>
-                <div class="typography-line">
-                  <h5><span>Header 5</span>The Life of Black Dashboard </h5>
-                </div>
-                <div class="typography-line">
-                  <h6><span>Header 6</span>The Life of Black Dashboard </h6>
-                </div>
-                <div class="typography-line">
-                  <p><span>Paragraph</span>
-                    I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus. I think that’s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at.
-                  </p>
-                </div>
-                <div class="typography-line">
-                  <span>Quote</span>
-                  <blockquote>
-                    <p class="blockquote blockquote-primary">
-                      "I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus. I think that’s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at."
-                      <br>
-                      <br>
-                      <small>
-                        - Noaa
-                      </small>
-                    </p>
-                  </blockquote>
-                </div>
-                <div class="typography-line">
-                  <span>Muted Text</span>
-                  <p class="text-muted">
-                    I will be the leader of a company that ends up being worth billions of dollars, because I got the answers...
-                  </p>
-                </div>
-                <div class="typography-line">
-                  <span>Primary Text</span>
-                  <p class="text-primary">
-                    I will be the leader of a company that ends up being worth billions of dollars, because I got the answers...</p>
-                </div>
-                <div class="typography-line">
-                  <span>Info Text</span>
-                  <p class="text-info">
-                    I will be the leader of a company that ends up being worth billions of dollars, because I got the answers... </p>
-                </div>
-                <div class="typography-line">
-                  <span>Success Text</span>
-                  <p class="text-success">
-                    I will be the leader of a company that ends up being worth billions of dollars, because I got the answers... </p>
-                </div>
-                <div class="typography-line">
-                  <span>Warning Text</span>
-                  <p class="text-warning">
-                    I will be the leader of a company that ends up being worth billions of dollars, because I got the answers...
-                  </p>
-                </div>
-                <div class="typography-line">
-                  <span>Danger Text</span>
-                  <p class="text-danger">
-                    I will be the leader of a company that ends up being worth billions of dollars, because I got the answers... </p>
-                </div>
-                <div class="typography-line">
-                  <h2><span>Small Tag</span>
-                    Header with small subtitle <br>
-                    <small>Use "small" tag for the headers</small>
-                  </h2>
-                </div>
-                <div class="typography-line">
-                  <span>Lists</span>
-                  <div class="row">
-                    <div class="col-md-3">
-                      <h5>Unordered List</h5>
-                      <ul>
-                        <li>List Item</li>
-                        <li>List Item</li>
-                        <li class="list-unstyled">
-                          <ul>
-                            <li>List Item</li>
-                            <li>List Item</li>
-                            <li>List Item</li>
-                          </ul>
-                        </li>
-                        <li>List Item</li>
-                      </ul>
-                    </div>
-                    <div class="col-md-3">
-                      <h5>Ordered List</h5>
-                      <ol>
-                        <li>List Item</li>
-                        <li>List Item</li>
-                        <li>List item</li>
-                        <li>List Item</li>
-                      </ol>
-                    </div>
-                    <div class="col-md-3">
-                      <h5>Unstyled List</h5>
-                      <ul class="list-unstyled">
-                        <li>List Item</li>
-                        <li>List Item</li>
-                        <li>List item</li>
-                        <li>List Item</li>
-                      </ul>
-                    </div>
-                    <div class="col-md-3">
-                      <h5>Inline List</h5>
-                      <ul class="list-inline">
-                        <li class="list-inline-item">List1</li>
-                        <li class="list-inline-item">List2</li>
-                        <li class="list-inline-item">List3</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-                <div class="typography-line">
-                  <span>Code</span>
-                  <p>This is
-                    <code>.css-class-as-code</code>, an example of an inline code element. Wrap inline code within a
-                    <code> &lt;code&gt;...&lt;/code&gt;</code>tag.
-                  </p>
-                  <pre>1. #This is an example of preformatted text.<br/>2. #Here is another line of code</pre>
-                </div>
+               
+                
+                <script>
+
+                    const display2 = (info) => {
+
+                      
+
+                      var myDiv = document.getElementById("memory");  
+
+                      if(info.length == 0){
+                        var empty = document.createElement("P");               
+                        empty.innerText = "Empty";        
+                        empty.classList.add("text-muted");     
+                        myDiv.appendChild(empty);
+                      }
+
+                      for (var i = info.length-1; i>=0; i-=3){
+
+                        var para = document.createElement("P");               
+                        para.innerText = info[i];        
+                        para.classList.add("text-muted");     
+                        myDiv.appendChild(para);
+
+                        var h = document.createElement("H5")                
+                        var t = document.createTextNode(info[i-2]);     
+                        h.appendChild(t);   
+                        myDiv.appendChild(h);
+
+                        var h2 = document.createElement("H5")                
+                        var t2 = document.createTextNode(info[i-1]);     
+                        h2.appendChild(t2);   
+                        myDiv.appendChild(h2);
+
+                        var br = document.createElement("br");
+                        myDiv.appendChild(br);
+
+                        
+
+                    }
+                    }
+
+
+
+
+
+
+                  const display = () => {
+                  axios({
+                    method: "POST",
+                    data: {
+                      rand: "data"
+                    },
+                    withCredentials: true,
+                    url: "http://localhost:5000/getMemory"
+                  }).then((res) => display2(res.data))
+                }
+
+                </script>
+                
+                  
+                
               </div>
             </div>
           </div>
@@ -399,6 +339,8 @@
   <!-- Control Center for Black Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="assets2/js/black-dashboard.min.js?v=1.0.0"></script><!-- Black Dashboard DEMO methods, don't include it in your project! -->
   <script src="assets2/demo/demo.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+
   <script>
     $(document).ready(function() {
       $().ready(function() {

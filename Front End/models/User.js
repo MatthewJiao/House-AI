@@ -21,6 +21,10 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: false,
     },
+    houseMemory: {
+        type: [[String]],
+        default: []
+    },
     date: {
         type: Date,
         default: Date.now

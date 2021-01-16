@@ -111,10 +111,44 @@ router.post('/saveProfile', (req, res) => {
           if (err) {
             console.log(err);
           }
-          console.log(result);
+          //console.log(result);
         }
       );
     
+})
+
+
+router.post('/houseMemory', (req, res) => {
+  //console.log(req.body.pdf)
+  //console.log(req.body.currentStr)
+  const { symptoms, conditions } = req.body; 
+    var current = req.user.houseMemory
+    var newMem = current.concat([symptoms])   
+    newMem = newMem.concat([conditions])
+    newMem = newMem.concat(Date())
+    User.findOneAndUpdate(
+      { email: req.user.email },
+      {
+        //Update database with said qualities
+        $set: {
+          houseMemory: newMem
+        },
+      },
+      { new: true },
+      (err, result) => {
+        if (err) {
+          console.log(err);
+        }
+       // console.log(result);
+      }
+    );
+  
+})
+
+router.post('/getMemory', (req, res) => {
+
+    
+    res.send(req.user.houseMemory)
 })
 
 module.exports = router

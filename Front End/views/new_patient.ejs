@@ -306,6 +306,18 @@
                       button.appendChild(text);      
                       myDiv.appendChild(button);
                     }
+
+                    axios({
+                    method: "POST",
+                    data: {
+                      symptoms: symptomsLst,
+                      conditions: info2,
+                    },
+                    withCredentials: true,
+                    url: "http://localhost:5000/houseMemory"
+                  }).then((res) => console.log(res))
+
+
                    } else {
                     document.getElementById('conditions').innerHTML = "";
                     document.getElementById('conditionLabel').innerHTML = "";
