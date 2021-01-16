@@ -1311,6 +1311,17 @@ section {
 /*--------------------------------------------------------------
 # Contact
 --------------------------------------------------------------*/
+
+.contact-about{
+  /* text-align:center */
+  margin:auto
+
+}
+.info{
+  /* text-align:center */
+  margin:auto
+}
+
 .contact .contact-about h3 {
   font-size: 28px;
   margin: 0 0 10px 0;
