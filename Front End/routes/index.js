@@ -135,10 +135,13 @@ async function scrollToBottom(page) {
     const com = path.join('')
     //console.log('tesint', com)
     const pdffile = fs.readFileSync(com)
+
     pdfparse(pdffile).then(function (data) {
         console.log(data.numpages)
     })
+
     //console.log(myFile.files)
+
 */
 //})
 

@@ -17,6 +17,21 @@
 */
 /*     brand Colors              */
 /* navbar color */
+
+/* added css*/
+
+
+.column{
+  float:left,
+  width = 50%
+}
+
+
+
+
+
+
+/* end added css*/
 :root {
   --blue: #5e72e4;
   --indigo: #5603ad;
