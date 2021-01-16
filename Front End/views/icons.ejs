@@ -43,60 +43,49 @@
     -->
       <div class="sidebar-wrapper">
         <div class="logo">
-          <a href="javascript:void(0)" class="simple-text logo-mini">
-            CT
-          </a>
-          <a href="javascript:void(0)" class="simple-text logo-normal">
-            Creative Tim
-          </a>
+          <div class="welcome simple-text logo-normal">
+            Welcome <%= name.split(" ")[0] %>
+
+          </div>
         </div>
         <ul class="nav">
-          <li>
+          <li class="active ">
             <a href="/dashboard">
               <i class="tim-icons icon-chart-pie-36"></i>
               <p>Dashboard</p>
             </a>
           </li>
-          <li class="active ">
+          <li>
             <a href="/icons">
               <i class="tim-icons icon-atom"></i>
-              <p>Icons</p>
+              <p>New Patient</p>
             </a>
           </li>
           <li>
             <a href="/map">
               <i class="tim-icons icon-pin"></i>
-              <p>Maps</p>
+              <p>Medical News</p>
             </a>
           </li>
           <li>
-            <a href="/notifications">
-              <i class="tim-icons icon-bell-55"></i>
-              <p>Notifications</p>
+            <a href="/typography">
+              <i class="tim-icons icon-align-center"></i>
+              <p>House Memory</p>
             </a>
           </li>
+          
           <li>
             <a href="/user">
               <i class="tim-icons icon-single-02"></i>
               <p>User Profile</p>
             </a>
           </li>
+          
+          
           <li>
-            <a href="/tables">
-              <i class="tim-icons icon-puzzle-10"></i>
-              <p>Table List</p>
-            </a>
-          </li>
-          <li>
-            <a href="/typography">
-              <i class="tim-icons icon-align-center"></i>
-              <p>Typography</p>
-            </a>
-          </li>
-          <li>
-            <a href="/rtl">
+            <a href="/users/logout">
               <i class="tim-icons icon-world"></i>
-              <p>RTL Support</p>
+              <p>Logout</p>
             </a>
           </li>
           <li class="active-pro">
