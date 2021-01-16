@@ -8,14 +8,14 @@ const User = require('../models/User')
 const puppeteer = require('puppeteer');
 
 
-router.get('/', (req, res) => res.render('welcome'))
+//router.get('/', (req, res) => res.render('welcome'))
 
 
 links =[]
 images = []
 text = []
 url = 'https://www.medicalnewstoday.com/'
-router.get('/dashboard', ensureAuthenticated, function(req, res, next) {
+router.get('/', function(req, res, next) {
    run().then(function(result){
        links = result.links;
        images = result.images;
@@ -26,9 +26,7 @@ router.get('/dashboard', ensureAuthenticated, function(req, res, next) {
    })
    next()
 }, function (req, res){
-   res.render('dashboard', {
-    name: req.user.name
-})
+   res.render('welcome')
 })
 
 function run () {
@@ -76,6 +74,11 @@ async function scrollToBottom(page) {
       await page.waitFor(delay);
     }
   }
+
+  router.get('/dashboard', ensureAuthenticated, (req, res) =>
+  res.render('dashboard', {
+      name: req.user.name
+  }))
 
  router.get('/new_patient', ensureAuthenticated, (req, res) =>
  res.render('new_patient', {
