@@ -147,7 +147,7 @@
               <div class="card-header ">
                 <div class="row">
                   <div class="col-sm-6 text-left">
-                    <h5 class="card-category">House AI Query Statistics Per hour</h5>
+                    <h5 class="card-category">House AI Server Wide Query Statistics (#new patients)</h5>
                     <h2 class="card-title"></h2>
                   </div>
                   <div class="col-sm-6">
@@ -594,8 +594,8 @@
       for (var i = 0; i < x.length; i++){
         timeArray = timeArray.concat(x[i])
       }
-     // const period = 86400
-      const period = 600
+      const period = 3600
+     // const period = 60
       var currentSeconds = new Date().getTime() / 1000;
       for (var i = 0; i < timeArray.length; i++){
 
@@ -633,9 +633,9 @@
                   let usageChart = new Chart(myChart, {
                     type:'line', // bar horizontalBar, pie, line, doughnut, radar, polarArea
                     data: {
-                      labels: [7,6,5,4,3,2,1],
+                      labels: ['7 hours ago', '6 hours ago', '5 hours ago', '4 hours ago', '3 hours ago', '2 hours ago','1 hour ago'],
                       datasets: [{
-                        label: 'Usage',
+                        label: 'Queries',
                         data: weekArray,
                         backgroundColor:[
                         //  '#000000',

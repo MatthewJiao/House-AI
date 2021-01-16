@@ -5,23 +5,91 @@ const fs = require('fs')
 const pdfparse = require('pdf-parse')
 const axios = require('axios')
 const User = require('../models/User')
-
+const puppeteer = require('puppeteer');
 
 
 router.get('/', (req, res) => res.render('welcome'))
-router.get('/dashboard', ensureAuthenticated, (req, res) =>
- res.render('dashboard', {
-     name: req.user.name
- }))
+
+
+links =[]
+images = []
+text = []
+url = 'https://www.medicalnewstoday.com/'
+router.get('/dashboard', ensureAuthenticated, function(req, res, next) {
+   run().then(function(result){
+       links = result.links;
+       images = result.images;
+       text = result.text;
+       // console.log(links)
+       // console.log(images)
+       // console.log(text)
+   })
+   next()
+}, function (req, res){
+   res.render('dashboard', {
+    name: req.user.name
+})
+})
+
+function run () {
+    return new Promise(async (resolve, reject) => {
+        try {
+            const browser = await puppeteer.launch();
+            const page = await browser.newPage();
+            await page.goto(url);
+
+            await scrollToBottom(page);
+            await page.waitFor(3000);
+
+            let urls = await page.evaluate(() => {
+                let items = document.querySelectorAll("a.css-1n50yph")
+
+                images = new Array(items.length-1)
+                 for(i = 0; i<items.length; i++){
+                    images[i] = items[i].getElementsByTagName("img")[0].src
+                }
+                text = new Array(items.length-1)
+                for(i = 0; i<items.length; i++){
+                    text[i] = items[i].dataset.elementEvent
+                }
+                links = new Array(items.length-1)
+                for(i = 0; i<items.length; i++){
+                    links[i] = items[i].href
+                }
+                data = {
+                    images, text, links
+                }
+                return data;
+            })
+            browser.close();
+            return resolve(urls);
+        } catch (e) {
+            return reject(e);
+        }
+    })
+}
+async function scrollToBottom(page) {
+    const distance = 100; // should be less than or equal to window.innerHeight
+    const delay = 100;
+    while (await page.evaluate(() => document.scrollingElement.scrollTop + window.innerHeight < document.scrollingElement.scrollHeight)) {
+      await page.evaluate((y) => { document.scrollingElement.scrollBy(0, y); }, distance);
+      await page.waitFor(delay);
+    }
+  }
 
  router.get('/new_patient', ensureAuthenticated, (req, res) =>
  res.render('new_patient', {
      name: req.user.name
  }))
 
- router.get('/news', ensureAuthenticated, (req, res) =>
+ router.get('/news', ensureAuthenticated, (req,res) =>
  res.render('news', {
-     name: req.user.name }))
+ name: req.user.name, 
+ images: images,
+ texts: text,
+ links: links
+})
+)
 
  router.get('/memory', ensureAuthenticated, (req, res) =>
  res.render('memory', {

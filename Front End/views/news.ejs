@@ -1,3 +1,5 @@
+<script src="https://ajax.googleapis.com/ajax/libs/d3js/6.3.1/d3.min.js"></script>
+
 <!--
 =========================================================
 * * Black Dashboard - v1.0.1
@@ -109,7 +111,7 @@
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <a class="navbar-brand" href="javascript:void(0)">Medical News</a>
+            <a class="navbar-brand" href="javascript:void(0)">Medical News, from MedicalNewsToday</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -184,6 +186,16 @@
               <!-- <div class="card-body">
                 <div id="map" class="map"></div>
               </div> -->
+           
+
+                <% for(var i=0; i < images.length; i++) { %>
+                  <a href="<%= links[i]%>" target="_blank" class="list-group-item text-dark"> 
+                    <img src = "<%= images[i]%>" >
+                    <p><%=text[i]%></p>
+                  </a>
+               <% } %>
+             
+
             </div>
           </div>
         </div>
