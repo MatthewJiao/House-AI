@@ -29,6 +29,10 @@ const UserSchema = new mongoose.Schema({
         type: [Number],
         default: []
     },
+    institution: {
+        type: String,
+        required: true
+    },
     date: {
         type: Date,
         default: Date.now
