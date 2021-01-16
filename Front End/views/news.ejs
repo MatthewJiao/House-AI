@@ -184,10 +184,12 @@
            
 
                 <% for(var i=0; i < images.length; i++) { %>
-                  <a href="<%= links[i]%>" target="_blank" class="list-group-item text-dark"> 
-                    <img src = "<%= images[i]%>" >
-                    <p><%=text[i]%></p>
+                  <tr>
+                  <a href="<%= links[i]%>" target="_blank" class="card card-plain"> 
+                    <td> <img src = "<%= images[i]%>" > </td>
+                    <td><p><%=text[i]%></p></td>
                   </a>
+                </tr>
                <% } %>
              
 
