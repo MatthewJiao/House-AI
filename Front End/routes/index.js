@@ -39,7 +39,7 @@ function run () {
             await page.goto(url);
 
             await scrollToBottom(page);
-            await page.waitFor(3000);
+           // await page.waitFor(3000);
 
             let urls = await page.evaluate(() => {
                 let items = document.querySelectorAll("a.css-1n50yph")
@@ -70,7 +70,7 @@ function run () {
 }
 async function scrollToBottom(page) {
     const distance = 100; // should be less than or equal to window.innerHeight
-    const delay = 100;
+    const delay = 50;
     while (await page.evaluate(() => document.scrollingElement.scrollTop + window.innerHeight < document.scrollingElement.scrollHeight)) {
       await page.evaluate((y) => { document.scrollingElement.scrollBy(0, y); }, distance);
       await page.waitFor(delay);

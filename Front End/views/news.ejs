@@ -106,7 +106,7 @@
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <a class="navbar-brand" href="javascript:void(0)">Medical News, from MedicalNewsToday</a>
+            <a class="navbar-brand" href="javascript:void(0)">Latest Medical News</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -183,11 +183,16 @@
               </div> -->
            
 
-                <% for(var i=0; i < images.length; i++) { %>
+                <% for(var i=0; i < images.length; i++) { 
+                  text[i] = text[i].split("|LINK|").pop()
+                  temp = []
+                  temp = text[i].split("|")
+                  text[i] = temp[0]
+                  %>
                   <tr>
                   <a href="<%= links[i]%>" target="_blank" class="card card-plain"> 
-                    <div> <img src = "<%= images[i]%>" > </div>
-                    <div><p><%=text[i]%></p></div>
+                    <div> <img src = "<%= images[i]%>" width = 250 height = 150> </div>
+                    <div style = "width:250px" ><p style = "font-size:18px"><%=text[i]%></p></div>
                   </a>
                 </tr>
                <% } %>
