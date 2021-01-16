@@ -49,15 +49,15 @@
           </div>
         </div>
         <ul class="nav">
-          <li class="active ">
+          <li>
             <a href="/dashboard">
               <i class="tim-icons icon-chart-pie-36"></i>
               <p>Dashboard</p>
             </a>
           </li>
-          <li>
+          <li class="active">
             <a href="/new_patient">
-              <i class="tim-icons icon-atom"></i>
+              <i class="tim-icons icon-molecule-40"></i>
               <p>New Patient</p>
             </a>
           </li>
@@ -84,16 +84,11 @@
           
           <li>
             <a href="/users/logout">
-              <i class="tim-icons icon-world"></i>
+              <i class="tim-icons icon-lock-circle"></i>
               <p>Logout</p>
             </a>
           </li>
-          <li class="active-pro">
-            <a href="./upgrade.html">
-              <i class="tim-icons icon-spaceship"></i>
-              <p>Upgrade to PRO</p>
-            </a>
-          </li>
+          
         </ul>
       </div>
     </div>
@@ -118,43 +113,14 @@
           </button>
           <div class="collapse navbar-collapse" id="navigation">
             <ul class="navbar-nav ml-auto">
-              <li class="search-bar input-group">
-                <button class="btn btn-link" id="search-button" data-toggle="modal" data-target="#searchModal"><i class="tim-icons icon-zoom-split" ></i>
-                  <span class="d-lg-none d-md-block">Search</span>
-                </button>
-              </li>
+              
+              
               <li class="dropdown nav-item">
-                <a href="javascript:void(0)" class="dropdown-toggle nav-link" data-toggle="dropdown">
-                  <div class="notification d-none d-lg-block d-xl-block"></div>
-                  <i class="tim-icons icon-sound-wave"></i>
-                  <p class="d-lg-none">
-                    Notifications
-                  </p>
-                </a>
-                <ul class="dropdown-menu dropdown-menu-right dropdown-navbar">
-                  <li class="nav-link"><a href="#" class="nav-item dropdown-item">Mike John responded to your email</a></li>
-                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">You have 5 more tasks</a></li>
-                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Your friend Michael is in town</a></li>
-                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Another notification</a></li>
-                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Another one</a></li>
-                </ul>
-              </li>
-              <li class="dropdown nav-item">
-                <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+                <a href="#" class="dropdown-toggle nav-link">
                   <div class="photo">
-                    <img src="assets2/img/anime3.png" alt="Profile Photo">
-                  </div>
-                  <b class="caret d-none d-lg-block d-xl-block"></b>
-                  <p class="d-lg-none">
-                    Log out
-                  </p>
+                    <img src="assets2/img/ai.png" alt="Profile Photo">
+                  </div>      
                 </a>
-                <ul class="dropdown-menu dropdown-navbar">
-                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Profile</a></li>
-                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Settings</a></li>
-                  <li class="dropdown-divider"></li>
-                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Log out</a></li>
-                </ul>
               </li>
               <li class="separator d-lg-none"></li>
             </ul>
@@ -179,7 +145,7 @@
           <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-                <h2 class="title">Upload Medical Record</h2>
+                <h2 class="card-category">Upload Medical History</h2>
                 <p class="category"></p>
               </div>
 
@@ -203,16 +169,26 @@
                 </div>
                 <label for="w3review"></label>
 
-                <textarea class="colors" id="current" name="current" rows="5" cols="50">
+                <textarea class="colors" id="current" placeholder="Enter Symptoms" name="current" rows="5" cols="50"></textarea>
                 
-                </textarea>
-                
-                <button type="submit" onclick="sendData()" class="btn btn-primary btn-block">House AI</button>
+                <button type="submit" onclick="sendData()" class="btn btn-primary btn-block fon">House AI</button>
+                <br/>
                 <div id="symptomsLabel"></div>
                 <div id="symptoms"></div>
+                <div id="overlay"></div>
 
-                <div id="conditionLabel"></div>
-                <div id="conditions"></div>
+                
+
+                <div id="test" class="container">
+                </div>
+                <div id="test2" class="container">
+                </div>
+                <div id="test3" class="container">
+                </div>
+                <div id="test4" class="container">
+                </div>
+                <div id="test5" class="container">
+                </div>
 
                 <script>
                   const displayData = (info) =>{
@@ -229,6 +205,7 @@
                     var info = info.split("QQQ")[0]
                     var info2 = []
                     var colorInfo = []
+                    var conditionNames = []
                     info = info.slice(1,info.length-1)
                     info = info.split("'")
                     for (var i = 1; i < info.length; i+=2){
@@ -236,32 +213,42 @@
                       //info.splice(i,i)
                       info2[(i-1)/2] = info[i]  
                       var temp = info[i].split(':')[info[i].split(':').length-1]
+                      var temp2 = info[i].split(':')[0]
+
                       var len = temp.length-1
                       temp = temp.slice(0,len)
                       temp = parseFloat(temp)
 
                       colorInfo[(i-1)/2] = temp
-
+                      conditionNames[(i-1)/2] = temp2
                     }
-                    //console.log(info2)
-                    console.log(colorInfo)
-                    document.getElementById('conditions').innerHTML = "";
-                    document.getElementById('conditionLabel').innerHTML = "";
+
+                   
+                    //document.getElementById('conditions').innerHTML = "";
+                    //document.getElementById('conditionLabel').innerHTML = "";
+                    //document.getElementById('myChart').innerHTML = "";
+                    //document.getElementById('myChart2').innerHTML = "";
+
+
                     document.getElementById('symptoms').innerHTML = "";
                     document.getElementById('symptomsLabel').innerHTML = "";
 
-                    document.getElementById('symptomsLabel').innerHTML = "Symptoms Detected";
+                    document.getElementById('symptomsLabel').innerHTML = "Detected Symptoms";
+                    document.getElementById('symptomsLabel').style.marginLeft = '2rem';
+                    document.getElementById('symptomsLabel').style.marginBottom = '0.3rem';
+                    document.getElementById('symptoms').style.marginLeft = '2rem';
+
                     var myDiv2 = document.getElementById("symptoms");  
 
 
                     for (var i = 0; i< symptomsLst.length; i++){
                       var button = document.createElement('BUTTON');  
                       button.style.borderRadius = '0.2rem';
-                      button.style.border = '1px dashed rgba(255, 255, 255, 0.4)';
+                      button.style.border = '1px solid #000000';
                       button.style.outline = 'none';
                      //s button.style.color = 'rgba(34, 42, 66, 0.05)'
                       
-                      button.style.backgroundColor = '#76e0f5';
+                      button.style.backgroundColor = '#D7D7EF';
                      
 
                       var text = document.createTextNode(symptomsLst[i]); 
@@ -269,7 +256,7 @@
                       myDiv2.appendChild(button);
                     }
 
-                    document.getElementById('conditionLabel').innerHTML = "Output Probabilities";
+                    /*document.getElementById('conditionLabel').innerHTML = "Output Probabilities";
 
                     var myDiv = document.getElementById("conditions");  
                   
@@ -306,7 +293,7 @@
                       button.appendChild(text);      
                       myDiv.appendChild(button);
                     }
-
+                    */
                     axios({
                     method: "POST",
                     data: {
@@ -315,12 +302,248 @@
                     },
                     withCredentials: true,
                     url: "http://localhost:5000/houseMemory"
-                  }).then((res) => console.log(res))
+                  }).then((res) => console.log('hmm'))
+                  
+                  var br = document.createElement("BR");
+                  var space = document.getElementById("test")
+                  space.appendChild(br);
+                  space.appendChild(br);
+                  space.appendChild(br);
+
+                    // charts
+                    $('#myChart').remove(); // this is my <canvas> element
+                    $('#test').append('<canvas id="myChart"><canvas>');
+                  let myChart = document.getElementById('myChart').getContext('2d')
+                  
+
+
+                  
+                  //Chart.defaults.global.defaultFontFamily = 'Lato';
+                  //Chart.defaults.global.defaultFontSize = 18;
+                  //Chart.defaults.global.defaultFontColor = '#777';
+
+                  let probChart = new Chart(myChart, {
+                    type:'bar', // bar horizontalBar, pie, line, doughnut, radar, polarArea
+                    data: {
+                      labels: conditionNames,
+                      datasets: [{
+                        label: 'Probability',
+                        data: colorInfo,
+                        backgroundColor:[
+                        //  '#000000',
+                      //    '#324242'
+                        ],
+                        //borderWidth: 1,
+                        //borderColor: '#777',
+                       // hoverBorderWidth: 3,
+                     //   hoverBorderColor: '#000'
+                      }]
+                    },
+                    options: {
+                      title: {
+                        display: true,
+                        text: 'Output Probabilities'
+                     //   fontSize: 25
+                      },
+                      legend: {
+                        display: false
+                       // position: 'right',
+                       // labels: {
+                       //   fontColor: '#000'
+                       // }
+                      },
+                      layout: {
+                       // padding: {
+                        //  left: 50,
+                         // right: 0,
+                         // bottom: 0,
+                         // top: 0
+                       // },
+                        tooltips: {
+                          enabled: true
+                        }
+                      }
+                    }
+                  })
+                  
+                  var br2 = document.createElement("br");
+                  var space2 = document.getElementById("test2")
+                  space2.appendChild(br2);
+                  space2.appendChild(br2);
+
+                  $('#myChart2').remove(); // this is my <canvas> element
+                  $('#test2').append('<canvas id="myChart2"><canvas>');
+                  let myChart2 = document.getElementById('myChart2').getContext('2d')
+
+
+                  let probChart2 = new Chart(myChart2, {
+                    type:'radar', // bar horizontalBar, pie, line, doughnut, radar, polarArea
+                    data: {
+                      labels: conditionNames,
+                      datasets: [{
+                        label: 'Probability',
+                        data: colorInfo,
+                        backgroundColor:[
+                        //  '#000000',
+                      //    '#324242'
+                        ],
+                        //borderWidth: 1,
+                        //borderColor: '#777',
+                       // hoverBorderWidth: 3,
+                     //   hoverBorderColor: '#000'
+                      }]
+                    },
+                    options: {
+                      title: {
+                        display: true,
+                        text: 'Output Probabilities Radar'
+                     //   fontSize: 25
+                      },
+                      legend: {
+                        display: false
+                       // position: 'right',
+                       // labels: {
+                       //   fontColor: '#000'
+                       // }
+                      },
+                      layout: {
+                       // padding: {
+                        //  left: 50,
+                         // right: 0,
+                         // bottom: 0,
+                         // top: 0
+                       // },
+                        tooltips: {
+                          enabled: true
+                        }
+                      }
+                    }
+                  })
+
+                  var br3 = document.createElement("br");
+                  var space3 = document.getElementById("test3")
+                  space3.appendChild(br3);
+                  space3.appendChild(br3);
+                  space3.appendChild(br3);
+                  space3.appendChild(br3);
+
+                  $('#myChart3').remove(); // this is my <canvas> element
+                    $('#test3').append('<canvas id="myChart3"><canvas>');
+                  let myChart3 = document.getElementById('myChart3').getContext('2d')
+
+                  let probChart3 = new Chart(myChart3, {
+                    type:'pie', // bar horizontalBar, pie, line, doughnut, radar, polarArea
+                    data: {
+                      labels: conditionNames,
+                      datasets: [{
+                        label: 'Probability',
+                        data: colorInfo,
+                        backgroundColor:[
+                        //  '#000000',
+                      //    '#324242'
+                        ],
+                        //borderWidth: 1,
+                        //borderColor: '#777',
+                       // hoverBorderWidth: 3,
+                     //   hoverBorderColor: '#000'
+                      }]
+                    },
+                    options: {
+                      title: {
+                        display: true,
+                        text: 'Output Probabilities'
+                     //   fontSize: 25
+                      },
+                      legend: {
+                        display: false
+                       // position: 'right',
+                       // labels: {
+                       //   fontColor: '#000'
+                       // }
+                      },
+                      layout: {
+                       // padding: {
+                        //  left: 50,
+                         // right: 0,
+                         // bottom: 0,
+                         // top: 0
+                       // },
+                        tooltips: {
+                          enabled: true
+                        }
+                      }
+                    }
+                  })
+
+                  space = document.getElementById("test4")
+                  space.appendChild(br);
+
+                  $('#myChart4').remove(); // this is my <canvas> element
+                    $('#test4').append('<canvas id="myChart4"><canvas>');
+                  let myChart4 = document.getElementById('myChart4').getContext('2d')
+                  
+
+
+                  
+                  //Chart.defaults.global.defaultFontFamily = 'Lato';
+                  //Chart.defaults.global.defaultFontSize = 18;
+                  //Chart.defaults.global.defaultFontColor = '#777';
+
+                  let probChart4 = new Chart(myChart4, {
+                    type:'polarArea', // bar horizontalBar, pie, line, doughnut, radar, polarArea
+                    data: {
+                      labels: conditionNames,
+                      datasets: [{
+                        label: 'Probability',
+                        data: colorInfo,
+                        backgroundColor:[
+                        //  '#000000',
+                      //    '#324242'
+                        ],
+                        //borderWidth: 1,
+                        //borderColor: '#777',
+                       // hoverBorderWidth: 3,
+                     //   hoverBorderColor: '#000'
+                      }]
+                    },
+                    options: {
+                      title: {
+                        display: true,
+                        text: 'Output Probabilities'
+                     //   fontSize: 25
+                      },
+                      legend: {
+                        display: false
+                       // position: 'right',
+                       // labels: {
+                       //   fontColor: '#000'
+                       // }
+                      },
+                      layout: {
+                       // padding: {
+                        //  left: 50,
+                         // right: 0,
+                         // bottom: 0,
+                         // top: 0
+                       // },
+                        tooltips: {
+                          enabled: true
+                        }
+                      }
+                    }
+                  })
+
+                  var br5 = document.createElement("br");
+                  var space5 = document.getElementById("test5")
+                  space5.appendChild(br5);
+                  space5.appendChild(br5);
+
+
+
 
 
                    } else {
-                    document.getElementById('conditions').innerHTML = "";
-                    document.getElementById('conditionLabel').innerHTML = "";
+                    
                     document.getElementById('symptoms').innerHTML = "";
                     document.getElementById('symptomsLabel').innerHTML = "";
                    }
@@ -352,8 +575,7 @@
             </li>
           </ul>
           <div class="copyright">
-            ©
-            2021 built by
+            Created by
             <a href="javascript:void(0)" target="_blank">Adam and Matthew</a>
           </div>
         </div>
@@ -416,7 +638,7 @@
   <script src="assets2/js/black-dashboard.min.js?v=1.0.0"></script><!-- Black Dashboard DEMO methods, don't include it in your project! -->
   <script src="assets2/demo/demo.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
   <script>
 
     const testS = 'hii'
@@ -445,8 +667,19 @@
       currentString = current.value.trim()
     })
     
+    function getRandomInt(max) {
+      return Math.floor(Math.random() * Math.floor(max));
+    }
 
     const sendData = () => {
+      document.getElementById("overlay").style.display = "block";
+
+      setTimeout(function(){ 
+        document.getElementById("overlay").style.display = "none";
+       }, getRandomInt(3000)+1500);
+
+      
+
       console.log(currentString)
       axios({
       method: "POST",

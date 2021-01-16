@@ -35,7 +35,7 @@
   <link href="assets2/demo/demo.css" rel="stylesheet" />
 </head>
 
-<body class="">
+<body onload="displayGraph()" class="">
   <div class="wrapper"data-color = "blue">
     <div class="sidebar"data-color = "blue" >
       <!--
@@ -50,7 +50,7 @@
           </div>
         </div>
         <ul class="nav">
-          <li class="active ">
+          <li class="active">
             <a href="/dashboard">
               <i class="tim-icons icon-chart-pie-36"></i>
               <p>Dashboard</p>
@@ -58,7 +58,7 @@
           </li>
           <li>
             <a href="/new_patient">
-              <i class="tim-icons icon-atom"></i>
+              <i class="tim-icons icon-molecule-40"></i>
               <p>New Patient</p>
             </a>
           </li>
@@ -85,15 +85,8 @@
           
           <li>
             <a href="/users/logout">
-              <i class="tim-icons icon-world"></i>
+              <i class="tim-icons icon-lock-circle"></i>
               <p>Logout</p>
-            </a>
-          </li>
-          
-          <li class="active-pro">
-            <a href="./upgrade.html">
-              <i class="tim-icons icon-spaceship"></i>
-              <p>Upgrade to PRO</p>
             </a>
           </li>
         </ul>
@@ -120,43 +113,14 @@
           </button>
           <div class="collapse navbar-collapse" id="navigation">
             <ul class="navbar-nav ml-auto">
-              <li class="search-bar input-group">
-                <button class="btn btn-link" id="search-button" data-toggle="modal" data-target="#searchModal"><i class="tim-icons icon-zoom-split" ></i>
-                  <span class="d-lg-none d-md-block">Search</span>
-                </button>
-              </li>
+              
+              
               <li class="dropdown nav-item">
-                <a href="javascript:void(0)" class="dropdown-toggle nav-link" data-toggle="dropdown">
-                  <div class="notification d-none d-lg-block d-xl-block"></div>
-                  <i class="tim-icons icon-sound-wave"></i>
-                  <p class="d-lg-none">
-                    Notifications
-                  </p>
-                </a>
-                <ul class="dropdown-menu dropdown-menu-right dropdown-navbar">
-                  <li class="nav-link"><a href="#" class="nav-item dropdown-item">Mike John responded to your email</a></li>
-                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">You have 5 more tasks</a></li>
-                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Your friend Michael is in town</a></li>
-                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Another notification</a></li>
-                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Another one</a></li>
-                </ul>
-              </li>
-              <li class="dropdown nav-item">
-                <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+                <a href="#" class="dropdown-toggle nav-link">
                   <div class="photo">
-                    <img src="assets2/img/anime3.png" alt="Profile Photo">
-                  </div>
-                  <b class="caret d-none d-lg-block d-xl-block"></b>
-                  <p class="d-lg-none">
-                    Log out
-                  </p>
+                    <img src="assets2/img/ai.png" alt="Profile Photo">
+                  </div>      
                 </a>
-                <ul class="dropdown-menu dropdown-navbar">
-                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Profile</a></li>
-                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Settings</a></li>
-                  <li class="dropdown-divider"></li>
-                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Log out</a></li>
-                </ul>
               </li>
               <li class="separator d-lg-none"></li>
             </ul>
@@ -183,39 +147,18 @@
               <div class="card-header ">
                 <div class="row">
                   <div class="col-sm-6 text-left">
-                    <h5 class="card-category">Total Shipments</h5>
-                    <h2 class="card-title">Performance</h2>
+                    <h5 class="card-category">House AI Query Statistics Per hour</h5>
+                    <h2 class="card-title"></h2>
                   </div>
                   <div class="col-sm-6">
                     <div class="btn-group btn-group-toggle float-right" data-toggle="buttons">
-                      <label class="btn btn-sm btn-primary btn-simple active" id="0">
-                        <input type="radio" name="options" checked>
-                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Accounts</span>
-                        <span class="d-block d-sm-none">
-                          <i class="tim-icons icon-single-02"></i>
-                        </span>
-                      </label>
-                      <label class="btn btn-sm btn-primary btn-simple" id="1">
-                        <input type="radio" class="d-none d-sm-none" name="options">
-                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Purchases</span>
-                        <span class="d-block d-sm-none">
-                          <i class="tim-icons icon-gift-2"></i>
-                        </span>
-                      </label>
-                      <label class="btn btn-sm btn-primary btn-simple" id="2">
-                        <input type="radio" class="d-none" name="options">
-                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Sessions</span>
-                        <span class="d-block d-sm-none">
-                          <i class="tim-icons icon-tap-02"></i>
-                        </span>
-                      </label>
+                      
                     </div>
                   </div>
                 </div>
               </div>
               <div class="card-body">
-                <div class="chart-area">
-                  <canvas id="chartBig1"></canvas>
+                <div id="chartUsage">
                 </div>
               </div>
             </div>
@@ -566,8 +509,7 @@
             </li>
           </ul>
           <div class="copyright">
-            ©
-            2021 built by
+            Created by
             <a href="javascript:void(0)" target="_blank">Adam and Matthew</a>
           </div>
         </div>
@@ -629,7 +571,116 @@
   <!-- Control Center for Black Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="assets2/js/black-dashboard.min.js?v=1.0.0"></script><!-- Black Dashboard DEMO methods, don't include it in your project! -->
   <script src="assets2/demo/demo.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+
   <script>
+
+    var timeArray = []
+    var weekArray = [0,0,0,0,0,0,0]
+    const displayGraph = () => {
+      axios({
+            method: "POST",
+            data: {
+              rand: 'data'
+            },
+            withCredentials: true,
+            url: "http://localhost:5000/getUsage"
+          }).then((res) => setTimeArray(res.data))
+
+    }
+
+    const setTimeArray = (x) => {
+      for (var i = 0; i < x.length; i++){
+        timeArray = timeArray.concat(x[i])
+      }
+     // const period = 86400
+      const period = 600
+      var currentSeconds = new Date().getTime() / 1000;
+      for (var i = 0; i < timeArray.length; i++){
+
+        if(currentSeconds-timeArray[i] < period){
+          weekArray[6]++
+        } else if (currentSeconds-timeArray[i] < period*2) {
+          weekArray[5]++
+        } else if (currentSeconds-timeArray[i] < period*3) {
+          weekArray[4]++
+        } else if (currentSeconds-timeArray[i] < period*4) {
+          weekArray[3]++
+        } else if (currentSeconds-timeArray[i] < period*5) {
+          weekArray[2]++
+        } else if (currentSeconds-timeArray[i] < period*6) {
+          weekArray[1]++
+        } else if (currentSeconds-timeArray[i] < period*7) {
+          weekArray[0]++
+        } else {
+          continue
+        }
+      }
+
+      console.log(weekArray)
+
+
+      $('#myChart').remove(); // this is my <canvas> element
+      $('#chartUsage').append('<canvas id="myChart"><canvas>');
+      let myChart = document.getElementById('myChart').getContext('2d')
+                  
+
+
+                  
+                  
+
+                  let usageChart = new Chart(myChart, {
+                    type:'line', // bar horizontalBar, pie, line, doughnut, radar, polarArea
+                    data: {
+                      labels: [7,6,5,4,3,2,1],
+                      datasets: [{
+                        label: 'Usage',
+                        data: weekArray,
+                        backgroundColor:[
+                        //  '#000000',
+                      //    '#324242'
+                        ],
+                        //borderWidth: 1,
+                        //borderColor: '#777',
+                       // hoverBorderWidth: 3,
+                     //   hoverBorderColor: '#000'
+                      }]
+                    },
+                    options: {
+                      title: {
+                        display: false,
+                        text: 'Output'
+                     //   fontSize: 25
+                      },
+                      legend: {
+                        display: false
+                       // position: 'right',
+                       // labels: {
+                       //   fontColor: '#000'
+                       // }
+                      },
+                      layout: {
+                       // padding: {
+                        //  left: 50,
+                         // right: 0,
+                         // bottom: 0,
+                         // top: 0
+                       // },
+                        tooltips: {
+                          enabled: true
+                        }
+                      }
+                    }
+                  })
+
+    }
+
+
+
+
+
+
     $(document).ready(function() {
       $().ready(function() {
         $sidebar = $('.sidebar');

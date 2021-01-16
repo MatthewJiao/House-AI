@@ -25,6 +25,10 @@ const UserSchema = new mongoose.Schema({
         type: [[String]],
         default: []
     },
+    houseUsage: {
+        type: [Number],
+        default: []
+    },
     date: {
         type: Date,
         default: Date.now

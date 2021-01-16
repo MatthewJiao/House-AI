@@ -43,7 +43,7 @@ router.post('/register', (req, res) => {
                     email,
                     password,
                     medicalID: registeredID,
-                    aboutMe: "Knock, knock! Who’s there? Colin who? Colin the doctor… I’m sick!"
+                    aboutMe: "Knock, knock! Who’s there? Colin. Colin who? Colin the doctor… I’m sick!"
                 })
                 bcrypt.genSalt(10, (err, salt) => bcrypt.hash(newUser.password, salt, (err, hash) => {
                     if(err) throw err

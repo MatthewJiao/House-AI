@@ -95,6 +95,36 @@ section {
 
 }
 
+.symptomsLabel{
+  margin:10rem;
+  padding: 5rem;
+  width: 10rem
+}
+
+#overlay {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 2;
+  cursor: pointer;
+}
+
+
+
+
+
+.symptoms{
+  margin:10rem;
+  padding: 5rem;
+  width: 10rem
+}
+
 .center2{
   border-color: #ffffff;
   border: solid;
@@ -15866,11 +15896,17 @@ img {
 
 .navbar .photo {
   display: inline-block;
-  height: 30px;
-  width: 30px;
+  height: 4rem;
+  width: 4rem;
   border-radius: 50%;
   vertical-align: middle;
   overflow: hidden;
+}
+.fon {
+  background-color: #00a685;
+  opacity: 0.6;
+  border-radius: 0rem;
+  font-weight: 300;
 }
 
 .navbar .photo img {

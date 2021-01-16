@@ -117,6 +117,17 @@ router.post('/saveProfile', (req, res) => {
     
 })
 
+router.post('/getUsage', (req, res) => {
+  var sendBack = ''
+  User.find({}, function(err, data){
+    let timeArray = data.map((info)=>{return info.houseUsage});
+    res.send(timeArray)
+  })
+
+
+
+})
+
 
 router.post('/houseMemory', (req, res) => {
   //console.log(req.body.pdf)
@@ -126,12 +137,17 @@ router.post('/houseMemory', (req, res) => {
     var newMem = current.concat([symptoms])   
     newMem = newMem.concat([conditions])
     newMem = newMem.concat(Date())
+    var current2 = req.user.houseUsage
+    var seconds = new Date().getTime() / 1000;
+    current2 = current2.concat([seconds])
+
     User.findOneAndUpdate(
       { email: req.user.email },
       {
         //Update database with said qualities
         $set: {
-          houseMemory: newMem
+          houseMemory: newMem,
+          houseUsage: current2
         },
       },
       { new: true },
