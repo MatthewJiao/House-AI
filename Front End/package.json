@@ -21,10 +21,13 @@
     "express-ejs-layouts": "^2.5.0",
     "express-session": "^1.17.1",
     "fs": "0.0.1-security",
+    "jquery": "^3.5.1",
+    "jsdom": "^16.4.0",
     "mongoose": "^5.11.10",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
     "pdf-parse": "^1.1.1",
+    "puppeteer": "^5.5.0",
     "request": "^2.88.2"
   },
   "devDependencies": {
