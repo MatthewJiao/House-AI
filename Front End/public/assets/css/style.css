@@ -1588,6 +1588,12 @@ section {
   padding: 30px 0;
   color: #222222;
   font-size: 14px;
+  
+}
+
+.container2 {
+  padding-left: 0 !important;
+  min-width: 100vw !important;
 }
 
 #footer .credits {
