@@ -186,23 +186,21 @@
               
               
 
-              <form action="/send-medical" method="POST">
-                <div class="card-body all-icons">
+                <div class="card-body card-body2 all-icons">
 
                   <div class="row">
 
                     <div class="file-drop-area">
                       <span class="fake-btn">Choose files</span>
                       <span class="file-msg">or drag and drop files here</span>
-                      <input class="file-input" type="file" multiple>
+                      <input class="file-input" id="myFile" name="myFile" type="file" multiple>
                     </div>
 
                     
                   </div>
                 </div>
                 
-                <button type="submit" class="btn btn-primary btn-block">Send</button>
-              </form>
+                <button type="submit" onclick="sendData()" class="btn btn-primary btn-block">Send</button>
               
 
 
@@ -295,7 +293,43 @@
   <!-- Control Center for Black Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="assets2/js/black-dashboard.min.js?v=1.0.0"></script><!-- Black Dashboard DEMO methods, don't include it in your project! -->
   <script src="assets2/demo/demo.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+
   <script>
+
+    const testS = 'hii'
+    var pdfString = ''
+    const separator = '. '
+    const inpFile = document.querySelector('input[type="file"]')
+    inpFile.addEventListener('change', function (e) {
+      console.log(inpFile.files)
+
+      for(i=0; i< inpFile.files.length; i++){
+
+        const reader = new FileReader()
+        reader.onload = function () {
+          pdfString = pdfString.concat(separator.concat(reader.result))
+        }
+        reader.readAsText(inpFile.files[i])
+
+      }
+
+    }, true)
+    
+
+    const sendData = () => {
+      console.log(typeof(pdfString) == typeof(testS))
+      axios({
+      method: "POST",
+      data: {
+        pdf: pdfString,
+      },
+      withCredentials: true,
+      url: "http://localhost:5000/send-medical"
+    }).then((res) => console.log(res))
+    }
+    
+
 // pdf start
 
 var $fileInput = $('.file-input');

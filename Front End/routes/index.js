@@ -1,6 +1,10 @@
 const express = require('express')
 const router = express.Router()
 const {ensureAuthenticated} = require('../config/auth')
+const fs = require('fs')
+const pdfparse = require('pdf-parse')
+
+
 
 router.get('/', (req, res) => res.render('welcome'))
 router.get('/dashboard', ensureAuthenticated, (req, res) =>
@@ -43,12 +47,27 @@ router.get('/dashboard', ensureAuthenticated, (req, res) =>
 //      name: req.user.name
 //  }))
 
-router.post('/send-medical', (req, res) => {
+//router.post('/send-medical', (req, res) => {
     //const {name, email, password, password2, registeredID} = req.body
-    console.log(req.body)
+    /*
     console.log('test')
+    const {myFile} = req.body
+    const path = [req.body,'sampleFiles/sample.pdf']
+    const com = path.join('')
+    //console.log('tesint', com)
+    const pdffile = fs.readFileSync(com)
 
+    pdfparse(pdffile).then(function (data) {
+        console.log(data.numpages)
+    })
 
+    //console.log(myFile.files)
+
+*/
+//})
+
+router.post('/send-medical', (req, res) => {
+    console.log(req.body.pdf)
 })
 
 
