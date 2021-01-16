@@ -84,6 +84,68 @@ section {
   text-align: center;
 }
 
+.center2{
+  border-color: #ffffff;
+  border: solid;
+}
+
+.file-drop-area {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 450px;
+  max-width: 100%;
+  padding: 25px;
+  border: 1px dashed rgba(255, 255, 255, 0.4);
+  border-radius: 3px;
+  transition: 0.2s;
+  color: #D7D7EF;
+  
+  
+}
+
+.file-drop-area:active{
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.fake-btn {
+  flex-shrink: 0;
+  background-color: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  padding: 8px 15px;
+  margin-right: 10px;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.file-msg {
+  font-size: small;
+  font-weight: 300;
+  line-height: 1.4;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.file-input {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+  opacity: 0;
+  
+}
+
+.file-input:focus{
+  outline: none;
+}
+
+
+
+
 body {
   margin: 0;
   font-family: "Poppins", sans-serif;
@@ -114,6 +176,7 @@ h6 {
   margin-top: 0;
   margin-bottom: 0.5rem;
 }
+
 
 p {
   margin-top: 0;
@@ -5177,6 +5240,7 @@ input[type="button"].btn-block {
   background-clip: border-box;
   border: 0.0625rem solid rgba(34, 42, 66, 0.05);
   border-radius: 0.2857rem;
+
 }
 
 .card>hr {
@@ -5197,10 +5261,12 @@ input[type="button"].btn-block {
 .card-body {
   flex: 1 1 auto;
   padding: 1.5rem;
+  margin: auto;
 }
 
 .card-title {
   margin-bottom: 1.25rem;
+  
 }
 
 .card-subtitle {
@@ -16570,6 +16636,8 @@ p.description {
 
 .title {
   font-weight: 600;
+  font-variant: small-caps;
+
 }
 
 .title.title-up {

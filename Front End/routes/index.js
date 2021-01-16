@@ -43,4 +43,13 @@ router.get('/dashboard', ensureAuthenticated, (req, res) =>
 //      name: req.user.name
 //  }))
 
+router.post('/send-medical', (req, res) => {
+    //const {name, email, password, password2, registeredID} = req.body
+    console.log(req.body)
+    console.log('test')
+
+
+})
+
+
 module.exports = router

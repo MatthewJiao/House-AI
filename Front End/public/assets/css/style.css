@@ -514,7 +514,7 @@ section {
 --------------------------------------------------------------*/
 .clients {
   background: #f3f9fd;
-  padding: 10px 0;
+  padding: 7px 0;
   text-align: center;
 }
 
@@ -525,18 +525,18 @@ section {
 }
 
 .clients img {
-  width: 50%;
-  -webkit-filter: grayscale(100);
-  filter: grayscale(100);
+  width: 70%;
+  /* -webkit-filter: grayscale(100); */
+  /* filter: grayscale(100); */
   transition: all 0.4s ease-in-out;
   display: inline-block;
-  padding: 10px 0;
+  padding: 7px 0;
 }
 
 .clients img:hover {
   -webkit-filter: none;
   filter: none;
-  transform: scale(1.1);
+  /* transform: scale(1.1); */
 }
 
 @media (max-width: 768px) {
@@ -1311,7 +1311,6 @@ section {
 /*--------------------------------------------------------------
 # Contact
 --------------------------------------------------------------*/
-
 .contact-about{
   /* text-align:center */
   margin:auto
@@ -1321,7 +1320,6 @@ section {
   /* text-align:center */
   margin:auto
 }
-
 .contact .contact-about h3 {
   font-size: 28px;
   margin: 0 0 10px 0;
