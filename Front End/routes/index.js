@@ -101,14 +101,15 @@ async function scrollToBottom(page) {
 
  router.get('/user', ensureAuthenticated, (req, res) => {
     //console.log(req.user.aboutMe)
-
  res.render('user', {
      name: req.user.name,
      email: req.user.email,
      firstName: req.user.name.split(" ")[0],
      lastName: req.user.name.split(" ")[1],
      medicalID: req.user.medicalID,
-     aboutMe: req.user.aboutMe
+     aboutMe: req.user.aboutMe,
+     institution: req.user.institution
+
  })})
 
 //  router.get('/tables', ensureAuthenticated, (req, res) =>
@@ -164,7 +165,7 @@ router.post('/send-medical', (req, res) => {
 router.post('/saveProfile', (req, res) => {
     //console.log(req.body.pdf)
     //console.log(req.body.currentStr)
-    const { name, aboutMe } = req.body; 
+    const { name, aboutMe, institution } = req.body; 
   
 
 
@@ -174,7 +175,8 @@ router.post('/saveProfile', (req, res) => {
           //Update database with said qualities
           $set: {
             aboutMe: aboutMe,
-            name: name
+            name: name,
+            institution: institution
           },
         },
         { new: true },

@@ -33,6 +33,7 @@
   <link href="assets2/css/black-dashboard.css?v=1.0.0" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="assets2/demo/demo.css" rel="stylesheet" />
+  
 </head>
 
 <body class="">
@@ -152,23 +153,43 @@
                     <div class="col-md-7 pr-md-1">
                       <div class="form-group">
                         <label>Email address</label>
-                        <input type="text" class="form-control" disabled="" placeholder=<%=email%>>
+                        <input type="text" class="form-control" disabled="" placeholder="<%=email%>">
                       </div>
                     </div>
+                    
+
+                    
+                  </div>
+                  <div class="row">
+
                     <div class="col-md-4 pr-md-1">
                       <div class="form-group">
                         <label>Medical ID</label>
-                        <input type="text" class="form-control" disabled="" placeholder=<%=medicalID%>>
+                        <input type="text" class="form-control" disabled="" placeholder="<%=medicalID%>">
                       </div>
+                    </div>
+                    <div class="col-md-7 pr-md-1">
+                      <!--
+                      <div class="form-group">
+                        <label>Medical Institution</label>
+                        <input type="text" id="institution" class="form-control" placeholder="Instituiton" value=<%=institution%>>
+                      </div>
+                    -->
+                    <div class="autocomplete form-group">
+                      <label for="institution">Medical Institution</label>
+                      <input id="institution" class="form-control" type="text" placeholder="Instituiton" value="<%=institution%>">
+                    </div>
+                    
                     </div>
 
                     
+
                   </div>
                   <div class="row">
                     <div class="col-md-6 pr-md-1">
                       <div class="form-group">
                         <label>First Name</label>
-                        <input type="text" id="first_name" class="form-control" placeholder="First Name" value=<%=firstName%>>
+                        <input type="text" id="first_name" class="form-control" placeholder="First Name" value="<%=firstName%>">
                       </div>
                     </div>
                     <div class="col-md-6 pl-md-1">
@@ -190,11 +211,129 @@
                     <div class="col-md-8">
                       <div class="form-group">
                         <label>About Me</label>
-                        <textarea rows="4" cols="80" id="about_me" class="form-control" placeholder="<%=aboutMe%>" value="<%=lastName%>"><%=aboutMe%></textarea>
+                        <textarea rows="4" cols="80" id="about_me" class="form-control" placeholder="<%=aboutMe%>"><%=aboutMe%></textarea>
                       </div>
                     </div>
                   </div>
                 </form>
+                <script>
+                  
+                  function autocomplete(inp, arr) {
+                    /*the autocomplete function takes two arguments,
+                    the text field element and an array of possible autocompleted values:*/
+                    var currentFocus;
+                    /*execute a function when someone writes in the text field:*/
+                    inp.addEventListener("input", function(e) {
+                        var a, b, i, val = this.value;
+                        /*close any already open lists of autocompleted values*/
+                        closeAllLists();
+                        if (!val) { return false;}
+                        currentFocus = -1;
+                        /*create a DIV element that will contain the items (values):*/
+                        a = document.createElement("DIV");
+                        a.setAttribute("id", this.id + "autocomplete-list");
+                        a.setAttribute("class", "autocomplete-items");
+                        /*append the DIV element as a child of the autocomplete container:*/
+                        this.parentNode.appendChild(a);
+                        /*for each item in the array...*/
+                        for (i = 0; i < arr.length; i++) {
+                          /*check if the item starts with the same letters as the text field value:*/
+                          if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+                            /*create a DIV element for each matching element:*/
+                            b = document.createElement("DIV");
+                            /*make the matching letters bold:*/
+                            b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+                            b.innerHTML += arr[i].substr(val.length);
+                            /*insert a input field that will hold the current array item's value:*/
+                            b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+                            /*execute a function when someone clicks on the item value (DIV element):*/
+                            b.addEventListener("click", function(e) {
+                                /*insert the value for the autocomplete text field:*/
+                                inp.value = this.getElementsByTagName("input")[0].value;
+                                /*close the list of autocompleted values,
+                                (or any other open lists of autocompleted values:*/
+                                closeAllLists();
+                            });
+                            a.appendChild(b);
+                          }
+                        }
+                    });
+                    /*execute a function presses a key on the keyboard:*/
+                    inp.addEventListener("keydown", function(e) {
+                        var x = document.getElementById(this.id + "autocomplete-list");
+                        if (x) x = x.getElementsByTagName("div");
+                        if (e.keyCode == 40) {
+                          /*If the arrow DOWN key is pressed,
+                          increase the currentFocus variable:*/
+                          currentFocus++;
+                          /*and and make the current item more visible:*/
+                          addActive(x);
+                        } else if (e.keyCode == 38) { //up
+                          /*If the arrow UP key is pressed,
+                          decrease the currentFocus variable:*/
+                          currentFocus--;
+                          /*and and make the current item more visible:*/
+                          addActive(x);
+                        } else if (e.keyCode == 13) {
+                          /*If the ENTER key is pressed, prevent the form from being submitted,*/
+                          e.preventDefault();
+                          if (currentFocus > -1) {
+                            /*and simulate a click on the "active" item:*/
+                            if (x) x[currentFocus].click();
+                          }
+                        }
+                    });
+                    function addActive(x) {
+                      /*a function to classify an item as "active":*/
+                      if (!x) return false;
+                      /*start by removing the "active" class on all items:*/
+                      removeActive(x);
+                      if (currentFocus >= x.length) currentFocus = 0;
+                      if (currentFocus < 0) currentFocus = (x.length - 1);
+                      /*add class "autocomplete-active":*/
+                      x[currentFocus].classList.add("autocomplete-active");
+                    }
+                    function removeActive(x) {
+                      /*a function to remove the "active" class from all autocomplete items:*/
+                      for (var i = 0; i < x.length; i++) {
+                        x[i].classList.remove("autocomplete-active");
+                      }
+                    }
+                    function closeAllLists(elmnt) {
+                      /*close all autocomplete lists in the document,
+                      except the one passed as an argument:*/
+                      var x = document.getElementsByClassName("autocomplete-items");
+                      for (var i = 0; i < x.length; i++) {
+                        if (elmnt != x[i] && elmnt != inp) {
+                          x[i].parentNode.removeChild(x[i]);
+                        }
+                      }
+                    }
+                    /*execute a function when someone clicks in the document:*/
+                    document.addEventListener("click", function (e) {
+                        closeAllLists(e.target);
+                    });
+                  }
+                  
+                  /*An array containing all the country names in the world:*/
+                  var medInst = ["Banff Mineral Springs Hospital", "Bassano Health Centre", "Alberta Children's Hospital (ACH)", "Foothills Medical Centre (FMC)", "Peter Lougheed Centre (PLC)", "Rockyview General Hospital (RGH)", "South Health Campus (SHC)", "Tom Baker Cancer Centre (TBCC)", "Canmore General Hospital",
+                  "Alberta Hospital Edmonton", "Cross Cancer Institute", "Devon General Hospital", "Glenrose Rehabilitation Hospital", "Grey Nuns Community Hospital & Health Centre", "Leduc Community Hospital & Health Centre", "Misericordia Community Hospital", "Northeast Community Health Centre", "Royal Alexandra Hospital", "University of Alberta Hospital (Stollery Children's Hospital)"
+                ,"Chinook Regional Hospital", "Lloydminster Hospital (in Saskatchewan)", "Medicine Hat Regional Hospital", "Milk River Health Centre", "WestView Health Centre", "Vulcan Community Health Centre", "Whitecourt Healthcare Centre", "Burnaby Hospital", "Riverview Hospital", "Kelowna General Hospital", "Lions Gate Hospital", "South Okanagan General Hospital", "Eagle Ridge Hospital", "Richmond Hospital (RGH)", "Surrey Memorial Hospital", "Mills Memorial Hospital", 
+                "BC Cancer Agency", "British Columbia's Children's Hospital & Sunny Hill Health Centre for Children", "B.C. Women's Hospital & Health Centre", "G. F. Strong Centre", "Mary Pack Arthritis Centre", "St. Paul's Hospital", "Vancouver General Hospital", "Vancouver Hospital and Health Sciences Centre",
+              "Vernon Jubilee Hospital","Royal Jubilee Hospital","Victoria General Hospital", "Bethesda Hospital", "The Children's Hospital of Winnipeg", "Concordia Hospital", "Deer Lodge Centre", "Grace Hospital", "Health Sciences Centre", "Misericordia Health Centre", "Riverview Health Centre", "Saint Boniface General Hospital", "Seven Oaks General Hospital", "Victoria General Hospital"
+            ,"Chaleur Regional", "Campbellton Regional", "Restigouche Hospital", "l'Enfant-Jésus", "Edmundston Regional", "Dr. Everett Chalmers Regional", "Grand Falls General", "Grand Manan Hospital", "Miramichi Regional", "Dr. Georges-L.-Dumont", "Moncton", "Oromocto Public", "Hotel-Dieu of St. Joseph", "Sackville Memorial", "Centracare", "Saint John Regional", "St. Joseph's Hospital",
+            "Stella-Maris-De-Kent Hospital", "Hôtel-Dieu Saint-Joseph", "Charlotte County Hospital", "Sussex Health Centre", "Tracadie-Sheila Hospital", "Upper River Valley Hospital", "Janeway Children's Health and Rehabilitation Centre", "Hay River Regional Health Centre", "Inuvik Regional Hospital", "Stanton Territorial Hospital", "Eastern Memorial Hospital", "Digby General Hospital", "Glace Bay Hospital", "Guysborough Memorial Hospital", "Dartmouth General Hospital", "Dartmouth General Hospital", "Nova Scotia Hospital",
+            "IWK Health Centre", "Queen Elizabeth II Health Sciences Centre", "Musquodoboit Valley Memorial Hospital", "Hants Community Hospital", "Inverness Consolidated Memorial Hospital", "Fishermen's Memorial Hospital", "Soldiers Memorial Hospital", "Aberdeen Hospital", "Eastern Shore Memorial Hospital", "All Saints Springhill Hospital", "Cape Breton Regional Hospital", "Harbourview Hospital", "Lillian Fraser Memorial Hospital",
+            "Yarmouth Regional Hospital", "Qikiqtani General Hospital", "Lakeridge Health Ajax and Pickering", "Stevenson Memorial Hospital", "Royal Victoria Regional Health Centre", "Lakeridge Health Bowmanville", "Brampton Civic Hospital", "Brampton Memorial Hospital Campus", "Joseph Brant Hospital", "Campbellford Memorial Hospital", "Cambridge Memorial Hospital", "Northumberland Hills Hospital", "Collingwood General and Marine Hospital", "Georgetown Hospital", "Hamilton General Hospital", "McMaster Children's Hospital", "St. Peter's Hospital",
+            "Kingston General Hospital", "Hotel Dieu", "Providence Continuing Care Centre (PCCC)", "Kirkland and District Hospital", "Grand River Hospital", "St. Mary's General Hospital", "Children's Hospital at London Health Sciences Centre", "University Hospital", "Victoria Hospital", "Grey Bruce Health Services", "Grey Bruce Health Services", "Milton District Hospital", "Credit Valley Hospital", "Mississauga Hospital", "Oakville-Trafalgar Memorial Hospital", "Lakeridge Health Oshawa", "Children's Hospital of Eastern Ontario (CHEO)", "Montfort Hospital", "National Defence Medical Centre", "Civic Hospital", "General Hospital", "Riverside Hospital", 
+            "Queensway Carleton Hospital", "University of Ottawa Heart Institute", "Royal Ottawa Mental Health Centre", "Grey Bruce Health Services", "Peterborough Regional Health Centre", "Lakeridge Health Port Perry", "Bluewater Health", "Sault Area Hospital", "Health Sciences North", "Thunder Bay Regional Health Sciences Centre", "Baycrest Health Sciences", "Bellwood Health Services", "Bridgepoint Active Healthcare", "Casey House", "Centre for Addiction and Mental Health", "Centre for Addiction and Mental Health", "Centre for Addiction and Mental Health", "Centric Health Surgical Centre Toronto", "Etobicoke General Hospital", "Holland Bloorview Kids Rehabilitation Hospital", 
+            "Hospital for Sick Children", "Humber River Hospital, Wilson Site", "Michael Garron Hospital", "Mount Sinai Hospital", "North York General Hospital", "North York General Hospital, Branson Centre", "North York General Hospital, Seniors' Health Centre", "Princess Margaret Cancer Centre", "Providence Healthcare", "Queensway Health Centre", "Centenary Hospital", "Runnymede Healthcare Centre", "Scarborough General Hospital", "Birchmount Hospital", "St. Joseph's Health Centre", "St. Michael's Hospital", "Sunnybrook Health Sciences Centre", "Sunnybrook Holland Centre", "St. John's Rehab Hospital", "Toronto General Hospital", "Toronto Grace Health Centre", "Toronto Rehabilitation Institute",
+            "Toronto Western Hospital", "West Park Healthcare Centre", "Women's College Hospital", "Uxbridge Cottage Hospital", "Grey Bruce Health Services", "Markham Stouffville Hospital", "Mackenzie Richmond Hill Hospital", "Mackenzie Vaughan Hospital", "Shouldice Hernia Centre", "Southlake Regional Health Centre", "Hillsborough Hospital", "Queen Elizabeth Hospital", "Prince County Hospital", "Jewish Rehabilitation Hospital", "Hôpital Charles-LeMoyne", "Centre hospitalier Pierre-Boucher", "Royal Victoria Hospital", "Montreal Children's Hospital", "Shriners Hospital for Children", "Montreal Chest Institute", "Montreal General Hospital", "Allan Memorial Institute", "Montreal Neurological Hospital", "Hôpital de Lachine",
+            "Lakeshore General Hospital", "Jewish General Hospital", "St. Mary's Hospital", "Douglas Mental Health University Institute", "Centre hospitalier de l'Université de Montréal", "Hopital Notre-Dame", "Hôpital Maisonneuve-Rosemont", "Hôpital du Sacré-Coeur de Montréal", "Centre hospitalier universitaire Sainte-Justine", "Institut de cardiologie de Montréal", "Institut universitaire en santé mentale de Montréal", "Institut Philippe-Pinel de Montréal", "Hôpital Santa-Cabrini", "Hôpital de Verdun", "Hôpital de LaSalle", "Hôpital Jean-Talon", "Hôpital Rivière-des-Prairies", "Centre hospitalier Honoré-Mercier","Hôtel-Dieu de Québec", "Hôpital Saint-François d'Assise", "Centre hospitalier de l'Université Laval (CHUL)",
+            "Hôtel-Dieu de Québec", "Hôpital Saint-François d'Assise", "Saint Brigid's – Jeffery Hale Hospital", "Centre hospitalier de l'Université Laval (CHUL)", "Humboldt District Hospital", "Pasqua Hospital", "Royal University Hospital", "Saskatoon City Hospital", "St. Paul's Hospital", "Whitehorse General Hospital"];
+                  /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
+                  autocomplete(document.getElementById("institution"), medInst);
+                  </script>
               </div>
               <div class="card-footer">
                 <button type="submit" onclick="saveData()" class="btn btn-fill btn-primary">Save</button>
@@ -321,12 +460,13 @@
       temp2 = document.getElementById('last_name').value
       temp3 = temp1.concat(" ".concat(temp2))
       temp4 = document.getElementById('about_me').value
-      
-      axios({
+      inst = document.getElementById('institution').value
+      axios({ 
       method: "POST",
       data: {
         name: temp3,
-        aboutMe: temp4
+        aboutMe: temp4,
+        institution: inst
       },
       withCredentials: true,
       url: "http://localhost:5000/saveProfile"

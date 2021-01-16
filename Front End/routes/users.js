@@ -9,7 +9,8 @@ router.get('/login', (req, res) => res.render('login'))
 router.get('/register', (req, res) => res.render('register'))
 
 router.post('/register', (req, res) => {
-    const {name, email, password, password2, registeredID} = req.body
+    const {name, email, password, password2, registeredID, institution} = req.body
+    console.log(institution)
     let errors = []
     let whitelist = ['1111','2222']
 
@@ -36,13 +37,15 @@ router.post('/register', (req, res) => {
         .then(user => {
             if(user){
                 errors.push({msg: 'Email is already registered'})
-                res.render('register', {errors, name, email, password, password2, registeredID})
+                res.render('register', {errors, name, email, password, password2, registeredID, institution})
             } else {
+
                 const newUser = new User({
                     name,
                     email,
                     password,
                     medicalID: registeredID,
+                    institution: institution,
                     aboutMe: "Knock, knock! Who’s there? Colin. Colin who? Colin the doctor… I’m sick!"
                 })
                 bcrypt.genSalt(10, (err, salt) => bcrypt.hash(newUser.password, salt, (err, hash) => {
