@@ -4,6 +4,7 @@ const {ensureAuthenticated} = require('../config/auth')
 const fs = require('fs')
 const pdfparse = require('pdf-parse')
 const axios = require('axios')
+const User = require('../models/User')
 
 
 
@@ -20,18 +21,24 @@ router.get('/dashboard', ensureAuthenticated, (req, res) =>
 
  router.get('/news', ensureAuthenticated, (req, res) =>
  res.render('news', {
-     name: req.user.name
- }))
+     name: req.user.name }))
 
  router.get('/memory', ensureAuthenticated, (req, res) =>
  res.render('memory', {
      name: req.user.name
  }))
 
- router.get('/user', ensureAuthenticated, (req, res) =>
+ router.get('/user', ensureAuthenticated, (req, res) => {
+    //console.log(req.user.aboutMe)
+
  res.render('user', {
-     name: req.user.name
- }))
+     name: req.user.name,
+     email: req.user.email,
+     firstName: req.user.name.split(" ")[0],
+     lastName: req.user.name.split(" ")[1],
+     medicalID: req.user.medicalID,
+     aboutMe: req.user.aboutMe
+ })})
 
 //  router.get('/tables', ensureAuthenticated, (req, res) =>
 //  res.render('tables', {
@@ -83,5 +90,31 @@ router.post('/send-medical', (req, res) => {
     
 })
 
+router.post('/saveProfile', (req, res) => {
+    //console.log(req.body.pdf)
+    //console.log(req.body.currentStr)
+    const { name, aboutMe } = req.body; 
+  
+
+
+      User.findOneAndUpdate(
+        { email: req.user.email },
+        {
+          //Update database with said qualities
+          $set: {
+            aboutMe: aboutMe,
+            name: name
+          },
+        },
+        { new: true },
+        (err, result) => {
+          if (err) {
+            console.log(err);
+          }
+          console.log(result);
+        }
+      );
+    
+})
 
 module.exports = router

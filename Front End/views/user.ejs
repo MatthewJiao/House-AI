@@ -184,79 +184,55 @@
               <div class="card-body">
                 <form>
                   <div class="row">
-                    <div class="col-md-5 pr-md-1">
+                    <div class="col-md-7 pr-md-1">
                       <div class="form-group">
-                        <label>Company (disabled)</label>
-                        <input type="text" class="form-control" disabled="" placeholder="Company" value="Creative Code Inc.">
+                        <label>Email address</label>
+                        <input type="text" class="form-control" disabled="" placeholder=<%=email%>>
                       </div>
                     </div>
-                    <div class="col-md-3 px-md-1">
+                    <div class="col-md-4 pr-md-1">
                       <div class="form-group">
-                        <label>Username</label>
-                        <input type="text" class="form-control" placeholder="Username" value="michael23">
+                        <label>Medical ID</label>
+                        <input type="text" class="form-control" disabled="" placeholder=<%=medicalID%>>
                       </div>
                     </div>
-                    <div class="col-md-4 pl-md-1">
-                      <div class="form-group">
-                        <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control" placeholder="mike@email.com">
-                      </div>
-                    </div>
+
+                    
                   </div>
                   <div class="row">
                     <div class="col-md-6 pr-md-1">
                       <div class="form-group">
                         <label>First Name</label>
-                        <input type="text" class="form-control" placeholder="Company" value="Mike">
+                        <input type="text" id="first_name" class="form-control" placeholder="First Name" value=<%=firstName%>>
                       </div>
                     </div>
                     <div class="col-md-6 pl-md-1">
                       <div class="form-group">
                         <label>Last Name</label>
-                        <input type="text" class="form-control" placeholder="Last Name" value="Andrew">
+                        <input type="text" id="last_name" class="form-control" placeholder="Last Name" value="<%=lastName%>">
                       </div>
                     </div>
                   </div>
                   <div class="row">
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label>Address</label>
-                        <input type="text" class="form-control" placeholder="Home Address" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09">
-                      </div>
-                    </div>
+                    
                   </div>
                   <div class="row">
-                    <div class="col-md-4 pr-md-1">
-                      <div class="form-group">
-                        <label>City</label>
-                        <input type="text" class="form-control" placeholder="City" value="Mike">
-                      </div>
-                    </div>
-                    <div class="col-md-4 px-md-1">
-                      <div class="form-group">
-                        <label>Country</label>
-                        <input type="text" class="form-control" placeholder="Country" value="Andrew">
-                      </div>
-                    </div>
-                    <div class="col-md-4 pl-md-1">
-                      <div class="form-group">
-                        <label>Postal Code</label>
-                        <input type="number" class="form-control" placeholder="ZIP Code">
-                      </div>
-                    </div>
+                    
+                    
+                    
                   </div>
                   <div class="row">
                     <div class="col-md-8">
                       <div class="form-group">
                         <label>About Me</label>
-                        <textarea rows="4" cols="80" class="form-control" placeholder="Here can be your description" value="Mike">Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</textarea>
+                        <textarea rows="4" cols="80" id="about_me" class="form-control" placeholder="<%=aboutMe%>" value="<%=lastName%>"><%=aboutMe%></textarea>
                       </div>
                     </div>
                   </div>
                 </form>
               </div>
               <div class="card-footer">
-                <button type="submit" class="btn btn-fill btn-primary">Save</button>
+                <button type="submit" onclick="saveData()" class="btn btn-fill btn-primary">Save</button>
               </div>
             </div>
           </div>
@@ -382,7 +358,35 @@
   <!-- Control Center for Black Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="assets2/js/black-dashboard.min.js?v=1.0.0"></script><!-- Black Dashboard DEMO methods, don't include it in your project! -->
   <script src="assets2/demo/demo.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+
   <script>
+
+    const saveData = () => {
+      temp1 = document.getElementById('first_name').value
+      temp2 = document.getElementById('last_name').value
+      temp3 = temp1.concat(" ".concat(temp2))
+      temp4 = document.getElementById('about_me').value
+      
+      axios({
+      method: "POST",
+      data: {
+        name: temp3,
+        aboutMe: temp4
+      },
+      withCredentials: true,
+      url: "http://localhost:5000/saveProfile"
+    }).then((res) => console.log(res.data)) 
+                
+
+    }
+
+
+
+
+
+
+
     $(document).ready(function() {
       $().ready(function() {
         $sidebar = $('.sidebar');

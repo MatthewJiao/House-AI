@@ -36,12 +36,14 @@ router.post('/register', (req, res) => {
         .then(user => {
             if(user){
                 errors.push({msg: 'Email is already registered'})
-                res.render('register', {errors, name, email, password, password2})
+                res.render('register', {errors, name, email, password, password2, registeredID})
             } else {
                 const newUser = new User({
                     name,
                     email,
-                    password
+                    password,
+                    medicalID: registeredID,
+                    aboutMe: "Knock, knock! Who’s there? Colin who? Colin the doctor… I’m sick!"
                 })
                 bcrypt.genSalt(10, (err, salt) => bcrypt.hash(newUser.password, salt, (err, hash) => {
                     if(err) throw err

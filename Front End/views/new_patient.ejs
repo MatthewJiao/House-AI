@@ -208,10 +208,25 @@
                 </textarea>
                 
                 <button type="submit" onclick="sendData()" class="btn btn-primary btn-block">House AI</button>
+                <div id="symptomsLabel"></div>
+                <div id="symptoms"></div>
+
+                <div id="conditionLabel"></div>
                 <div id="conditions"></div>
 
                 <script>
                   const displayData = (info) =>{
+                    var symptomsLst = info.split("QQQ")[1]
+                    symptomsLst = symptomsLst.split(',')
+
+                    symptomsLst = symptomsLst.map(x => typeof x === 'string' ? x.toLowerCase() : x);
+                    symptomsLst =  Array.from(new Set(symptomsLst));
+
+
+
+                    if(symptomsLst[0]!=""){
+                    //console.log(symptomsLst)
+                    var info = info.split("QQQ")[0]
                     var info2 = []
                     var colorInfo = []
                     info = info.slice(1,info.length-1)
@@ -230,7 +245,31 @@
                     }
                     //console.log(info2)
                     console.log(colorInfo)
+                    document.getElementById('conditions').innerHTML = "";
+                    document.getElementById('conditionLabel').innerHTML = "";
+                    document.getElementById('symptoms').innerHTML = "";
+                    document.getElementById('symptomsLabel').innerHTML = "";
 
+                    document.getElementById('symptomsLabel').innerHTML = "Symptoms Detected";
+                    var myDiv2 = document.getElementById("symptoms");  
+
+
+                    for (var i = 0; i< symptomsLst.length; i++){
+                      var button = document.createElement('BUTTON');  
+                      button.style.borderRadius = '0.2rem';
+                      button.style.border = '1px dashed rgba(255, 255, 255, 0.4)';
+                      button.style.outline = 'none';
+                     //s button.style.color = 'rgba(34, 42, 66, 0.05)'
+                      
+                      button.style.backgroundColor = '#76e0f5';
+                     
+
+                      var text = document.createTextNode(symptomsLst[i]); 
+                      button.appendChild(text);      
+                      myDiv2.appendChild(button);
+                    }
+
+                    document.getElementById('conditionLabel').innerHTML = "Output Probabilities";
 
                     var myDiv = document.getElementById("conditions");  
                   
@@ -267,7 +306,13 @@
                       button.appendChild(text);      
                       myDiv.appendChild(button);
                     }
+                   } else {
+                    document.getElementById('conditions').innerHTML = "";
+                    document.getElementById('conditionLabel').innerHTML = "";
+                    document.getElementById('symptoms').innerHTML = "";
+                    document.getElementById('symptomsLabel').innerHTML = "";
                    }
+                  }
                 </script>
 
 
@@ -280,7 +325,7 @@
           <ul class="nav">
             <li class="nav-item">
               <a href="javascript:void(0)" class="nav-link">
-                Creative Tim
+                House AI
               </a>
             </li>
             <li class="nav-item">
