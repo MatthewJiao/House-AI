@@ -8,18 +8,18 @@ router.get('/dashboard', ensureAuthenticated, (req, res) =>
      name: req.user.name
  }))
 
- router.get('/icons', ensureAuthenticated, (req, res) =>
- res.render('icons', {
+ router.get('/new_patient', ensureAuthenticated, (req, res) =>
+ res.render('new_patient', {
      name: req.user.name
  }))
 
- router.get('/map', ensureAuthenticated, (req, res) =>
- res.render('map', {
+ router.get('/news', ensureAuthenticated, (req, res) =>
+ res.render('news', {
      name: req.user.name
  }))
 
- router.get('/notifications', ensureAuthenticated, (req, res) =>
- res.render('notifications', {
+ router.get('/memory', ensureAuthenticated, (req, res) =>
+ res.render('memory', {
      name: req.user.name
  }))
 
@@ -28,19 +28,19 @@ router.get('/dashboard', ensureAuthenticated, (req, res) =>
      name: req.user.name
  }))
 
- router.get('/tables', ensureAuthenticated, (req, res) =>
- res.render('tables', {
-     name: req.user.name
- }))
+//  router.get('/tables', ensureAuthenticated, (req, res) =>
+//  res.render('tables', {
+//      name: req.user.name
+//  }))
 
- router.get('/typography', ensureAuthenticated, (req, res) =>
- res.render('typography', {
-     name: req.user.name
- }))
+//  router.get('/typography', ensureAuthenticated, (req, res) =>
+//  res.render('typography', {
+//      name: req.user.name
+//  }))
 
- router.get('/rtl', ensureAuthenticated, (req, res) =>
- res.render('rtl', {
-     name: req.user.name
- }))
+//  router.get('/rtl', ensureAuthenticated, (req, res) =>
+//  res.render('rtl', {
+//      name: req.user.name
+//  }))
 
 module.exports = router
