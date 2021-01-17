@@ -33,7 +33,12 @@ router.get('/', function(req, res, next) {
 function run () {
     return new Promise(async (resolve, reject) => {
         try {
-            const browser = await puppeteer.launch();
+          const browser = await puppeteer.launch({
+            args: [
+              '--no-sandbox',
+              '--disable-setuid-sandbox',
+            ],
+          });
             const page = await browser.newPage();
             await page.goto(url);
 
@@ -141,13 +146,10 @@ async function scrollToBottom(page) {
     const com = path.join('')
     //console.log('tesint', com)
     const pdffile = fs.readFileSync(com)
-
     pdfparse(pdffile).then(function (data) {
         console.log(data.numpages)
     })
-
     //console.log(myFile.files)
-
 */
 //})
 
