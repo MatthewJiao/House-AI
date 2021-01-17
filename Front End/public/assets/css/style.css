@@ -38,10 +38,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
-.solutionx{
-  background-color: #000000;
-  color: #ffffff;
-}
+
 
 
 
@@ -1633,6 +1630,18 @@ section {
   color: #3498db;
 }
 
+
+.solutionx{
+  background-color: #000000;
+  color: #ffffff;
+  font-size: 1rem;
+}
+
 .solutionTitle h2{
   color: #ffffff;
+}
+
+.smaller{
+  font-size: 0.9rem;
+  margin: 0.9rem;
 }
