@@ -67,8 +67,8 @@ function run () {
     })
 }
 async function scrollToBottom(page) {
-    const distance = 175; // should be less than or equal to window.innerHeight
-    const delay = 20;
+    const distance = 100; // should be less than or equal to window.innerHeight
+    const delay = 50;
     while (await page.evaluate(() => document.scrollingElement.scrollTop + window.innerHeight < document.scrollingElement.scrollHeight)) {
       await page.evaluate((y) => { document.scrollingElement.scrollBy(0, y); }, distance);
       await page.waitFor(delay);
@@ -189,7 +189,8 @@ router.post('/saveProfile', (req, res) => {
 
 router.post('/getUsage', (req, res) => {
   var sendBack = ''
-  User.find({}, function(err, data){
+  console.log(req.user.institution,'lll')
+  User.find({institution: req.user.institution}, function(err, data){
     let timeArray = data.map((info)=>{return info.houseUsage});
     res.send(timeArray)
   })
