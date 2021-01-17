@@ -202,6 +202,16 @@ router.post('/getUsage', ensureAuthenticated, (req, res) => {
 
 })
 
+router.post('/getSymptCond', ensureAuthenticated, (req, res) => {
+  User.find({institution: req.body.institution}, function(err, data){
+    let mem = data.map((info)=>{return info.houseMemory});
+    res.send(mem)
+  })
+
+
+
+})
+
 router.get('/refreshDash', ensureAuthenticated, (req, res) => {
   res.render('dashboard', {
     name: req.user.name,
@@ -221,9 +231,9 @@ router.post('/houseMemory', ensureAuthenticated, (req, res) => {
     var current = req.user.houseMemory
     var newMem = current.concat([symptoms])   
     newMem = newMem.concat([conditions])
-    newMem = newMem.concat(Date())
-    var current2 = req.user.houseUsage
     var seconds = new Date().getTime() / 1000;
+    newMem = newMem.concat([[Date(), seconds]])
+    var current2 = req.user.houseUsage
     current2 = current2.concat([seconds])
 
     User.findOneAndUpdate(
