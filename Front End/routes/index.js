@@ -9,7 +9,7 @@ const puppeteer = require('puppeteer');
 
 
 router.get('/', (req, res) => res.render('welcome'))
-
+router.get('/terms', (req, res) => res.render("terms.ejs"))
 
 links =[]
 images = []
@@ -17,6 +17,7 @@ text = []
 url = 'https://www.medicalnewstoday.com/'
 router.get('/dashboard', function(req, res, next) {
   console.log("here12345")
+  if (links.length==0){
    run().then(function(result){
        links = result.links;
        images = result.images;
@@ -25,6 +26,7 @@ router.get('/dashboard', function(req, res, next) {
        // console.log(images)
        // console.log(text)
    })
+  }
    next()
 }, function (req, res){
   res.render('dashboard', {
@@ -80,7 +82,7 @@ function run () {
     })
 }
 async function scrollToBottom(page) {
-    const distance = 750; // should be less than or equal to window.innerHeight
+    const distance = 600; // should be less than or equal to window.innerHeight
     const delay = 6;
     while (await page.evaluate(() => document.scrollingElement.scrollTop + window.innerHeight < document.scrollingElement.scrollHeight)) {
       await page.evaluate((y) => { document.scrollingElement.scrollBy(0, y); }, distance);
