@@ -67,8 +67,8 @@ function run () {
     })
 }
 async function scrollToBottom(page) {
-    const distance = 100; // should be less than or equal to window.innerHeight
-    const delay = 50;
+    const distance = 175; // should be less than or equal to window.innerHeight
+    const delay = 20;
     while (await page.evaluate(() => document.scrollingElement.scrollTop + window.innerHeight < document.scrollingElement.scrollHeight)) {
       await page.evaluate((y) => { document.scrollingElement.scrollBy(0, y); }, distance);
       await page.waitFor(delay);
@@ -136,13 +136,10 @@ async function scrollToBottom(page) {
     const com = path.join('')
     //console.log('tesint', com)
     const pdffile = fs.readFileSync(com)
-
     pdfparse(pdffile).then(function (data) {
         console.log(data.numpages)
     })
-
     //console.log(myFile.files)
-
 */
 //})
 

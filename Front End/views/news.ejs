@@ -4,15 +4,10 @@
 =========================================================
 * * Black Dashboard - v1.0.1
 =========================================================
-
 * Product Page: https://www.creative-tim.com/product/black-dashboard
 * Copyright 2019 Creative Tim (https://www.creative-tim.com)
-
-
 * Coded by Creative Tim
-
 =========================================================
-
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 -->
 <!DOCTYPE html>
@@ -51,7 +46,7 @@
           </div>
         </div>
         <ul class="nav">
-          <li class="active ">
+          <li>
             <a href="/dashboard">
               <i class="tim-icons icon-chart-pie-36"></i>
               <p>Dashboard</p>
@@ -63,7 +58,7 @@
               <p>New Patient</p>
             </a>
           </li>
-          <li>
+          <li class = "active">
             <a href="/news">
               <i class="tim-icons icon-pin"></i>
               <p>Medical News</p>
@@ -101,7 +96,7 @@
     </div>
     <div class="main-panel">
       <!-- Navbar -->
-      <nav class="navbar navbar-expand-lg navbar-absolute navbar-transparent">
+      <<nav class="navbar navbar-expand-lg navbar-absolute navbar-transparent">
         <div class="container-fluid">
           <div class="navbar-wrapper">
             <div class="navbar-toggle d-inline">
@@ -111,7 +106,7 @@
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <a class="navbar-brand" href="javascript:void(0)" style = "font-size:20px">Latest Medical News</a>
+            <a class="navbar-brand" href="javascript:void(0)">Latest Medical News</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -120,43 +115,14 @@
           </button>
           <div class="collapse navbar-collapse" id="navigation">
             <ul class="navbar-nav ml-auto">
-              <li class="search-bar input-group">
-                <button class="btn btn-link" id="search-button" data-toggle="modal" data-target="#searchModal"><i class="tim-icons icon-zoom-split" ></i>
-                  <span class="d-lg-none d-md-block">Search</span>
-                </button>
-              </li>
+              
+              
               <li class="dropdown nav-item">
-                <a href="javascript:void(0)" class="dropdown-toggle nav-link" data-toggle="dropdown">
-                  <div class="notification d-none d-lg-block d-xl-block"></div>
-                  <i class="tim-icons icon-sound-wave"></i>
-                  <p class="d-lg-none">
-                    Notifications
-                  </p>
-                </a>
-                <ul class="dropdown-menu dropdown-menu-right dropdown-navbar">
-                  <li class="nav-link"><a href="#" class="nav-item dropdown-item">Mike John responded to your email</a></li>
-                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">You have 5 more tasks</a></li>
-                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Your friend Michael is in town</a></li>
-                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Another notification</a></li>
-                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Another one</a></li>
-                </ul>
-              </li>
-              <li class="dropdown nav-item">
-                <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+                <a href="#" class="dropdown-toggle nav-link">
                   <div class="photo">
-                    <img src="assets2/img/anime3.png" alt="Profile Photo">
-                  </div>
-                  <b class="caret d-none d-lg-block d-xl-block"></b>
-                  <p class="d-lg-none">
-                    Log out
-                  </p>
+                    <img src="assets2/img/ai.png" alt="Profile Photo">
+                  </div>      
                 </a>
-                <ul class="dropdown-menu dropdown-navbar">
-                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Profile</a></li>
-                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Settings</a></li>
-                  <li class="dropdown-divider"></li>
-                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Log out</a></li>
-                </ul>
               </li>
               <li class="separator d-lg-none"></li>
             </ul>
@@ -180,12 +146,7 @@
         <div class="row">
           <div class="col-md-12">
             <div class="card card-plain">
-              <!-- <div class="card-header">
-                Latest Medical News, Just For You
-              </div> -->
-              <!-- <div class="card-body">
-                <div id="map" class="map"></div>
-              </div> -->
+        
            
 
                 <% for(var i=0; i < images.length; i++) { 
@@ -193,47 +154,137 @@
                   temp = []
                   temp = text[i].split("|")
                   text[i] = temp[0]
-
                   %>
-                  <tr>
-                  <a href="<%= links[i]%>" target="_blank" class="card card-plain column"> 
-                    <div> <img src = "<%= images[i]%>" width = 250 height = 150> </div>
-                    <div style = "width:250px" ><p style = "font-size:18px"><%=text[i]%></p></div>
-                  </a>
-                </tr>
                <% } %>
-             
+              <div class="carcontain1">
+                <div class="carousel1">
+                   <div class = "slides1" >
+                     <% for(var p =2; p < 5; p++) { %>
+                       <a href="<%= links[p]%>" target="_blank" class = "slide1" style = "text-align:center; display:inline-block">
+                             <div style = "float:left">
+                              <img src="<%= images[p]%>" width = 550 height = 400>
+                            </div>
+                            <div style = "float:right; padding-right:1vw">
+                              <p style = "width:300px; font-weight:bold; font-size:32px; text-align:left"> <%=text[p]%></p>
+                            </div>
+                       </a>
+                 <% } %>
+                   </div>
+                 <div class="controls1">
+                   <div class="control1 prev-slide1">&#9668;</div>
+                   <div class="control1 next-slide1">&#9658;</div>
+                 </div>
+               </div>
+             </div>
+             <script>
+              const delay1 = 3000; //ms
+              const slides1 = document.querySelector(".slides1");
+              const slidesCount1 = 3;
+              const maxLeft1 = (slidesCount1 - 1) * 100 * -1;
+              let current1 = 0;
+              function changeSlide1(next = true) {
+                if (next) {
+                  current1 += current1 > maxLeft1 ? -100 : current1 * -1;
+                } else {
+                  current1 = current1 < 0 ? current1 + 100 : maxLeft1;
+                }
+                slides1.style.left = current1 + "%";
+              }
+              let autoChange1 = setInterval(changeSlide1, delay1);
+              const restart1 = function() {
+                clearInterval(autoChange1);
+                autoChange1 = setInterval(changeSlide1, delay1);
+              };
+              // Controls
+              document.querySelector(".next-slide1").addEventListener("click", function() {
+                //console.log("hi")
+                changeSlide1();
+                restart1();
+              });
+              document.querySelector(".prev-slide1").addEventListener("click", function() {
+                changeSlide1(false);
+                restart1();
+              });
+            </script>
 
-            </div>
+              <div class="carcontain2">
+               <div class="carousel2">
+                  <div class = "slides2" >
+                    <% for(var t =5; t < 21; t++) { %>
+                      <a href="<%= links[t]%>" target="_blank" class = "slide2" style = "text-align:center;">
+                        <img src="<%= images[t]%>" width = 290 height = 170 >
+                        <p style = "width:300px;  font-size:16px;"> <%=text[t]%></p>
+                      </a>
+                    <% } %>
+                  </div>
+                   <div class="controls2">
+                      <div class="control2 prev-slide2">&#9668;</div>
+                      <div class="control2 next-slide2">&#9658;</div>
+                  </div>
+                </div>
+              </div>
+
+             
+              <script>
+                const delay = 10000; //ms
+                const slides = document.querySelector(".slides2");
+                const slidesCount = slides.childElementCount/3;
+                const maxLeft = (slidesCount - 1) * 100 * -1;
+                let current = 0;
+                function changeSlide(next = true) {
+                  if (next) {
+                    current += current > maxLeft ? -100 : current * -1;
+                  } else {
+                    current = current < 0 ? current + 100 : maxLeft;
+                  }
+                  slides.style.left = current + "%";
+                }
+                let autoChange = setInterval(changeSlide, delay);
+                const restart = function() {
+                  clearInterval(autoChange);
+                  autoChange = setInterval(changeSlide, delay);
+                };
+                // Controls
+                document.querySelector(".next-slide2").addEventListener("click", function() {
+                  console.log("hi")
+                  changeSlide();
+                  restart();
+                });
+                document.querySelector(".prev-slide2").addEventListener("click", function() {
+                  changeSlide(false);
+                  restart();
+                });
+             </script>
+
           </div>
         </div>
       </div>
-      <footer class="footer">
-        <div class="container-fluid">
-          <ul class="nav">
-            <li class="nav-item">
-              <a href="javascript:void(0)" class="nav-link">
-                Creative Tim
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="javascript:void(0)" class="nav-link">
-                About Us
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="javascript:void(0)" class="nav-link">
-                Blog
-              </a>
-            </li>
-          </ul>
-          <div class="copyright">
-            ©
-            2021 built by
-            <a href="javascript:void(0)" target="_blank">Adam and Matthew</a>
-          </div>
+    </div>
+    <footer class="footer">
+      <div class="container-fluid">
+        <ul class="nav">
+          <li class="nav-item">
+            <a href="javascript:void(0)" class="nav-link">
+              House AI
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="javascript:void(0)" class="nav-link">
+              About Us
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="javascript:void(0)" class="nav-link">
+              Blog
+            </a>
+          </li>
+        </ul>
+        <div class="copyright">
+          Created by
+          <a href="javascript:void(0)" target="_blank">Adam and Matthew</a>
         </div>
-      </footer>
+      </div>
+    </footer>
     </div>
   </div>
   <div class="fixed-plugin">
@@ -297,19 +348,12 @@
         $sidebar = $('.sidebar');
         $navbar = $('.navbar');
         $main_panel = $('.main-panel');
-
         $full_page = $('.full-page');
-
         $sidebar_responsive = $('body > .navbar-collapse');
         sidebar_mini_active = true;
         white_color = false;
-
         window_width = $(window).width();
-
         fixed_plugin_open = $('.sidebar .sidebar-wrapper .nav li.active a p').html();
-
-
-
         $('.fixed-plugin a').click(function(event) {
           if ($(this).hasClass('switch-trigger')) {
             if (event.stopPropagation) {
@@ -319,33 +363,25 @@
             }
           }
         });
-
         $('.fixed-plugin .background-color span').click(function() {
           $(this).siblings().removeClass('active');
           $(this).addClass('active');
-
           var new_color = $(this).data('color');
-
           if ($sidebar.length != 0) {
             $sidebar.attr('data', new_color);
           }
-
           if ($main_panel.length != 0) {
             $main_panel.attr('data', new_color);
           }
-
           if ($full_page.length != 0) {
             $full_page.attr('filter-color', new_color);
           }
-
           if ($sidebar_responsive.length != 0) {
             $sidebar_responsive.attr('data', new_color);
           }
         });
-
         $('.switch-sidebar-mini input').on("switchChange.bootstrapSwitch", function() {
           var $btn = $(this);
-
           if (sidebar_mini_active == true) {
             $('body').removeClass('sidebar-mini');
             sidebar_mini_active = false;
@@ -355,23 +391,18 @@
             sidebar_mini_active = true;
             blackDashboard.showSidebarMessage('Sidebar mini activated...');
           }
-
           // we simulate the window Resize so the charts will get updated in realtime.
           var simulateWindowResize = setInterval(function() {
             window.dispatchEvent(new Event('resize'));
           }, 180);
-
           // we stop the simulation of Window Resize after the animations are completed
           setTimeout(function() {
             clearInterval(simulateWindowResize);
           }, 1000);
         });
-
         $('.switch-change-color input').on("switchChange.bootstrapSwitch", function() {
           var $btn = $(this);
-
           if (white_color == true) {
-
             $('body').addClass('change-background');
             setTimeout(function() {
               $('body').removeClass('change-background');
@@ -379,23 +410,17 @@
             }, 900);
             white_color = false;
           } else {
-
             $('body').addClass('change-background');
             setTimeout(function() {
               $('body').removeClass('change-background');
               $('body').addClass('white-content');
             }, 900);
-
             white_color = true;
           }
-
-
         });
-
         $('.light-badge').click(function() {
           $('body').addClass('white-content');
         });
-
         $('.dark-badge').click(function() {
           $('body').removeClass('white-content');
         });
