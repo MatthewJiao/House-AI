@@ -4,15 +4,10 @@
 =========================================================
 * * Black Dashboard - v1.0.1
 =========================================================
-
 * Product Page: https://www.creative-tim.com/product/black-dashboard
 * Copyright 2019 Creative Tim (https://www.creative-tim.com)
-
-
 * Coded by Creative Tim
-
 =========================================================
-
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 -->
 <!DOCTYPE html>
@@ -164,7 +159,7 @@
               <div class="carcontain1">
                 <div class="carousel1">
                    <div class = "slides1" >
-                     <% for(var p =2; p < 5; p++) { %>
+                     <% for(var p =4; p < 7; p++) { %>
                        <a href="<%= links[p]%>" target="_blank" class = "slide1" style = "text-align:center; display:inline-block">
                              <div style = "float:left" class = "images1">
                               <img src="<%= images[p]%>" width= 550 height = 300>
@@ -183,36 +178,29 @@
              </div>
              <script>
               const delay1 = 10000; //ms
-
               const slides1 = document.querySelector(".slides1");
               const slidesCount1 = 3;
               const maxLeft1 = (slidesCount1 - 1) * 100 * -1;
-
               let current1 = 0;
-
               function changeSlide1(next = true) {
                 if (next) {
                   current1 += current1 > maxLeft1 ? -100 : current1 * -1;
                 } else {
                   current1 = current1 < 0 ? current1 + 100 : maxLeft1;
                 }
-
                 slides1.style.left = current1 + "%";
               }
-
               let autoChange1 = setInterval(changeSlide1, delay1);
               const restart1 = function() {
                 clearInterval(autoChange1);
                 autoChange1 = setInterval(changeSlide1, delay1);
               };
-
               // Controls
               document.querySelector(".next-slide1").addEventListener("click", function() {
                 //console.log("hi")
                 changeSlide1();
                 restart1();
               });
-
               document.querySelector(".prev-slide1").addEventListener("click", function() {
                 changeSlide1(false);
                 restart1();
@@ -222,7 +210,7 @@
               <div class="carcontain2">
                <div class="carousel2">
                   <div class = "slides2" >
-                    <% for(var t =5; t < 20; t++) { %>
+                    <% for(var t =7; t < 25; t++) { %>
                       <a href="<%= links[t]%>" target="_blank" class = "slide2" style = "text-align:center;">
                         <div class = "image2">
                            <img src="<%= images[t]%>"  >
@@ -243,36 +231,29 @@
              
               <script>
                 const delay = 12000; //ms
-
                 const slides = document.querySelector(".slides2");
                 const slidesCount = slides.childElementCount/3;
                 const maxLeft = (slidesCount - 1) * 100 * -1;
-
                 let current = 0;
-
                 function changeSlide(next = true) {
                   if (next) {
                     current += current > maxLeft ? -100 : current * -1;
                   } else {
                     current = current < 0 ? current + 100 : maxLeft;
                   }
-
                   slides.style.left = current + "%";
                 }
-
                 let autoChange = setInterval(changeSlide, delay);
                 const restart = function() {
                   clearInterval(autoChange);
                   autoChange = setInterval(changeSlide, delay);
                 };
-
                 // Controls
                 document.querySelector(".next-slide2").addEventListener("click", function() {
                   console.log("hi")
                   changeSlide();
                   restart();
                 });
-
                 document.querySelector(".prev-slide2").addEventListener("click", function() {
                   changeSlide(false);
                   restart();
@@ -369,19 +350,12 @@
         $sidebar = $('.sidebar');
         $navbar = $('.navbar');
         $main_panel = $('.main-panel');
-
         $full_page = $('.full-page');
-
         $sidebar_responsive = $('body > .navbar-collapse');
         sidebar_mini_active = true;
         white_color = false;
-
         window_width = $(window).width();
-
         fixed_plugin_open = $('.sidebar .sidebar-wrapper .nav li.active a p').html();
-
-
-
         $('.fixed-plugin a').click(function(event) {
           if ($(this).hasClass('switch-trigger')) {
             if (event.stopPropagation) {
@@ -391,33 +365,25 @@
             }
           }
         });
-
         $('.fixed-plugin .background-color span').click(function() {
           $(this).siblings().removeClass('active');
           $(this).addClass('active');
-
           var new_color = $(this).data('color');
-
           if ($sidebar.length != 0) {
             $sidebar.attr('data', new_color);
           }
-
           if ($main_panel.length != 0) {
             $main_panel.attr('data', new_color);
           }
-
           if ($full_page.length != 0) {
             $full_page.attr('filter-color', new_color);
           }
-
           if ($sidebar_responsive.length != 0) {
             $sidebar_responsive.attr('data', new_color);
           }
         });
-
         $('.switch-sidebar-mini input').on("switchChange.bootstrapSwitch", function() {
           var $btn = $(this);
-
           if (sidebar_mini_active == true) {
             $('body').removeClass('sidebar-mini');
             sidebar_mini_active = false;
@@ -427,23 +393,18 @@
             sidebar_mini_active = true;
             blackDashboard.showSidebarMessage('Sidebar mini activated...');
           }
-
           // we simulate the window Resize so the charts will get updated in realtime.
           var simulateWindowResize = setInterval(function() {
             window.dispatchEvent(new Event('resize'));
           }, 180);
-
           // we stop the simulation of Window Resize after the animations are completed
           setTimeout(function() {
             clearInterval(simulateWindowResize);
           }, 1000);
         });
-
         $('.switch-change-color input').on("switchChange.bootstrapSwitch", function() {
           var $btn = $(this);
-
           if (white_color == true) {
-
             $('body').addClass('change-background');
             setTimeout(function() {
               $('body').removeClass('change-background');
@@ -451,23 +412,17 @@
             }, 900);
             white_color = false;
           } else {
-
             $('body').addClass('change-background');
             setTimeout(function() {
               $('body').removeClass('change-background');
               $('body').addClass('white-content');
             }, 900);
-
             white_color = true;
           }
-
-
         });
-
         $('.light-badge').click(function() {
           $('body').addClass('white-content');
         });
-
         $('.dark-badge').click(function() {
           $('body').removeClass('white-content');
         });
