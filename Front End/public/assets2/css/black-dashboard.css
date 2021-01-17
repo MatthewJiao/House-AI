@@ -120,7 +120,7 @@
 
   .slides2 {
     position: absolute;
-    top: 10%;
+    top: 9%;
     transition: 1s ease-in-out all;
     /* transform: translateY(-50%); */
     display: flex;
@@ -130,7 +130,7 @@
     .slide2 {
       min-width: 100%;
       /* min-height: 300px; */
-      height: auto;
+      height: 35vh;
       text-align:center
     }
 .images1 img{
