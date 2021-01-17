@@ -2,15 +2,10 @@
 =========================================================
 * * Black Dashboard - v1.0.1
 =========================================================
-
 * Product Page: https://www.creative-tim.com/product/black-dashboard
 * Copyright 2019 Creative Tim (https://www.creative-tim.com)
-
-
 * Coded by Creative Tim
-
 =========================================================
-
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 -->
 <!DOCTYPE html>
@@ -199,20 +194,11 @@
         <div class="container-fluid">
           <ul class="nav">
             <li class="nav-item">
-              <a href="javascript:void(0)" class="nav-link">
+              <a href="/#" class="nav-link">
                 House AI
               </a>
             </li>
-            <li class="nav-item">
-              <a href="javascript:void(0)" class="nav-link">
-                About House
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="javascript:void(0)" class="nav-link">
-                Blog
-              </a>
-            </li>
+           
           </ul>
           <div class="copyright">
             Created by
@@ -280,7 +266,6 @@
 
 
   <script>
-
 $("#institution").on('keyup', function (event) {
       if (event.keyCode === 13) {
         var re = document.getElementById("institution").value
@@ -293,7 +278,6 @@ $("#institution").on('keyup', function (event) {
             withCredentials: true,
             url: "http://localhost:5000/refreshDash"
           }).then((res) => console.log('lol'))
-
 */
           console.log('yea')
           
@@ -302,23 +286,17 @@ $("#institution").on('keyup', function (event) {
            xhr.onload = function () {
             console.log('uu')
            }
-
            xhr.open("get", "http://localhost:5000/refreshDash")
            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
            xhr.send()
 */
            window.location = "http://localhost:5000/refreshDash?institution="+ re;
-
           console.log('ya')
-
           
       }
    });
   </script>
   <script>
-
-
-
                   
     function autocomplete(inp, arr) {
       /*the autocomplete function takes two arguments,
@@ -437,7 +415,6 @@ $("#institution").on('keyup', function (event) {
     autocomplete(document.getElementById("institution"), medInst);
     </script>
   <script>
-
     var timeArray = []
     var weekArray = [0,0,0,0,0,0,0]
     const displayGraph = () => {
@@ -450,7 +427,6 @@ $("#institution").on('keyup', function (event) {
             withCredentials: true,
             url: "http://localhost:5000/getUsage"
           }).then((res) => setTimeArray(res.data))
-
           axios({
             method: "POST",
             data: {
@@ -459,9 +435,7 @@ $("#institution").on('keyup', function (event) {
             withCredentials: true,
             url: "http://localhost:5000/getSymptCond"
           }).then((res) => setSymptCond(res.data))
-
     }
-
     const setSymptCond = (x) => {
       var info = []
       for (var i = 0; i<x.length; i++){
@@ -470,7 +444,6 @@ $("#institution").on('keyup', function (event) {
       console.log(info, 'yy')
       const period2 = 86400
       var currentSeconds2 = new Date().getTime() / 1000;
-
       symtpomsRec = []
       conditionsRec = []
       
@@ -479,30 +452,22 @@ $("#institution").on('keyup', function (event) {
           symtpomsRec = symtpomsRec.concat(info[i-2])
           conditionsRec = conditionsRec.concat(info[i-1])
           console.log('test')
-
         }
-
       }
       //console.log(symtpomsRec, 'ggg')
       //console.log(conditionsRec, 'dd')
-
       conditionsRec2 = []
-
       for (var i = 0; i < conditionsRec.length; i++){
-
         var temp2 = conditionsRec[i].split(":")[0]
         conditionsRec2 = conditionsRec2.concat(temp2)
       }
-
       // frequency table
       console.log(symtpomsRec)
       console.log(conditionsRec2)
-
       function foo(arr) {
   var a = [],
     b = [],
     prev;
-
   arr.sort();
   for (var i = 0; i < arr.length; i++) {
     if (arr[i] !== prev) {
@@ -513,30 +478,21 @@ $("#institution").on('keyup', function (event) {
     }
     prev = arr[i];
   }
-
   return [a, b];
 }
-
 var result1 = foo(symtpomsRec)
 console.log(result1[0], result1[1])
 var result2 = foo(conditionsRec2)
 console.log(result2[0], result2[1])
-
 displayOthers(result1[0],result1[1], result2[0], result2[1])
-
-
     }
-
 const displayOthers = (s1,s2,c1,c2) => {
   $('#myChart2').remove(); // this is my <canvas> element
       $('#chartSympt').append('<canvas id="myChart2"><canvas>');
       let myChart2 = document.getElementById('myChart2').getContext('2d')
                   
-
-
                   
                   
-
                   let symptChart = new Chart(myChart2, {
                     type:'line', // bar horizontalBar, pie, line, doughnut, radar, polarArea
                     data: {
@@ -580,19 +536,13 @@ const displayOthers = (s1,s2,c1,c2) => {
                       }
                     }
                   })
-
-
                   //conds
-
                   $('#myChart3').remove(); // this is my <canvas> element
       $('#chartCond').append('<canvas id="myChart3"><canvas>');
       let myChart3 = document.getElementById('myChart3').getContext('2d')
                   
-
-
                   
                   
-
                   let condChart = new Chart(myChart3, {
                     type:'line', // bar horizontalBar, pie, line, doughnut, radar, polarArea
                     data: {
@@ -637,10 +587,6 @@ const displayOthers = (s1,s2,c1,c2) => {
                     }
                   })
 }
-
-
-
-
     const setTimeArray = (x) => {
       for (var i = 0; i < x.length; i++){
         timeArray = timeArray.concat(x[i])
@@ -649,7 +595,6 @@ const displayOthers = (s1,s2,c1,c2) => {
      // const period = 60
       var currentSeconds = new Date().getTime() / 1000;
       for (var i = 0; i < timeArray.length; i++){
-
         if(currentSeconds-timeArray[i] < period){
           weekArray[6]++
         } else if (currentSeconds-timeArray[i] < period*2) {
@@ -668,19 +613,13 @@ const displayOthers = (s1,s2,c1,c2) => {
           continue
         }
       }
-
       console.log(weekArray)
-
-
       $('#myChart').remove(); // this is my <canvas> element
       $('#chartUsage').append('<canvas id="myChart"><canvas>');
       let myChart = document.getElementById('myChart').getContext('2d')
                   
-
-
                   
                   
-
                   let usageChart = new Chart(myChart, {
                     type:'line', // bar horizontalBar, pie, line, doughnut, radar, polarArea
                     data: {
@@ -724,32 +663,18 @@ const displayOthers = (s1,s2,c1,c2) => {
                       }
                     }
                   })
-
     }
-
-
-
-
-
-
     $(document).ready(function() {
       $().ready(function() {
         $sidebar = $('.sidebar');
         $navbar = $('.navbar');
         $main_panel = $('.main-panel');
-
         $full_page = $('.full-page');
-
         $sidebar_responsive = $('body > .navbar-collapse');
         sidebar_mini_active = true;
         white_color = false;
-
         window_width = $(window).width();
-
         fixed_plugin_open = $('.sidebar .sidebar-wrapper .nav li.active a p').html();
-
-
-
         $('.fixed-plugin a').click(function(event) {
           if ($(this).hasClass('switch-trigger')) {
             if (event.stopPropagation) {
@@ -759,33 +684,25 @@ const displayOthers = (s1,s2,c1,c2) => {
             }
           }
         });
-
         $('.fixed-plugin .background-color span').click(function() {
           $(this).siblings().removeClass('active');
           $(this).addClass('active');
-
           var new_color = $(this).data('color');
-
           if ($sidebar.length != 0) {
             $sidebar.attr('data', new_color);
           }
-
           if ($main_panel.length != 0) {
             $main_panel.attr('data', new_color);
           }
-
           if ($full_page.length != 0) {
             $full_page.attr('filter-color', new_color);
           }
-
           if ($sidebar_responsive.length != 0) {
             $sidebar_responsive.attr('data', new_color);
           }
         });
-
         $('.switch-sidebar-mini input').on("switchChange.bootstrapSwitch", function() {
           var $btn = $(this);
-
           if (sidebar_mini_active == true) {
             $('body').removeClass('sidebar-mini');
             sidebar_mini_active = false;
@@ -795,23 +712,18 @@ const displayOthers = (s1,s2,c1,c2) => {
             sidebar_mini_active = true;
             blackDashboard.showSidebarMessage('Sidebar mini activated...');
           }
-
           // we simulate the window Resize so the charts will get updated in realtime.
           var simulateWindowResize = setInterval(function() {
             window.dispatchEvent(new Event('resize'));
           }, 180);
-
           // we stop the simulation of Window Resize after the animations are completed
           setTimeout(function() {
             clearInterval(simulateWindowResize);
           }, 1000);
         });
-
         $('.switch-change-color input').on("switchChange.bootstrapSwitch", function() {
           var $btn = $(this);
-
           if (white_color == true) {
-
             $('body').addClass('change-background');
             setTimeout(function() {
               $('body').removeClass('change-background');
@@ -819,23 +731,17 @@ const displayOthers = (s1,s2,c1,c2) => {
             }, 900);
             white_color = false;
           } else {
-
             $('body').addClass('change-background');
             setTimeout(function() {
               $('body').removeClass('change-background');
               $('body').addClass('white-content');
             }, 900);
-
             white_color = true;
           }
-
-
         });
-
         $('.light-badge').click(function() {
           $('body').addClass('white-content');
         });
-
         $('.dark-badge').click(function() {
           $('body').removeClass('white-content');
         });
@@ -846,7 +752,6 @@ const displayOthers = (s1,s2,c1,c2) => {
     $(document).ready(function() {
       // Javascript method's body can be found in assets/js/demos.js
       demo.initDashboardPageCharts();
-
     });
   </script>
   <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>

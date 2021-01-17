@@ -2,15 +2,10 @@
 =========================================================
 * * Black Dashboard - v1.0.1
 =========================================================
-
 * Product Page: https://www.creative-tim.com/product/black-dashboard
 * Copyright 2019 Creative Tim (https://www.creative-tim.com)
-
-
 * Coded by Creative Tim
-
 =========================================================
-
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 -->
 <!DOCTYPE html>
@@ -194,12 +189,8 @@
                   const displayData = (info) =>{
                     var symptomsLst = info.split("QQQ")[1]
                     symptomsLst = symptomsLst.split(',')
-
                     symptomsLst = symptomsLst.map(x => typeof x === 'string' ? x.toLowerCase() : x);
                     symptomsLst =  Array.from(new Set(symptomsLst));
-
-
-
                     if(symptomsLst[0]!=""){
                     //console.log(symptomsLst)
                     var info = info.split("QQQ")[0]
@@ -214,33 +205,24 @@
                       info2[(i-1)/2] = info[i]  
                       var temp = info[i].split(':')[info[i].split(':').length-1]
                       var temp2 = info[i].split(':')[0]
-
                       var len = temp.length-1
                       temp = temp.slice(0,len)
                       temp = parseFloat(temp)
-
                       colorInfo[(i-1)/2] = temp
                       conditionNames[(i-1)/2] = temp2
                     }
-
                    
                     //document.getElementById('conditions').innerHTML = "";
                     //document.getElementById('conditionLabel').innerHTML = "";
                     //document.getElementById('myChart').innerHTML = "";
                     //document.getElementById('myChart2').innerHTML = "";
-
-
                     document.getElementById('symptoms').innerHTML = "";
                     document.getElementById('symptomsLabel').innerHTML = "";
-
                     document.getElementById('symptomsLabel').innerHTML = "Detected Symptoms";
                     document.getElementById('symptomsLabel').style.marginLeft = '2rem';
                     document.getElementById('symptomsLabel').style.marginBottom = '0.3rem';
                     document.getElementById('symptoms').style.marginLeft = '2rem';
-
                     var myDiv2 = document.getElementById("symptoms");  
-
-
                     for (var i = 0; i< symptomsLst.length; i++){
                       var button = document.createElement('BUTTON');  
                       button.style.borderRadius = '0.2rem';
@@ -250,14 +232,11 @@
                       
                       button.style.backgroundColor = '#D7D7EF';
                      
-
                       var text = document.createTextNode(symptomsLst[i]); 
                       button.appendChild(text);      
                       myDiv2.appendChild(button);
                     }
-
                     /*document.getElementById('conditionLabel').innerHTML = "Output Probabilities";
-
                     var myDiv = document.getElementById("conditions");  
                   
                     for (var i = 0; i< info2.length; i++){
@@ -288,7 +267,6 @@
                      } else {
                       button.style.backgroundColor = '#FF0000';
                      }
-
                       var text = document.createTextNode(info2[i]); 
                       button.appendChild(text);      
                       myDiv.appendChild(button);
@@ -309,19 +287,15 @@
                   space.appendChild(br);
                   space.appendChild(br);
                   space.appendChild(br);
-
                     // charts
                     $('#myChart').remove(); // this is my <canvas> element
                     $('#test').append('<canvas id="myChart"><canvas>');
                   let myChart = document.getElementById('myChart').getContext('2d')
                   
-
-
                   
                   //Chart.defaults.global.defaultFontFamily = 'Lato';
                   //Chart.defaults.global.defaultFontSize = 18;
                   //Chart.defaults.global.defaultFontColor = '#777';
-
                   let probChart = new Chart(myChart, {
                     type:'bar', // bar horizontalBar, pie, line, doughnut, radar, polarArea
                     data: {
@@ -370,12 +344,9 @@
                   var space2 = document.getElementById("test2")
                   space2.appendChild(br2);
                   space2.appendChild(br2);
-
                   $('#myChart2').remove(); // this is my <canvas> element
                   $('#test2').append('<canvas id="myChart2"><canvas>');
                   let myChart2 = document.getElementById('myChart2').getContext('2d')
-
-
                   let probChart2 = new Chart(myChart2, {
                     type:'radar', // bar horizontalBar, pie, line, doughnut, radar, polarArea
                     data: {
@@ -419,18 +390,15 @@
                       }
                     }
                   })
-
                   var br3 = document.createElement("br");
                   var space3 = document.getElementById("test3")
                   space3.appendChild(br3);
                   space3.appendChild(br3);
                   space3.appendChild(br3);
                   space3.appendChild(br3);
-
                   $('#myChart3').remove(); // this is my <canvas> element
                     $('#test3').append('<canvas id="myChart3"><canvas>');
                   let myChart3 = document.getElementById('myChart3').getContext('2d')
-
                   let probChart3 = new Chart(myChart3, {
                     type:'pie', // bar horizontalBar, pie, line, doughnut, radar, polarArea
                     data: {
@@ -474,21 +442,16 @@
                       }
                     }
                   })
-
                   space = document.getElementById("test4")
                   space.appendChild(br);
-
                   $('#myChart4').remove(); // this is my <canvas> element
                     $('#test4').append('<canvas id="myChart4"><canvas>');
                   let myChart4 = document.getElementById('myChart4').getContext('2d')
                   
-
-
                   
                   //Chart.defaults.global.defaultFontFamily = 'Lato';
                   //Chart.defaults.global.defaultFontSize = 18;
                   //Chart.defaults.global.defaultFontColor = '#777';
-
                   let probChart4 = new Chart(myChart4, {
                     type:'polarArea', // bar horizontalBar, pie, line, doughnut, radar, polarArea
                     data: {
@@ -532,16 +495,10 @@
                       }
                     }
                   })
-
                   var br5 = document.createElement("br");
                   var space5 = document.getElementById("test5")
                   space5.appendChild(br5);
                   space5.appendChild(br5);
-
-
-
-
-
                    } else {
                     
                     document.getElementById('symptoms').innerHTML = "";
@@ -559,18 +516,8 @@
         <div class="container-fluid">
           <ul class="nav">
             <li class="nav-item">
-              <a href="javascript:void(0)" class="nav-link">
+              <a href="/#" class="nav-link">
                 House AI
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="javascript:void(0)" class="nav-link">
-                About Us
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="javascript:void(0)" class="nav-link">
-                Blog
               </a>
             </li>
           </ul>
@@ -638,7 +585,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
   <script>
-
     const testS = 'hii'
     var pdfString = ''
     var currentString = ''
@@ -647,19 +593,14 @@
     inpFile.addEventListener('change', function (e) {
       pdfString = ''
       console.log(inpFile.files)
-
       for(i=0; i< inpFile.files.length; i++){
-
         const reader = new FileReader()
         reader.onload = function () {
           pdfString = pdfString.concat(separator.concat(reader.result))
         }
         reader.readAsText(inpFile.files[i])
-
       }
-
     }, true)
-
     const current = document.getElementById('current')
     current.addEventListener('change', function (e) {
       currentString = current.value.trim()
@@ -668,16 +609,12 @@
     function getRandomInt(max) {
       return Math.floor(Math.random() * Math.floor(max));
     }
-
     const sendData = () => {
       document.getElementById("overlay").style.display = "block";
-
       setTimeout(function(){ 
         document.getElementById("overlay").style.display = "none";
        }, getRandomInt(3000)+1500);
-
       
-
       console.log(currentString)
       axios({
       method: "POST",
@@ -690,33 +627,24 @@
       url: "http://localhost:5000/send-medical"
     }).then((res) => displayData(res.data))
     }
-
     
     
-
-
     
-
 // pdf start
-
 var $fileInput = $('.file-input');
 var $droparea = $('.file-drop-area');
-
 // highlight drag area
 $fileInput.on('dragenter focus click', function() {
   $droparea.addClass('is-active');
 });
-
 // back to normal state
 $fileInput.on('dragleave blur drop', function() {
   $droparea.removeClass('is-active');
 });
-
 // change inner text
 $fileInput.on('change', function() {
   var filesCount = $(this)[0].files.length;
   var $textContainer = $(this).prev();
-
   if (filesCount === 1) {
     // if single file is selected, show file name
     var fileName = $(this).val().split('\\').pop();
@@ -726,27 +654,18 @@ $fileInput.on('change', function() {
     $textContainer.text(filesCount + ' files selected');
   }
 });
-
-
 //pdf end
     $(document).ready(function() {
       $().ready(function() {
         $sidebar = $('.sidebar');
         $navbar = $('.navbar');
         $main_panel = $('.main-panel');
-
         $full_page = $('.full-page');
-
         $sidebar_responsive = $('body > .navbar-collapse');
         sidebar_mini_active = true;
         white_color = false;
-
         window_width = $(window).width();
-
         fixed_plugin_open = $('.sidebar .sidebar-wrapper .nav li.active a p').html();
-
-
-
         $('.fixed-plugin a').click(function(event) {
           if ($(this).hasClass('switch-trigger')) {
             if (event.stopPropagation) {
@@ -756,33 +675,25 @@ $fileInput.on('change', function() {
             }
           }
         });
-
         $('.fixed-plugin .background-color span').click(function() {
           $(this).siblings().removeClass('active');
           $(this).addClass('active');
-
           var new_color = $(this).data('color');
-
           if ($sidebar.length != 0) {
             $sidebar.attr('data', new_color);
           }
-
           if ($main_panel.length != 0) {
             $main_panel.attr('data', new_color);
           }
-
           if ($full_page.length != 0) {
             $full_page.attr('filter-color', new_color);
           }
-
           if ($sidebar_responsive.length != 0) {
             $sidebar_responsive.attr('data', new_color);
           }
         });
-
         $('.switch-sidebar-mini input').on("switchChange.bootstrapSwitch", function() {
           var $btn = $(this);
-
           if (sidebar_mini_active == true) {
             $('body').removeClass('sidebar-mini');
             sidebar_mini_active = false;
@@ -792,23 +703,18 @@ $fileInput.on('change', function() {
             sidebar_mini_active = true;
             blackDashboard.showSidebarMessage('Sidebar mini activated...');
           }
-
           // we simulate the window Resize so the charts will get updated in realtime.
           var simulateWindowResize = setInterval(function() {
             window.dispatchEvent(new Event('resize'));
           }, 180);
-
           // we stop the simulation of Window Resize after the animations are completed
           setTimeout(function() {
             clearInterval(simulateWindowResize);
           }, 1000);
         });
-
         $('.switch-change-color input').on("switchChange.bootstrapSwitch", function() {
           var $btn = $(this);
-
           if (white_color == true) {
-
             $('body').addClass('change-background');
             setTimeout(function() {
               $('body').removeClass('change-background');
@@ -816,23 +722,17 @@ $fileInput.on('change', function() {
             }, 900);
             white_color = false;
           } else {
-
             $('body').addClass('change-background');
             setTimeout(function() {
               $('body').removeClass('change-background');
               $('body').addClass('white-content');
             }, 900);
-
             white_color = true;
           }
-
-
         });
-
         $('.light-badge').click(function() {
           $('body').addClass('white-content');
         });
-
         $('.dark-badge').click(function() {
           $('body').removeClass('white-content');
         });
