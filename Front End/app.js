@@ -6,6 +6,7 @@ const session = require('express-session')
 const passport = require('passport')
 var bodyParser = require('body-parser')
 require('dotenv').config();
+var favicon = require('serve-favicon');
 
 
 
@@ -22,6 +23,9 @@ const db = process.env.MongoURI
 mongoose.connect(db, {useNewUrlParser: true, useUnifiedTopology: true})
 .then(() => console.log('mongo db connected...'))
 .catch(err => console.log(err))
+
+app.use(favicon(__dirname + '/public/assets/img/faviconai2.png'));
+
 
 app.use(expressLayouts)
 app.set('view engine', 'ejs')
