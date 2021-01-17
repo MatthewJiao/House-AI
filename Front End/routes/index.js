@@ -8,27 +8,32 @@ const User = require('../models/User')
 const puppeteer = require('puppeteer');
 
 
-//router.get('/', (req, res) => res.render('welcome'))
+router.get('/', (req, res) => res.render('welcome'))
 
 
 links =[]
 images = []
 text = []
 url = 'https://www.medicalnewstoday.com/'
-router.get('/', function(req, res, next) {
+router.get('/dashboard', function(req, res, next) {
   console.log("here12345")
    run().then(function(result){
        links = result.links;
        images = result.images;
        text = result.text;
-       console.log(links)
+       //console.log(links)
        // console.log(images)
        // console.log(text)
    })
    next()
 }, function (req, res){
-   res.render('welcome')
+  res.render('dashboard', {
+      name: req.user.name,
+      institution: req.user.institution,
+      time1: (new Date().getTime() / 1000)-86400,
+      time2: (new Date().getTime() / 1000)
 })
+
 
 function run () {
     return new Promise(async (resolve, reject) => {
@@ -73,7 +78,7 @@ function run () {
     })
 }
 async function scrollToBottom(page) {
-    const distance = 500; // should be less than or equal to window.innerHeight
+    const distance = 750; // should be less than or equal to window.innerHeight
     const delay = 10;
     while (await page.evaluate(() => document.scrollingElement.scrollTop + window.innerHeight < document.scrollingElement.scrollHeight)) {
       await page.evaluate((y) => { document.scrollingElement.scrollBy(0, y); }, distance);
