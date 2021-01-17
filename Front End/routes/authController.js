@@ -4,8 +4,8 @@ const nodemailer = require('nodemailer');
 const { google } = require("googleapis");
 const OAuth2 = google.auth.OAuth2;
 const jwt = require('jsonwebtoken');
-const JWT_KEY = "ThH82KG4B5Q2NYY";
-const JWT_RESET_KEY = "rkcpdBV3YW03MVA";
+const JWT_KEY = process.env.JWTKEY;
+const JWT_RESET_KEY = process.env.JWTRESET;
 
 //------------ User Model ------------//
 const User = require('../models/User');

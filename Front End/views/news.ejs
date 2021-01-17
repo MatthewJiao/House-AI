@@ -4,10 +4,15 @@
 =========================================================
 * * Black Dashboard - v1.0.1
 =========================================================
+
 * Product Page: https://www.creative-tim.com/product/black-dashboard
 * Copyright 2019 Creative Tim (https://www.creative-tim.com)
+
+
 * Coded by Creative Tim
+
 =========================================================
+
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 -->
 <!DOCTYPE html>
@@ -49,12 +54,12 @@
           <li>
             <a href="/dashboard">
               <i class="tim-icons icon-chart-pie-36"></i>
-              <p>Dashboard</p>
+              <p>Server Analysis</p>
             </a>
           </li>
           <li>
             <a href="/new_patient">
-              <i class="tim-icons icon-atom"></i>
+              <i class="tim-icons icon-molecule-40"></i>
               <p>New Patient</p>
             </a>
           </li>
@@ -81,7 +86,7 @@
           
           <li>
             <a href="/users/logout">
-              <i class="tim-icons icon-world"></i>
+              <i class="tim-icons icon-lock-circle"></i>
               <p>Logout</p>
             </a>
           </li>
@@ -178,7 +183,6 @@
              </div>
              <script>
               const delay1 = 10000; //ms
-<<<<<<< HEAD
 
               const slides1 = document.querySelector(".slides1");
               const slidesCount1 = 3;
@@ -186,46 +190,29 @@
 
               let current1 = 0;
 
-=======
-              const slides1 = document.querySelector(".slides1");
-              const slidesCount1 = 3;
-              const maxLeft1 = (slidesCount1 - 1) * 100 * -1;
-              let current1 = 0;
->>>>>>> 01b280aef27b769684cec4be0da25b5220749ab8
               function changeSlide1(next = true) {
                 if (next) {
                   current1 += current1 > maxLeft1 ? -100 : current1 * -1;
                 } else {
                   current1 = current1 < 0 ? current1 + 100 : maxLeft1;
                 }
-<<<<<<< HEAD
 
                 slides1.style.left = current1 + "%";
               }
 
-=======
-                slides1.style.left = current1 + "%";
-              }
->>>>>>> 01b280aef27b769684cec4be0da25b5220749ab8
               let autoChange1 = setInterval(changeSlide1, delay1);
               const restart1 = function() {
                 clearInterval(autoChange1);
                 autoChange1 = setInterval(changeSlide1, delay1);
               };
-<<<<<<< HEAD
 
-=======
->>>>>>> 01b280aef27b769684cec4be0da25b5220749ab8
               // Controls
               document.querySelector(".next-slide1").addEventListener("click", function() {
                 //console.log("hi")
                 changeSlide1();
                 restart1();
               });
-<<<<<<< HEAD
 
-=======
->>>>>>> 01b280aef27b769684cec4be0da25b5220749ab8
               document.querySelector(".prev-slide1").addEventListener("click", function() {
                 changeSlide1(false);
                 restart1();
@@ -256,7 +243,6 @@
              
               <script>
                 const delay = 12000; //ms
-<<<<<<< HEAD
 
                 const slides = document.querySelector(".slides2");
                 const slidesCount = slides.childElementCount/3;
@@ -264,46 +250,29 @@
 
                 let current = 0;
 
-=======
-                const slides = document.querySelector(".slides2");
-                const slidesCount = slides.childElementCount/3;
-                const maxLeft = (slidesCount - 1) * 100 * -1;
-                let current = 0;
->>>>>>> 01b280aef27b769684cec4be0da25b5220749ab8
                 function changeSlide(next = true) {
                   if (next) {
                     current += current > maxLeft ? -100 : current * -1;
                   } else {
                     current = current < 0 ? current + 100 : maxLeft;
                   }
-<<<<<<< HEAD
 
                   slides.style.left = current + "%";
                 }
 
-=======
-                  slides.style.left = current + "%";
-                }
->>>>>>> 01b280aef27b769684cec4be0da25b5220749ab8
                 let autoChange = setInterval(changeSlide, delay);
                 const restart = function() {
                   clearInterval(autoChange);
                   autoChange = setInterval(changeSlide, delay);
                 };
-<<<<<<< HEAD
 
-=======
->>>>>>> 01b280aef27b769684cec4be0da25b5220749ab8
                 // Controls
                 document.querySelector(".next-slide2").addEventListener("click", function() {
                   console.log("hi")
                   changeSlide();
                   restart();
                 });
-<<<<<<< HEAD
 
-=======
->>>>>>> 01b280aef27b769684cec4be0da25b5220749ab8
                 document.querySelector(".prev-slide2").addEventListener("click", function() {
                   changeSlide(false);
                   restart();
@@ -343,9 +312,7 @@
   </div>
   <div class="fixed-plugin">
     <div class="dropdown show-dropdown">
-      <a href="#" data-toggle="dropdown">
-        <i class="fa fa-cog fa-2x"> </i>
-      </a>
+      
       <ul class="dropdown-menu">
         <li class="header-title"> Sidebar Background</li>
         <li class="adjustments-line">
@@ -402,12 +369,19 @@
         $sidebar = $('.sidebar');
         $navbar = $('.navbar');
         $main_panel = $('.main-panel');
+
         $full_page = $('.full-page');
+
         $sidebar_responsive = $('body > .navbar-collapse');
         sidebar_mini_active = true;
         white_color = false;
+
         window_width = $(window).width();
+
         fixed_plugin_open = $('.sidebar .sidebar-wrapper .nav li.active a p').html();
+
+
+
         $('.fixed-plugin a').click(function(event) {
           if ($(this).hasClass('switch-trigger')) {
             if (event.stopPropagation) {
@@ -417,25 +391,33 @@
             }
           }
         });
+
         $('.fixed-plugin .background-color span').click(function() {
           $(this).siblings().removeClass('active');
           $(this).addClass('active');
+
           var new_color = $(this).data('color');
+
           if ($sidebar.length != 0) {
             $sidebar.attr('data', new_color);
           }
+
           if ($main_panel.length != 0) {
             $main_panel.attr('data', new_color);
           }
+
           if ($full_page.length != 0) {
             $full_page.attr('filter-color', new_color);
           }
+
           if ($sidebar_responsive.length != 0) {
             $sidebar_responsive.attr('data', new_color);
           }
         });
+
         $('.switch-sidebar-mini input').on("switchChange.bootstrapSwitch", function() {
           var $btn = $(this);
+
           if (sidebar_mini_active == true) {
             $('body').removeClass('sidebar-mini');
             sidebar_mini_active = false;
@@ -445,18 +427,23 @@
             sidebar_mini_active = true;
             blackDashboard.showSidebarMessage('Sidebar mini activated...');
           }
+
           // we simulate the window Resize so the charts will get updated in realtime.
           var simulateWindowResize = setInterval(function() {
             window.dispatchEvent(new Event('resize'));
           }, 180);
+
           // we stop the simulation of Window Resize after the animations are completed
           setTimeout(function() {
             clearInterval(simulateWindowResize);
           }, 1000);
         });
+
         $('.switch-change-color input').on("switchChange.bootstrapSwitch", function() {
           var $btn = $(this);
+
           if (white_color == true) {
+
             $('body').addClass('change-background');
             setTimeout(function() {
               $('body').removeClass('change-background');
@@ -464,17 +451,23 @@
             }, 900);
             white_color = false;
           } else {
+
             $('body').addClass('change-background');
             setTimeout(function() {
               $('body').removeClass('change-background');
               $('body').addClass('white-content');
             }, 900);
+
             white_color = true;
           }
+
+
         });
+
         $('.light-badge').click(function() {
           $('body').addClass('white-content');
         });
+
         $('.dark-badge').click(function() {
           $('body').removeClass('white-content');
         });

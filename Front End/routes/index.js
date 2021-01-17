@@ -67,13 +67,8 @@ function run () {
     })
 }
 async function scrollToBottom(page) {
-<<<<<<< HEAD
     const distance = 500; // should be less than or equal to window.innerHeight
     const delay = 10;
-=======
-    const distance = 750; // should be less than or equal to window.innerHeight
-    const delay = 6;
->>>>>>> 01b280aef27b769684cec4be0da25b5220749ab8
     while (await page.evaluate(() => document.scrollingElement.scrollTop + window.innerHeight < document.scrollingElement.scrollHeight)) {
       await page.evaluate((y) => { document.scrollingElement.scrollBy(0, y); }, distance);
       await page.waitFor(delay);
@@ -142,10 +137,13 @@ async function scrollToBottom(page) {
     const com = path.join('')
     //console.log('tesint', com)
     const pdffile = fs.readFileSync(com)
+
     pdfparse(pdffile).then(function (data) {
         console.log(data.numpages)
     })
+
     //console.log(myFile.files)
+
 */
 //})
 
@@ -195,12 +193,7 @@ router.post('/saveProfile', ensureAuthenticated, (req, res) => {
 
 router.post('/getUsage', ensureAuthenticated, (req, res) => {
   var sendBack = ''
-<<<<<<< HEAD
   User.find({institution: req.body.institution}, function(err, data){
-=======
-  console.log(req.user.institution,'lll')
-  User.find({institution: req.user.institution}, function(err, data){
->>>>>>> 01b280aef27b769684cec4be0da25b5220749ab8
     let timeArray = data.map((info)=>{return info.houseUsage});
     res.send(timeArray)
   })
