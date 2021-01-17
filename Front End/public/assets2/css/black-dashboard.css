@@ -221,6 +221,12 @@ section {
   text-align: center;
 }
 
+.solutionx{
+  background-color: #00a685;
+  color: #000;
+  border:solid;
+}
+
 .colors{
   background-color:rgba(34, 42, 66, 0.05);
   outline: none;

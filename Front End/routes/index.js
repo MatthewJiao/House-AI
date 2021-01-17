@@ -156,7 +156,7 @@ router.post('/send-medical',ensureAuthenticated, (req, res) => {
     
     var input = req.body.pdf.concat(req.body.separator.concat(req.body.currentStr))
     //console.log(input)
-    var urlID = String(MicroserviceAPI).concat(input)
+    var urlID = "https://tensorflowdeploytest.ue.r.appspot.com/predict/".concat(input)
     //console.log(urlID)
     axios({
         method: "GET",

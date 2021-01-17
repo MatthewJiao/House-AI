@@ -37,6 +37,14 @@ h1, h2, h3, h4, h5, h6 {
   z-index: 99999;
 }
 
+
+.solutionx{
+  background-color: #000000;
+  color: #ffffff;
+}
+
+
+
 .back-to-top i {
   display: flex;
   align-items: center;
