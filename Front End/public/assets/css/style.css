@@ -1649,3 +1649,27 @@ section {
 .log-btn{
   border-radius: 0.2rem;
 }
+
+.inp{
+border-radius: 0.2rem;
+}
+
+.bord{
+  border-radius: 0.2rem;
+}
+
+.log-b{
+  background-color: #18d26e;
+  outline: none;
+  border: none;
+  font-family: Raleway;
+
+}
+
+.log-b:hover{
+  background-color: #00bf60;
+}
+
+.newFont{
+  font-family: Raleway;
+}

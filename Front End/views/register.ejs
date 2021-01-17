@@ -124,7 +124,7 @@
           
           <li><a href="/users/login">Login</a></li>
 
-          <li class="get-started active"><a href="/users/register">Register</a></li>
+          <li class="get-started active newFont"><a href="/users/register">Register</a></li>
         </ul>
       </nav><!-- .nav-menu -->
 
@@ -138,71 +138,71 @@
 
     <div class="row mt-5">
       <div class="col-md-6 m-auto">
-        <div class="card card-body">
-          <h1 class="text-center mb-3">
-            <i class="fas fa-user-plus"></i> Register
+        <div class="card card-body bord">
+          <h1 class="text-center mb-3 newFont">
+            <i class="fas fa-plus-square"></i> Register
           </h1>
           <%- include('partials/messages'); %>
   
           <form action="/users/register" method="POST">
             <div class="form-group">
-              <label for="name">Name</label>
+              <label for="name" class="newFont">Name</label>
               <input
                 type="name"
                 id="name"
                 name="name"
-                class="form-control"
+                class="form-control bord newFont"
                 placeholder="Enter Name"
                 value="<%= typeof name != 'undefined' ? name : '' %>"
               />
             </div>
             <div class="form-group">
-              <label for="email">Email</label>
+              <label for="email" class="newFont">Email</label>
               <input
                 type="email"
                 id="email"
                 name="email"
-                class="form-control"
+                class="form-control bord newFont"
                 placeholder="Enter Email"
                 value="<%= typeof email != 'undefined' ? email : '' %>"
               />
             </div>
             <div class="form-group">
-              <label for="registeredID">Medical ID</label>
+              <label for="registeredID" class="newFont">Medical ID</label>
               <input
                 type="password"
                 id="registeredID"
                 name="registeredID"
-                class="form-control"
+                class="form-control bord newFont"
                 placeholder="Enter Medical ID#"
                 value="<%= typeof registeredID != 'undefined' ? registeredID : '' %>"
               />
             </div>
 
             <div class="autocomplete" style="width:300px;">
-              <label for="institution">Medical Institution</label>
-              <input id="institution" class="form-control" type="text" name="institution" placeholder="Instituiton">
+              <label for="institution" class="newFont">Medical Institution</label>
+              <input id="institution" class="form-control bord newFont" type="text" name="institution" placeholder="Instituiton">
             </div>
             <br/>
 
             <div class="form-group">
-              <label for="password">Password</label>
+              <label for="password" class="newFont">Password</label>
               <input
                 type="password"
                 id="password"
                 name="password"
-                class="form-control"
+                class="form-control bord newFont"
                 placeholder="Create Password"
                 value="<%= typeof password != 'undefined' ? password : '' %>"
               />
             </div>
             <div class="form-group">
-              <label for="password2">Confirm Password</label>
+              <label for="password2" class="newFont">Confirm Password</label>
               <input
                 type="password"
                 id="password2"
                 name="password2"
-                class="form-control"
+                class="form-control bord newFont"
                 placeholder="Confirm Password"
                 value="<%= typeof password2 != 'undefined' ? password2 : '' %>"
               />
@@ -210,7 +210,7 @@
 
             
 
-            <button type="submit" class="btn btn-primary btn-block">
+            <button type="submit" class="btn btn-primary btn-block bord newFont">
               Register
             </button>
           </form>
@@ -332,7 +332,7 @@
             /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
             autocomplete(document.getElementById("institution"), medInst);
             </script>
-          <p class="lead mt-4">Have An Account? <a href="/users/login">Login</a></p>
+          <p class="lead mt-4 newFont">Have An Account? <a href="/users/login">Login</a></p>
         </div>
       </div>
     </div>
