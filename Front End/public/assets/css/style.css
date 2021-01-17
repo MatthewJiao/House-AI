@@ -45,6 +45,7 @@ h1, h2, h3, h4, h5, h6 {
 
 
 
+
 .back-to-top i {
   display: flex;
   align-items: center;
@@ -1630,4 +1631,8 @@ section {
 
 #footer .footer-links a:hover {
   color: #3498db;
+}
+
+.solutionTitle h2{
+  color: #ffffff;
 }
