@@ -67,8 +67,8 @@ function run () {
     })
 }
 async function scrollToBottom(page) {
-    const distance = 100; // should be less than or equal to window.innerHeight
-    const delay = 50;
+    const distance = 500; // should be less than or equal to window.innerHeight
+    const delay = 10;
     while (await page.evaluate(() => document.scrollingElement.scrollTop + window.innerHeight < document.scrollingElement.scrollHeight)) {
       await page.evaluate((y) => { document.scrollingElement.scrollBy(0, y); }, distance);
       await page.waitFor(delay);
@@ -77,7 +77,8 @@ async function scrollToBottom(page) {
 
   router.get('/dashboard', ensureAuthenticated, (req, res) =>
   res.render('dashboard', {
-      name: req.user.name
+      name: req.user.name,
+      institution: req.user.institution
   }))
 
  router.get('/new_patient', ensureAuthenticated, (req, res) =>
@@ -146,7 +147,7 @@ async function scrollToBottom(page) {
 */
 //})
 
-router.post('/send-medical', (req, res) => {
+router.post('/send-medical',ensureAuthenticated, (req, res) => {
     //console.log(req.body.pdf)
     //console.log(req.body.currentStr)
     
@@ -162,7 +163,7 @@ router.post('/send-medical', (req, res) => {
     
 })
 
-router.post('/saveProfile', (req, res) => {
+router.post('/saveProfile', ensureAuthenticated, (req, res) => {
     //console.log(req.body.pdf)
     //console.log(req.body.currentStr)
     const { name, aboutMe, institution } = req.body; 
@@ -190,9 +191,9 @@ router.post('/saveProfile', (req, res) => {
     
 })
 
-router.post('/getUsage', (req, res) => {
+router.post('/getUsage', ensureAuthenticated, (req, res) => {
   var sendBack = ''
-  User.find({}, function(err, data){
+  User.find({institution: req.body.institution}, function(err, data){
     let timeArray = data.map((info)=>{return info.houseUsage});
     res.send(timeArray)
   })
@@ -201,8 +202,19 @@ router.post('/getUsage', (req, res) => {
 
 })
 
+router.get('/refreshDash', ensureAuthenticated, (req, res) => {
+  res.render('dashboard', {
+    name: req.user.name,
+    institution: req.query.institution
+})
 
-router.post('/houseMemory', (req, res) => {
+
+
+
+})
+
+
+router.post('/houseMemory', ensureAuthenticated, (req, res) => {
   //console.log(req.body.pdf)
   //console.log(req.body.currentStr)
   const { symptoms, conditions } = req.body; 
@@ -234,7 +246,7 @@ router.post('/houseMemory', (req, res) => {
   
 })
 
-router.post('/getMemory', (req, res) => {
+router.post('/getMemory', ensureAuthenticated, (req, res) => {
 
     
     res.send(req.user.houseMemory)

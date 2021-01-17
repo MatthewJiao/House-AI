@@ -1,84 +1,43 @@
-const express = require('express')
-const router = express.Router()
-const bcrypt = require('bcryptjs')
-const passport = require('passport')
-const User = require('../models/User')
+const express = require('express');
+const router = express.Router();
 
-router.get('/login', (req, res) => res.render('login'))
+//------------ Importing Controllers ------------//
+const authController = require('./authController')
 
-router.get('/register', (req, res) => res.render('register'))
+//------------ Login Route ------------//
+router.get('/login', (req, res) => res.render('login'));
 
-router.post('/register', (req, res) => {
-    const {name, email, password, password2, registeredID, institution} = req.body
-    console.log(institution)
-    let errors = []
-    let whitelist = ['1111','2222']
+//------------ Forgot Password Route ------------//
+router.get('/forgot', (req, res) => res.render('forgot'));
 
-    if(!name || !email || !password || !password2){
-        errors.push({msg: 'Please fill in all fields'})
-    }
+//------------ Reset Password Route ------------//
+router.get('/reset/:id', (req, res) => {
+    // console.log(id)
+    res.render('reset', { id: req.params.id })
+});
 
-    if(password !== password2){
-        errors.push({msg: 'Passwords do not match'})
-    }
+//------------ Register Route ------------//
+router.get('/register', (req, res) => res.render('register'));
 
-    if(password.length < 6) {
-        errors.push({msg: 'Password should be at least 6 characters'})
-    }
+//------------ Register POST Handle ------------//
+router.post('/register', authController.registerHandle);
 
-    if(!whitelist.includes(registeredID)){
-        errors.push({msg: 'Medical ID must be valid'})
-    }
+//------------ Email ACTIVATE Handle ------------//
+router.get('/activate/:token', authController.activateHandle);
 
-    if(errors.length > 0){
-        res.render('register', {errors, name, email, password, password2, registeredID})
-    } else {
-        User.findOne({email: email})
-        .then(user => {
-            if(user){
-                errors.push({msg: 'Email is already registered'})
-                res.render('register', {errors, name, email, password, password2, registeredID, institution})
-            } else {
+//------------ Forgot Password Handle ------------//
+router.post('/forgot', authController.forgotPassword);
 
-                const newUser = new User({
-                    name,
-                    email,
-                    password,
-                    medicalID: registeredID,
-                    institution: institution,
-                    aboutMe: "Knock, knock! Who’s there? Colin. Colin who? Colin the doctor… I’m sick!"
-                })
-                bcrypt.genSalt(10, (err, salt) => bcrypt.hash(newUser.password, salt, (err, hash) => {
-                    if(err) throw err
+//------------ Reset Password Handle ------------//
+router.post('/reset/:id', authController.resetPassword);
 
-                    newUser.password = hash
-                    newUser.save()
-                    .then(user => {
-                        req.flash('success_msg', 'You are now registered')
-                        res.redirect('/users/login')
-                    })
-                    .catch(err => console.log(err))
-                }))
+//------------ Reset Password Handle ------------//
+router.get('/forgot/:token', authController.gotoReset);
 
-            }
-        })
-    }
+//------------ Login POST Handle ------------//
+router.post('/login', authController.loginHandle);
 
+//------------ Logout GET Handle ------------//
+router.get('/logout', authController.logoutHandle);
 
-})
-
-router.post('/login', (req, res, next) => {
-    passport.authenticate('local', {
-        successRedirect: '/dashboard',
-        failureRedirect: '/users/login',
-        failureFlash: true
-    })(req, res, next)
-})
-
-router.get('/logout', (req, res) => {
-    req.logout()
-    req.flash('success_msg', 'You are logged out')
-    res.redirect('/users/login')
-})
-
-module.exports = router
+module.exports = router;

@@ -21,14 +21,136 @@
 /* added css*/
 
 
-.column{
-  float:left,
-  width = 50%
+.carcontain1{
+  /* background: #3e3e3e; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
+.carousel1 {
+  width: 52vw;
+  height: 50vh;
+  /* border-radius: 3px; */
+  overflow: hidden;
+  position: relative  ;
+  /* box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2); */
+}
 
+  .controls1 {
+    opacity: 1;
+    display: flex;
+    position: absolute;
+    top: 40%;
+    left: 0;
+    justify-content: space-between;
+    width: 100%;
+    z-index: 99999;
+    transition: all ease 0.5s;
+  }
+    .control1 {
+      margin: 0%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 40px;
+      width: 40px;
+      border-radius: 50%;
+      background-color: rgba(197, 184, 184, 0.7);
+      opacity: 0.5;
+      transition: ease 0.3s;
+      cursor: pointer;
+    }
 
+  .slides1 {
+    position: absolute;
+    top: 12%;
+    transition: 1s ease-in-out all;
+    /* transform: translateY(-50%); */
+    display: flex;
+    width: 100%;
+    text-align:center;
+  }
+    .slide1 {
+      min-width: 100%;
+      /* min-height: 300px; */
+      height: auto;
+    }
 
+.carcontain2{
+  /* background: #3e3e3e; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.carousel2 {
+  width: 52vw;
+  height: 40vh;
+  /* border-radius: 3px; */
+  overflow: hidden;
+  position: relative;
+  /* box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2); */
+}
+
+  .controls2 {
+    opacity: 1;
+    display: flex;
+    position: absolute;
+    top: 40%;
+    left: 0;
+    justify-content: space-between;
+    width: 100%;
+    z-index: 99999;
+    transition: all ease 0.5s;
+  }
+    .control2 {
+      margin: 0%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 40px;
+      width: 40px;
+      border-radius: 50%;
+      background-color: rgba(197, 184, 184, 0.7);
+      opacity: 0.5;
+      transition: ease 0.3s;
+      cursor: pointer;
+    }
+
+  .slides2 {
+    position: absolute;
+    top: 9%;
+    transition: 1s ease-in-out all;
+    /* transform: translateY(-50%); */
+    display: flex;
+    width: 33.333333333333333333333333333%;
+    text-align:center;
+  }
+    .slide2 {
+      min-width: 100%;
+      /* min-height: 300px; */
+      height: 35vh;
+      text-align:center
+    }
+.images1 img{
+  width:33vw;
+  padding-left:0.5vw;
+  height:35vh;
+}
+.text1{
+  width:17vw;
+
+}
+.images2 img{
+  width:15vw;
+  height:30vh;
+}
+.text2{
+  text-align:center;
+  /* width:15vw; */
+  height:5vh;
+}
 
 
 /* end added css*/
@@ -17974,7 +18096,7 @@ table.tablesorter thead tr .headerSortDown {
 }
 
 .main-panel .header {
-  margin-bottom: 50px;
+  margin-bottom: 30px;
 }
 
 .perfect-scrollbar-on .sidebar,

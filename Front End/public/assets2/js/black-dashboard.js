@@ -38,6 +38,30 @@ var $datetimepicker = $('.datetimepicker');
 var $datepicker = $('.datepicker');
 var $timepicker = $('.timepicker');
 
+//added js
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//end added js
 var seq = 0,
   delays = 80,
   durations = 500;

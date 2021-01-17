@@ -5,6 +5,8 @@ const flash = require('connect-flash')
 const session = require('express-session')
 const passport = require('passport')
 var bodyParser = require('body-parser')
+require('dotenv').config();
+
 
 
 const app = express()
@@ -16,7 +18,7 @@ const app = express()
 
 require('./config/passport')(passport)
 
-const db = require('./config/keys').MongoURI
+const db = process.env.MongoURI
 mongoose.connect(db, {useNewUrlParser: true, useUnifiedTopology: true})
 .then(() => console.log('mongo db connected...'))
 .catch(err => console.log(err))
