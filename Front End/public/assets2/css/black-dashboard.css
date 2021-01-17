@@ -21,10 +21,6 @@
 /* added css*/
 
 
-.column{
-  float:left,
-  width = 50%
-}
 .carcontain1{
   /* background: #3e3e3e; */
   display: flex;
@@ -33,7 +29,7 @@
 }
 
 .carousel1 {
-  width: 80vw;
+  width: 52vw;
   height: 50vh;
   /* border-radius: 3px; */
   overflow: hidden;
@@ -68,7 +64,7 @@
 
   .slides1 {
     position: absolute;
-    top: 25%;
+    top: 12%;
     transition: 1s ease-in-out all;
     /* transform: translateY(-50%); */
     display: flex;
@@ -89,8 +85,8 @@
 }
 
 .carousel2 {
-  width: 80vw;
-  height: 30vh;
+  width: 52vw;
+  height: 40vh;
   /* border-radius: 3px; */
   overflow: hidden;
   position: relative;
@@ -124,21 +120,37 @@
 
   .slides2 {
     position: absolute;
-    top: 25%;
+    top: 10%;
     transition: 1s ease-in-out all;
     /* transform: translateY(-50%); */
     display: flex;
-    width: 33.33333333333333333333%;
+    width: 33.333333333333333333333333333%;
     text-align:center;
   }
     .slide2 {
       min-width: 100%;
       /* min-height: 300px; */
       height: auto;
+      text-align:center
     }
+.images1 img{
+  width:33vw;
+  padding-left:0.5vw;
+  height:35vh;
+}
+.text1{
+  width:17vw;
 
-
-
+}
+.images2 img{
+  width:15vw;
+  height:30vh;
+}
+.text2{
+  text-align:center;
+  /* width:15vw; */
+  height:5vh;
+}
 
 
 /* end added css*/
