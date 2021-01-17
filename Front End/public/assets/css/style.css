@@ -1645,3 +1645,7 @@ section {
   font-size: 0.9rem;
   margin: 0.9rem;
 }
+
+.log-btn{
+  border-radius: 0.2rem;
+}

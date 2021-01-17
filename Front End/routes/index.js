@@ -16,11 +16,12 @@ images = []
 text = []
 url = 'https://www.medicalnewstoday.com/'
 router.get('/', function(req, res, next) {
+  console.log("here12345")
    run().then(function(result){
        links = result.links;
        images = result.images;
        text = result.text;
-       // console.log(links)
+       console.log(links)
        // console.log(images)
        // console.log(text)
    })
