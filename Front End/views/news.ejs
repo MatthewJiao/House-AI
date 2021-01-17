@@ -210,10 +210,14 @@
               <div class="carcontain2">
                <div class="carousel2">
                   <div class = "slides2" >
-                    <% for(var t =5; t < 21; t++) { %>
+                    <% for(var t =5; t < 20; t++) { %>
                       <a href="<%= links[t]%>" target="_blank" class = "slide2" style = "text-align:center;">
-                        <img src="<%= images[t]%>" width = 290 height = 170 >
-                        <p style = "width:300px;  font-size:16px;"> <%=text[t]%></p>
+                        <div class = "image2">
+                           <img src="<%= images[t]%>" width = 290 height = 170 >
+                        </div>
+                        <div class = "text2">
+                            <p style = "width:300px;  font-size:16px;"> <%=text[t]%></p>
+                        </div>
                       </a>
                     <% } %>
                   </div>
