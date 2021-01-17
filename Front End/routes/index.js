@@ -78,7 +78,10 @@ async function scrollToBottom(page) {
   router.get('/dashboard', ensureAuthenticated, (req, res) =>
   res.render('dashboard', {
       name: req.user.name,
-      institution: req.user.institution
+      institution: req.user.institution,
+      time1: (new Date().getTime() / 1000)-86400,
+      time2: (new Date().getTime() / 1000)
+
   }))
 
  router.get('/new_patient', ensureAuthenticated, (req, res) =>
@@ -215,7 +218,9 @@ router.post('/getSymptCond', ensureAuthenticated, (req, res) => {
 router.get('/refreshDash', ensureAuthenticated, (req, res) => {
   res.render('dashboard', {
     name: req.user.name,
-    institution: req.query.institution
+    institution: req.query.institution,
+    time1: (new Date().getTime() / 1000)-86400,
+    time2: (new Date().getTime() / 1000)
 })
 
 
