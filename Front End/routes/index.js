@@ -32,7 +32,9 @@ router.get('/dashboard', function(req, res, next) {
       institution: req.user.institution,
       time1: (new Date().getTime() / 1000)-86400,
       time2: (new Date().getTime() / 1000)
-})
+}) 
+}
+)
 
 
 function run () {
@@ -79,21 +81,13 @@ function run () {
 }
 async function scrollToBottom(page) {
     const distance = 750; // should be less than or equal to window.innerHeight
-    const delay = 10;
+    const delay = 6;
     while (await page.evaluate(() => document.scrollingElement.scrollTop + window.innerHeight < document.scrollingElement.scrollHeight)) {
       await page.evaluate((y) => { document.scrollingElement.scrollBy(0, y); }, distance);
       await page.waitFor(delay);
     }
   }
 
-  router.get('/dashboard', ensureAuthenticated, (req, res) =>
-  res.render('dashboard', {
-      name: req.user.name,
-      institution: req.user.institution,
-      time1: (new Date().getTime() / 1000)-86400,
-      time2: (new Date().getTime() / 1000)
-
-  }))
 
  router.get('/new_patient', ensureAuthenticated, (req, res) =>
  res.render('new_patient', {
