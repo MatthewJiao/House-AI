@@ -301,7 +301,7 @@
                       conditions: info2,
                     },
                     withCredentials: true,
-                    url: "http://localhost:5000/houseMemory"
+                    url: "https://house-ai-htn.herokuapp.com/houseMemory"
                   }).then((res) => console.log('hmm'))
                   
                   var br = document.createElement("BR");
@@ -677,7 +677,7 @@
         separator: separator
       },
       withCredentials: true,
-      url: "http://localhost:5000/send-medical"
+      url: "https://house-ai-htn.herokuapp.com/send-medical"
     }).then((res) => displayData(res.data))
     }
 

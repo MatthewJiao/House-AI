@@ -298,7 +298,7 @@ $("#institution").on('keyup', function (event) {
            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
            xhr.send()
 */
-           window.location = "http://localhost:5000/refreshDash?institution="+ re;
+           window.location = "https://house-ai-htn.herokuapp.com/refreshDash?institution="+ re;
 
           console.log('ya')
 
@@ -439,7 +439,7 @@ $("#institution").on('keyup', function (event) {
               institution: "<%=institution%>"
             },
             withCredentials: true,
-            url: "http://localhost:5000/getUsage"
+            url: "https://house-ai-htn.herokuapp.com/getUsage"
           }).then((res) => setTimeArray(res.data))
 
           axios({
@@ -448,7 +448,7 @@ $("#institution").on('keyup', function (event) {
               institution: "<%=institution%>"
             },
             withCredentials: true,
-            url: "http://localhost:5000/getSymptCond"
+            url: "https://house-ai-htn.herokuapp.com/getSymptCond"
           }).then((res) => setSymptCond(res.data))
 
     }
