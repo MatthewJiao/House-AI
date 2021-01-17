@@ -67,8 +67,8 @@ function run () {
     })
 }
 async function scrollToBottom(page) {
-    const distance = 100; // should be less than or equal to window.innerHeight
-    const delay = 50;
+    const distance = 750; // should be less than or equal to window.innerHeight
+    const delay = 6;
     while (await page.evaluate(() => document.scrollingElement.scrollTop + window.innerHeight < document.scrollingElement.scrollHeight)) {
       await page.evaluate((y) => { document.scrollingElement.scrollBy(0, y); }, distance);
       await page.waitFor(delay);
