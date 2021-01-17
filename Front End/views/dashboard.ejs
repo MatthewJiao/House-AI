@@ -425,7 +425,7 @@ $("#institution").on('keyup', function (event) {
               institution: "<%=institution%>"
             },
             withCredentials: true,
-            url: "https://houseai.tech/getUsage"
+            url: "http://houseai.tech/getUsage"
           }).then((res) => setTimeArray(res.data))
           axios({
             method: "POST",
@@ -433,7 +433,7 @@ $("#institution").on('keyup', function (event) {
               institution: "<%=institution%>"
             },
             withCredentials: true,
-            url: "https://houseai.tech/getSymptCond"
+            url: "http://houseai.tech/getSymptCond"
           }).then((res) => setSymptCond(res.data))
     }
     const setSymptCond = (x) => {
