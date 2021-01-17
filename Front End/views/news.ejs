@@ -96,7 +96,7 @@
     </div>
     <div class="main-panel">
       <!-- Navbar -->
-      <<nav class="navbar navbar-expand-lg navbar-absolute navbar-transparent">
+      <nav class="navbar navbar-expand-lg navbar-absolute navbar-transparent">
         <div class="container-fluid">
           <div class="navbar-wrapper">
             <div class="navbar-toggle d-inline">
@@ -162,7 +162,7 @@
                      <% for(var p =2; p < 5; p++) { %>
                        <a href="<%= links[p]%>" target="_blank" class = "slide1" style = "text-align:center; display:inline-block">
                              <div style = "float:left" class = "images1">
-                              <img src="<%= images[p]%>" width = 550 height = 400>
+                              <img src="<%= images[p]%>" width= 550 height = 300>
                             </div>
                             <div style = "float:right" class = "text1">
                               <p style = "width:300px; font-weight:bold; font-size:30px; text-align:left; padding-right:5vw"> <%=text[p]%></p>
@@ -213,10 +213,10 @@
                     <% for(var t =5; t < 20; t++) { %>
                       <a href="<%= links[t]%>" target="_blank" class = "slide2" style = "text-align:center;">
                         <div class = "image2">
-                           <img src="<%= images[t]%>" width = 290 height = 170 >
+                           <img src="<%= images[t]%>"width = 280 height = 200  >
                         </div>
-                        <div class = "text2">
-                            <p style = "font-size:16px;"> <%=text[t]%></p>
+                        <div class = "text2" style = "text-align:center;">
+                            <p style = "font-size:16px; "> <%=text[t]%></p>
                         </div>
                       </a>
                     <% } %>
