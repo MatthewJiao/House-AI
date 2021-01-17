@@ -1644,6 +1644,8 @@ section {
 .smaller{
   font-size: 0.9rem;
   margin: 0.9rem;
+  font-style: italic;
+
 }
 
 .log-btn{
