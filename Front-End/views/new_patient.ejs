@@ -1,0 +1,842 @@
+<!--
+=========================================================
+* * Black Dashboard - v1.0.1
+=========================================================
+
+* Product Page: https://www.creative-tim.com/product/black-dashboard
+* Copyright 2019 Creative Tim (https://www.creative-tim.com)
+
+
+* Coded by Creative Tim
+
+=========================================================
+
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="apple-touch-icon" sizes="76x76" href="assets2/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="assets2/img/favicon.png">
+  <title>
+    Black Dashboard by Creative Tim
+  </title>
+  <!--     Fonts and icons     -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet" />
+  <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+  <!-- Nucleo Icons -->
+  <link href="assets2/css/nucleo-icons.css" rel="stylesheet" />
+  <!-- CSS Files -->
+  <link href="assets2/css/black-dashboard.css?v=1.0.0" rel="stylesheet" />
+  <!-- CSS Just for demo purpose, don't include it in your project -->
+  <link href="assets2/demo/demo.css" rel="stylesheet" />
+</head>
+
+<body class="">
+  <div class="wrapper">
+    <div class="sidebar">
+      <!--
+        Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red"
+    -->
+      <div class="sidebar-wrapper">
+        <div class="logo">
+          <div class="welcome simple-text logo-normal">
+            Welcome <%= name.split(" ")[0] %>
+
+          </div>
+        </div>
+        <ul class="nav">
+          <li>
+            <a href="/dashboard">
+              <i class="tim-icons icon-chart-pie-36"></i>
+              <p>Server Analysis</p>
+            </a>
+          </li>
+          <li class="active">
+            <a href="/new_patient">
+              <i class="tim-icons icon-molecule-40"></i>
+              <p>New Patient</p>
+            </a>
+          </li>
+          <li>
+            <a href="/news">
+              <i class="tim-icons icon-pin"></i>
+              <p>Medical News</p>
+            </a>
+          </li>
+          <li>
+            <a href="/memory">
+              <i class="tim-icons icon-align-center"></i>
+              <p>House Memory</p>
+            </a>
+          </li>
+          
+          <li>
+            <a href="/user">
+              <i class="tim-icons icon-single-02"></i>
+              <p>Profile</p>
+            </a>
+          </li>
+          
+          
+          <li>
+            <a href="/users/logout">
+              <i class="tim-icons icon-lock-circle"></i>
+              <p>Logout</p>
+            </a>
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+    <div class="main-panel">
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg navbar-absolute navbar-transparent">
+        <div class="container-fluid">
+          <div class="navbar-wrapper">
+            <div class="navbar-toggle d-inline">
+              <button type="button" class="navbar-toggler">
+                <span class="navbar-toggler-bar bar1"></span>
+                <span class="navbar-toggler-bar bar2"></span>
+                <span class="navbar-toggler-bar bar3"></span>
+              </button>
+            </div>
+            <a class="navbar-brand" href="javascript:void(0)">New Patient</a>
+          </div>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navigation">
+            <ul class="navbar-nav ml-auto">
+              
+              
+              <li class="dropdown nav-item">
+                <a href="/dashboard" class="dropdown-toggle nav-link">
+                  <div class="photo">
+                    <img src="assets2/img/ai.png" alt="Profile Photo">
+                  </div>      
+                </a>
+              </li>
+              <li class="separator d-lg-none"></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <div class="modal modal-search fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="SEARCH">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <i class="tim-icons icon-simple-remove"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End Navbar -->
+      <div class="content">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header">
+                <h2 class="card-category">Upload Medical History</h2>
+                <p class="category"></p>
+              </div>
+
+              
+              
+
+                <div class="card-body card-body2 all-icons">
+
+                  <div class="row">
+
+                    <div class="file-drop-area">
+                      <span class="fake-btn">Choose files</span>
+                      <span class="file-msg">or drag and drop files here</span>
+                      <input class="file-input" id="myFile" name="myFile" type="file" multiple>
+                    </div>
+
+                    
+
+                    
+                  </div>
+                </div>
+                <label for="w3review"></label>
+
+                <textarea class="colors" id="current" placeholder="Enter Symptoms" name="current" rows="5" cols="50"></textarea>
+                
+                <button type="submit" onclick="sendData()" class="btn btn-primary btn-block fon">House AI</button>
+                <br/>
+                <div id="symptomsLabel"></div>
+                <div id="symptoms"></div>
+                <div id="overlay"></div>
+
+                
+
+                <div id="test" class="container">
+                </div>
+                <div id="test2" class="container">
+                </div>
+                <div id="test3" class="container">
+                </div>
+                <div id="test4" class="container">
+                </div>
+                <div id="test5" class="container">
+                </div>
+
+                <script>
+                  const displayData = (info) =>{
+                    var symptomsLst = info.split("QQQ")[1]
+                    symptomsLst = symptomsLst.split(',')
+
+                    symptomsLst = symptomsLst.map(x => typeof x === 'string' ? x.toLowerCase() : x);
+                    symptomsLst =  Array.from(new Set(symptomsLst));
+
+
+
+                    if(symptomsLst[0]!=""){
+                    //console.log(symptomsLst)
+                    var info = info.split("QQQ")[0]
+                    var info2 = []
+                    var colorInfo = []
+                    var conditionNames = []
+                    info = info.slice(1,info.length-1)
+                    info = info.split("'")
+                    for (var i = 1; i < info.length; i+=2){
+                      //info[i] = info[i].splice(1,info[i].length-1)
+                      //info.splice(i,i)
+                      info2[(i-1)/2] = info[i]  
+                      var temp = info[i].split(':')[info[i].split(':').length-1]
+                      var temp2 = info[i].split(':')[0]
+
+                      var len = temp.length-1
+                      temp = temp.slice(0,len)
+                      temp = parseFloat(temp)
+
+                      colorInfo[(i-1)/2] = temp
+                      conditionNames[(i-1)/2] = temp2
+                    }
+
+                   
+                    //document.getElementById('conditions').innerHTML = "";
+                    //document.getElementById('conditionLabel').innerHTML = "";
+                    //document.getElementById('myChart').innerHTML = "";
+                    //document.getElementById('myChart2').innerHTML = "";
+
+
+                    document.getElementById('symptoms').innerHTML = "";
+                    document.getElementById('symptomsLabel').innerHTML = "";
+
+                    document.getElementById('symptomsLabel').innerHTML = "Detected Symptoms";
+                    document.getElementById('symptomsLabel').style.marginLeft = '2rem';
+                    document.getElementById('symptomsLabel').style.marginBottom = '0.3rem';
+                    document.getElementById('symptoms').style.marginLeft = '2rem';
+
+                    var myDiv2 = document.getElementById("symptoms");  
+
+
+                    for (var i = 0; i< symptomsLst.length; i++){
+                      var button = document.createElement('BUTTON');  
+                      button.style.borderRadius = '0.2rem';
+                      button.style.border = '1px solid #000000';
+                      button.style.outline = 'none';
+                     //s button.style.color = 'rgba(34, 42, 66, 0.05)'
+                      
+                      button.style.backgroundColor = '#D7D7EF';
+                     
+
+                      var text = document.createTextNode(symptomsLst[i]); 
+                      button.appendChild(text);      
+                      myDiv2.appendChild(button);
+                    }
+
+                    /*document.getElementById('conditionLabel').innerHTML = "Output Probabilities";
+
+                    var myDiv = document.getElementById("conditions");  
+                  
+                    for (var i = 0; i< info2.length; i++){
+                      var button = document.createElement('BUTTON');  
+                      button.style.borderRadius = '0.2rem';
+                      button.style.border = '1px dashed rgba(255, 255, 255, 0.4)';
+                      button.style.outline = 'none';
+                     //s button.style.color = 'rgba(34, 42, 66, 0.05)'
+                      
+                     if(colorInfo[i]>90){
+                        button.style.backgroundColor = '00FF00';
+                     } else if(colorInfo[i]>80) {
+                      button.style.backgroundColor = '#35FF00';
+                     } else if(colorInfo[i]>70) {
+                      button.style.backgroundColor = '#6AFF00';
+                     } else if(colorInfo[i]>60) {
+                      button.style.backgroundColor = '#9FFF00';
+                     } else if(colorInfo[i]>50) {
+                      button.style.backgroundColor = '#D4FF00';
+                     } else if(colorInfo[i]>40) {
+                      button.style.backgroundColor = '#FFF600';
+                     } else if(colorInfo[i]>30) {
+                      button.style.backgroundColor = '#FFC100';
+                     } else if(colorInfo[i]>20) {
+                      button.style.backgroundColor = '#FF8C00';
+                     } else if(colorInfo[i]>10) {
+                      button.style.backgroundColor = '#FF5700';
+                     } else {
+                      button.style.backgroundColor = '#FF0000';
+                     }
+
+                      var text = document.createTextNode(info2[i]); 
+                      button.appendChild(text);      
+                      myDiv.appendChild(button);
+                    }
+                    */
+                    axios({
+                    method: "POST",
+                    data: {
+                      symptoms: symptomsLst,
+                      conditions: info2,
+                    },
+                    withCredentials: true,
+                    url: "http://houseai.tech/houseMemory"
+                  }).then((res) => console.log('hmm'))
+                  
+                  var br = document.createElement("BR");
+                  var space = document.getElementById("test")
+                  space.appendChild(br);
+                  space.appendChild(br);
+                  space.appendChild(br);
+
+                    // charts
+                    $('#myChart').remove(); // this is my <canvas> element
+                    $('#test').append('<canvas id="myChart"><canvas>');
+                  let myChart = document.getElementById('myChart').getContext('2d')
+                  
+
+
+                  
+                  //Chart.defaults.global.defaultFontFamily = 'Lato';
+                  //Chart.defaults.global.defaultFontSize = 18;
+                  //Chart.defaults.global.defaultFontColor = '#777';
+
+                  let probChart = new Chart(myChart, {
+                    type:'bar', // bar horizontalBar, pie, line, doughnut, radar, polarArea
+                    data: {
+                      labels: conditionNames,
+                      datasets: [{
+                        label: 'Probability',
+                        data: colorInfo,
+                        backgroundColor:[
+                        //  '#000000',
+                      //    '#324242'
+                        ],
+                        //borderWidth: 1,
+                        //borderColor: '#777',
+                       // hoverBorderWidth: 3,
+                     //   hoverBorderColor: '#000'
+                      }]
+                    },
+                    options: {
+                      title: {
+                        display: true,
+                        text: 'Output Probabilities'
+                     //   fontSize: 25
+                      },
+                      legend: {
+                        display: false
+                       // position: 'right',
+                       // labels: {
+                       //   fontColor: '#000'
+                       // }
+                      },
+                      layout: {
+                       // padding: {
+                        //  left: 50,
+                         // right: 0,
+                         // bottom: 0,
+                         // top: 0
+                       // },
+                        tooltips: {
+                          enabled: true
+                        }
+                      }
+                    }
+                  })
+                  
+                  var br2 = document.createElement("br");
+                  var space2 = document.getElementById("test2")
+                  space2.appendChild(br2);
+                  space2.appendChild(br2);
+
+                  $('#myChart2').remove(); // this is my <canvas> element
+                  $('#test2').append('<canvas id="myChart2"><canvas>');
+                  let myChart2 = document.getElementById('myChart2').getContext('2d')
+
+
+                  let probChart2 = new Chart(myChart2, {
+                    type:'radar', // bar horizontalBar, pie, line, doughnut, radar, polarArea
+                    data: {
+                      labels: conditionNames,
+                      datasets: [{
+                        label: 'Probability',
+                        data: colorInfo,
+                        backgroundColor:[
+                        //  '#000000',
+                      //    '#324242'
+                        ],
+                        //borderWidth: 1,
+                        //borderColor: '#777',
+                       // hoverBorderWidth: 3,
+                     //   hoverBorderColor: '#000'
+                      }]
+                    },
+                    options: {
+                      title: {
+                        display: true,
+                        text: 'Output Probabilities Radar'
+                     //   fontSize: 25
+                      },
+                      legend: {
+                        display: false
+                       // position: 'right',
+                       // labels: {
+                       //   fontColor: '#000'
+                       // }
+                      },
+                      layout: {
+                       // padding: {
+                        //  left: 50,
+                         // right: 0,
+                         // bottom: 0,
+                         // top: 0
+                       // },
+                        tooltips: {
+                          enabled: true
+                        }
+                      }
+                    }
+                  })
+
+                  var br3 = document.createElement("br");
+                  var space3 = document.getElementById("test3")
+                  space3.appendChild(br3);
+                  space3.appendChild(br3);
+                  space3.appendChild(br3);
+                  space3.appendChild(br3);
+
+                  $('#myChart3').remove(); // this is my <canvas> element
+                    $('#test3').append('<canvas id="myChart3"><canvas>');
+                  let myChart3 = document.getElementById('myChart3').getContext('2d')
+
+                  let probChart3 = new Chart(myChart3, {
+                    type:'pie', // bar horizontalBar, pie, line, doughnut, radar, polarArea
+                    data: {
+                      labels: conditionNames,
+                      datasets: [{
+                        label: 'Probability',
+                        data: colorInfo,
+                        backgroundColor:[
+                        //  '#000000',
+                      //    '#324242'
+                        ],
+                        //borderWidth: 1,
+                        //borderColor: '#777',
+                       // hoverBorderWidth: 3,
+                     //   hoverBorderColor: '#000'
+                      }]
+                    },
+                    options: {
+                      title: {
+                        display: true,
+                        text: 'Output Probabilities'
+                     //   fontSize: 25
+                      },
+                      legend: {
+                        display: false
+                       // position: 'right',
+                       // labels: {
+                       //   fontColor: '#000'
+                       // }
+                      },
+                      layout: {
+                       // padding: {
+                        //  left: 50,
+                         // right: 0,
+                         // bottom: 0,
+                         // top: 0
+                       // },
+                        tooltips: {
+                          enabled: true
+                        }
+                      }
+                    }
+                  })
+
+                  space = document.getElementById("test4")
+                  space.appendChild(br);
+
+                  $('#myChart4').remove(); // this is my <canvas> element
+                    $('#test4').append('<canvas id="myChart4"><canvas>');
+                  let myChart4 = document.getElementById('myChart4').getContext('2d')
+                  
+
+
+                  
+                  //Chart.defaults.global.defaultFontFamily = 'Lato';
+                  //Chart.defaults.global.defaultFontSize = 18;
+                  //Chart.defaults.global.defaultFontColor = '#777';
+
+                  let probChart4 = new Chart(myChart4, {
+                    type:'polarArea', // bar horizontalBar, pie, line, doughnut, radar, polarArea
+                    data: {
+                      labels: conditionNames,
+                      datasets: [{
+                        label: 'Probability',
+                        data: colorInfo,
+                        backgroundColor:[
+                        //  '#000000',
+                      //    '#324242'
+                        ],
+                        //borderWidth: 1,
+                        //borderColor: '#777',
+                       // hoverBorderWidth: 3,
+                     //   hoverBorderColor: '#000'
+                      }]
+                    },
+                    options: {
+                      title: {
+                        display: true,
+                        text: 'Output Probabilities'
+                     //   fontSize: 25
+                      },
+                      legend: {
+                        display: false
+                       // position: 'right',
+                       // labels: {
+                       //   fontColor: '#000'
+                       // }
+                      },
+                      layout: {
+                       // padding: {
+                        //  left: 50,
+                         // right: 0,
+                         // bottom: 0,
+                         // top: 0
+                       // },
+                        tooltips: {
+                          enabled: true
+                        }
+                      }
+                    }
+                  })
+
+                  var br5 = document.createElement("br");
+                  var space5 = document.getElementById("test5")
+                  space5.appendChild(br5);
+                  space5.appendChild(br5);
+
+
+
+
+
+                   } else {
+                    
+                    document.getElementById('symptoms').innerHTML = "";
+                    document.getElementById('symptomsLabel').innerHTML = "";
+                   }
+                  }
+                </script>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer class="footer">
+        <div class="container-fluid">
+          <ul class="nav">
+            <li class="nav-item">
+              <a href="/#" class="nav-link">
+                House AI
+              </a>
+            </li>
+          </ul>
+          <div class="copyright">
+            Created by
+            <a href="javascript:void(0)" target="_blank">Adam and Matthew</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+  <div class="fixed-plugin">
+    <div class="dropdown show-dropdown">
+      
+      <ul class="dropdown-menu">
+        <li class="header-title"> Sidebar Background</li>
+        <li class="adjustments-line">
+          <a href="javascript:void(0)" class="switch-trigger background-color">
+            <div class="badge-colors text-center">
+              <span class="badge filter badge-primary active" data-color="primary"></span>
+              <span class="badge filter badge-info" data-color="blue"></span>
+              <span class="badge filter badge-success" data-color="green"></span>
+            </div>
+            <div class="clearfix"></div>
+          </a>
+        </li>
+        <li class="adjustments-line text-center color-change">
+          <span class="color-label">LIGHT MODE</span>
+          <span class="badge light-badge mr-2"></span>
+          <span class="badge dark-badge ml-2"></span>
+          <span class="color-label">DARK MODE</span>
+        </li>
+        <li class="button-container">
+          <a href="https://www.creative-tim.com/product/black-dashboard" target="_blank" class="btn btn-primary btn-block btn-round">Download Now</a>
+          <a href="https://demos.creative-tim.com/black-dashboard/docs/1.0/getting-started/introduction.html" target="_blank" class="btn btn-default btn-block btn-round">
+            Documentation
+          </a>
+        </li>
+        <li class="header-title">Thank you for 95 shares!</li>
+        <li class="button-container text-center">
+          <button id="twitter" class="btn btn-round btn-info"><i class="fab fa-twitter"></i> &middot; 45</button>
+          <button id="facebook" class="btn btn-round btn-info"><i class="fab fa-facebook-f"></i> &middot; 50</button>
+          <br>
+          <br>
+          <a class="github-button" href="https://github.com/creativetimofficial/black-dashboard" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star ntkme/github-buttons on GitHub">Star</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!--   Core JS Files   -->
+  <script src="assets2/js/core/jquery.min.js"></script>
+  <script src="assets2/js/core/popper.min.js"></script>
+  <script src="assets2/js/core/bootstrap.min.js"></script>
+  <script src="assets2/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+  <!--  Google Maps Plugin    -->
+  <!-- Place this tag in your head or just before your close body tag. -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+  <!-- Chart JS -->
+  <script src="assets2/js/plugins/chartjs.min.js"></script>
+  <!--  Notifications Plugin    -->
+  <script src="assets2/js/plugins/bootstrap-notify.js"></script>
+  <!-- Control Center for Black Dashboard: parallax effects, scripts for the example pages etc -->
+  <script src="assets2/js/black-dashboard.min.js?v=1.0.0"></script><!-- Black Dashboard DEMO methods, don't include it in your project! -->
+  <script src="assets2/demo/demo.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+  <script>
+
+    const testS = 'hii'
+    var pdfString = ''
+    var currentString = ''
+    const separator = '. '
+    const inpFile = document.querySelector('input[type="file"]')
+    inpFile.addEventListener('change', function (e) {
+      pdfString = ''
+      console.log(inpFile.files)
+
+      for(i=0; i< inpFile.files.length; i++){
+
+        const reader = new FileReader()
+        reader.onload = function () {
+          pdfString = pdfString.concat(separator.concat(reader.result))
+        }
+        reader.readAsText(inpFile.files[i])
+
+      }
+
+    }, true)
+
+    const current = document.getElementById('current')
+    current.addEventListener('change', function (e) {
+      currentString = current.value.trim()
+    })
+    
+    function getRandomInt(max) {
+      return Math.floor(Math.random() * Math.floor(max));
+    }
+
+    const sendData = () => {
+      document.getElementById("overlay").style.display = "block";
+
+      setTimeout(function(){ 
+        document.getElementById("overlay").style.display = "none";
+       }, getRandomInt(3000)+1500);
+
+      
+
+      console.log(currentString)
+      axios({
+      method: "POST",
+      data: {
+        pdf: pdfString,
+        currentStr: currentString,
+        separator: separator
+      },
+      withCredentials: true,
+      url: "http://houseai.tech/send-medical"
+    }).then((res) => displayData(res.data))
+    }
+
+    
+    
+
+
+    
+
+// pdf start
+
+var $fileInput = $('.file-input');
+var $droparea = $('.file-drop-area');
+
+// highlight drag area
+$fileInput.on('dragenter focus click', function() {
+  $droparea.addClass('is-active');
+});
+
+// back to normal state
+$fileInput.on('dragleave blur drop', function() {
+  $droparea.removeClass('is-active');
+});
+
+// change inner text
+$fileInput.on('change', function() {
+  var filesCount = $(this)[0].files.length;
+  var $textContainer = $(this).prev();
+
+  if (filesCount === 1) {
+    // if single file is selected, show file name
+    var fileName = $(this).val().split('\\').pop();
+    $textContainer.text(fileName);
+  } else {
+    // otherwise show number of files
+    $textContainer.text(filesCount + ' files selected');
+  }
+});
+
+
+//pdf end
+    $(document).ready(function() {
+      $().ready(function() {
+        $sidebar = $('.sidebar');
+        $navbar = $('.navbar');
+        $main_panel = $('.main-panel');
+
+        $full_page = $('.full-page');
+
+        $sidebar_responsive = $('body > .navbar-collapse');
+        sidebar_mini_active = true;
+        white_color = false;
+
+        window_width = $(window).width();
+
+        fixed_plugin_open = $('.sidebar .sidebar-wrapper .nav li.active a p').html();
+
+
+
+        $('.fixed-plugin a').click(function(event) {
+          if ($(this).hasClass('switch-trigger')) {
+            if (event.stopPropagation) {
+              event.stopPropagation();
+            } else if (window.event) {
+              window.event.cancelBubble = true;
+            }
+          }
+        });
+
+        $('.fixed-plugin .background-color span').click(function() {
+          $(this).siblings().removeClass('active');
+          $(this).addClass('active');
+
+          var new_color = $(this).data('color');
+
+          if ($sidebar.length != 0) {
+            $sidebar.attr('data', new_color);
+          }
+
+          if ($main_panel.length != 0) {
+            $main_panel.attr('data', new_color);
+          }
+
+          if ($full_page.length != 0) {
+            $full_page.attr('filter-color', new_color);
+          }
+
+          if ($sidebar_responsive.length != 0) {
+            $sidebar_responsive.attr('data', new_color);
+          }
+        });
+
+        $('.switch-sidebar-mini input').on("switchChange.bootstrapSwitch", function() {
+          var $btn = $(this);
+
+          if (sidebar_mini_active == true) {
+            $('body').removeClass('sidebar-mini');
+            sidebar_mini_active = false;
+            blackDashboard.showSidebarMessage('Sidebar mini deactivated...');
+          } else {
+            $('body').addClass('sidebar-mini');
+            sidebar_mini_active = true;
+            blackDashboard.showSidebarMessage('Sidebar mini activated...');
+          }
+
+          // we simulate the window Resize so the charts will get updated in realtime.
+          var simulateWindowResize = setInterval(function() {
+            window.dispatchEvent(new Event('resize'));
+          }, 180);
+
+          // we stop the simulation of Window Resize after the animations are completed
+          setTimeout(function() {
+            clearInterval(simulateWindowResize);
+          }, 1000);
+        });
+
+        $('.switch-change-color input').on("switchChange.bootstrapSwitch", function() {
+          var $btn = $(this);
+
+          if (white_color == true) {
+
+            $('body').addClass('change-background');
+            setTimeout(function() {
+              $('body').removeClass('change-background');
+              $('body').removeClass('white-content');
+            }, 900);
+            white_color = false;
+          } else {
+
+            $('body').addClass('change-background');
+            setTimeout(function() {
+              $('body').removeClass('change-background');
+              $('body').addClass('white-content');
+            }, 900);
+
+            white_color = true;
+          }
+
+
+        });
+
+        $('.light-badge').click(function() {
+          $('body').addClass('white-content');
+        });
+
+        $('.dark-badge').click(function() {
+          $('body').removeClass('white-content');
+        });
+      });
+    });
+  </script>
+  <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+  <script>
+    window.TrackJS &&
+      TrackJS.install({
+        token: "ee6fab19c5a04ac1a32a645abde4613a",
+        application: "black-dashboard-free"
+      });
+  </script>
+</body>
+
+</html>

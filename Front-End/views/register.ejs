@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Vesperr Bootstrap Template - Index</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="/assets/css/style.css" rel="stylesheet" type="text/css">
+
+  <!-- =======================================================
+  * Template Name: Vesperr - v2.3.0
+  * Template URL: https://bootstrapmade.com/vesperr-free-bootstrap-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+
+  <style>
+     *{
+      box-sizing: border-box;
+    }
+    
+    body {
+      font: 16px Arial;  
+    }
+    
+    /*the container must be positioned relative:*/
+    .autocomplete {
+      position: relative;
+      display: inline-block;
+      padding-bottom:12px
+    }
+    
+    input {
+      border: 1px solid transparent;
+      background-color: #f1f1f1;
+      padding: 10px;
+      font-size: 16px;
+    }
+    
+    input[type=text] {
+      background-color: #ffffff;
+      width: 100%;
+    }
+    
+    input[type=submit] {
+      background-color: DodgerBlue;
+      color: #fff;
+      cursor: pointer;
+    }
+    
+    .autocomplete-items {
+      position: absolute;
+      border: 1px solid #d4d4d4;
+      border-bottom: none;
+      border-top: none;
+      z-index: 99;
+      /*position the autocomplete items to be the same width as the container:*/
+      top: 100%;
+      left: 0;
+      right: 0;
+    }
+    
+    .autocomplete-items div {
+      padding: 10px;
+      cursor: pointer;
+      background-color: #fff; 
+      border-bottom: 1px solid #d4d4d4; 
+    }
+    
+    /*when hovering an item:*/
+    .autocomplete-items div:hover {
+      background-color: #e9e9e9; 
+    }
+    
+    /*when navigating through the items using the arrow keys:*/
+    .autocomplete-active {
+      background-color: #79dff7 !important; 
+      color: #ffffff; 
+    }
+    </style>
+   
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top d-flex align-items-center">
+    <div class="container d-flex align-items-center">
+
+      <div class="logo mr-auto">
+        <h1 class="text-light"><a href="/#"><span>House AI</span></a></h1>
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+      </div>
+
+      <nav class="nav-menu d-none d-lg-block">
+        <ul>
+          <li><a href="/#">Home</a></li>
+          <li><a href="/#about">About</a></li>
+          <li><a href="/#services">Capabilities</a></li>
+          <li><a href="/#solutions">Solutions</a></li>
+          <li><a href="/#team">Team</a></li>
+          
+          <li><a href="/users/login">Login</a></li>
+
+          <li class="get-started active newFont"><a href="/users/register">Register</a></li>
+        </ul>
+      </nav><!-- .nav-menu -->
+
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  
+
+  <main id="main moreSpace" class="moreSpace2">
+
+    <div class="row mt-5">
+      <div class="col-md-6 m-auto">
+        <div class="card card-body bord">
+          <h1 class="text-center mb-3 newFont">
+            <i class="fas fa-plus-square"></i> Register
+          </h1>
+          <%- include('partials/messages'); %>
+  
+          <form action="/users/register" method="POST">
+            <div class="form-group">
+              <label for="name" class="newFont">Name</label>
+              <input
+                type="name"
+                id="name"
+                name="name"
+                class="form-control bord newFont"
+                placeholder="Enter Name"
+                value="<%= typeof name != 'undefined' ? name : '' %>"
+              />
+            </div>
+            <div class="form-group">
+              <label for="email" class="newFont">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                class="form-control bord newFont"
+                placeholder="Enter Email"
+                value="<%= typeof email != 'undefined' ? email : '' %>"
+              />
+            </div>
+            <div class="form-group">
+              <label for="registeredID" class="newFont">Medical ID</label>
+              <input
+                type="password"
+                id="registeredID"
+                name="registeredID"
+                class="form-control bord newFont"
+                placeholder="Enter Medical ID#"
+                value="<%= typeof registeredID != 'undefined' ? registeredID : '' %>"
+              />
+            </div>
+
+            <div class="autocomplete" style="width:300px;">
+              <label for="institution" class="newFont">Medical Institution</label>
+              <input id="institution" class="form-control bord newFont" type="text" name="institution" placeholder="Instituiton">
+            </div>
+            <br/>
+
+            <div class="form-group">
+              <label for="password" class="newFont">Password</label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                class="form-control bord newFont"
+                placeholder="Create Password"
+                value="<%= typeof password != 'undefined' ? password : '' %>"
+              />
+            </div>
+            <div class="form-group">
+              <label for="password2" class="newFont">Confirm Password</label>
+              <input
+                type="password"
+                id="password2"
+                name="password2"
+                class="form-control bord newFont"
+                placeholder="Confirm Password"
+                value="<%= typeof password2 != 'undefined' ? password2 : '' %>"
+              />
+            </div>
+
+            
+
+            <button type="submit" class="btn btn-primary btn-block bord newFont">
+              Register
+            </button>
+          </form>
+            
+          <script>
+            function autocomplete(inp, arr) {
+              /*the autocomplete function takes two arguments,
+              the text field element and an array of possible autocompleted values:*/
+              var currentFocus;
+              /*execute a function when someone writes in the text field:*/
+              inp.addEventListener("input", function(e) {
+                  var a, b, i, val = this.value;
+                  /*close any already open lists of autocompleted values*/
+                  closeAllLists();
+                  if (!val) { return false;}
+                  currentFocus = -1;
+                  /*create a DIV element that will contain the items (values):*/
+                  a = document.createElement("DIV");
+                  a.setAttribute("id", this.id + "autocomplete-list");
+                  a.setAttribute("class", "autocomplete-items");
+                  /*append the DIV element as a child of the autocomplete container:*/
+                  this.parentNode.appendChild(a);
+                  /*for each item in the array...*/
+                  for (i = 0; i < arr.length; i++) {
+                    /*check if the item starts with the same letters as the text field value:*/
+                    if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+                      /*create a DIV element for each matching element:*/
+                      b = document.createElement("DIV");
+                      /*make the matching letters bold:*/
+                      b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+                      b.innerHTML += arr[i].substr(val.length);
+                      /*insert a input field that will hold the current array item's value:*/
+                      b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+                      /*execute a function when someone clicks on the item value (DIV element):*/
+                      b.addEventListener("click", function(e) {
+                          /*insert the value for the autocomplete text field:*/
+                          inp.value = this.getElementsByTagName("input")[0].value;
+                          /*close the list of autocompleted values,
+                          (or any other open lists of autocompleted values:*/
+                          closeAllLists();
+                      });
+                      a.appendChild(b);
+                    }
+                  }
+              });
+              /*execute a function presses a key on the keyboard:*/
+              inp.addEventListener("keydown", function(e) {
+                  var x = document.getElementById(this.id + "autocomplete-list");
+                  if (x) x = x.getElementsByTagName("div");
+                  if (e.keyCode == 40) {
+                    /*If the arrow DOWN key is pressed,
+                    increase the currentFocus variable:*/
+                    currentFocus++;
+                    /*and and make the current item more visible:*/
+                    addActive(x);
+                  } else if (e.keyCode == 38) { //up
+                    /*If the arrow UP key is pressed,
+                    decrease the currentFocus variable:*/
+                    currentFocus--;
+                    /*and and make the current item more visible:*/
+                    addActive(x);
+                  } else if (e.keyCode == 13) {
+                    /*If the ENTER key is pressed, prevent the form from being submitted,*/
+                    e.preventDefault();
+                    if (currentFocus > -1) {
+                      /*and simulate a click on the "active" item:*/
+                      if (x) x[currentFocus].click();
+                    }
+                  }
+              });
+              function addActive(x) {
+                /*a function to classify an item as "active":*/
+                if (!x) return false;
+                /*start by removing the "active" class on all items:*/
+                removeActive(x);
+                if (currentFocus >= x.length) currentFocus = 0;
+                if (currentFocus < 0) currentFocus = (x.length - 1);
+                /*add class "autocomplete-active":*/
+                x[currentFocus].classList.add("autocomplete-active");
+              }
+              function removeActive(x) {
+                /*a function to remove the "active" class from all autocomplete items:*/
+                for (var i = 0; i < x.length; i++) {
+                  x[i].classList.remove("autocomplete-active");
+                }
+              }
+              function closeAllLists(elmnt) {
+                /*close all autocomplete lists in the document,
+                except the one passed as an argument:*/
+                var x = document.getElementsByClassName("autocomplete-items");
+                for (var i = 0; i < x.length; i++) {
+                  if (elmnt != x[i] && elmnt != inp) {
+                    x[i].parentNode.removeChild(x[i]);
+                  }
+                }
+              }
+              /*execute a function when someone clicks in the document:*/
+              document.addEventListener("click", function (e) {
+                  closeAllLists(e.target);
+              });
+            }
+            
+            /*An array containing all the country names in the world:*/
+            var medInst = ["Banff Mineral Springs Hospital", "Bassano Health Centre", "Alberta Children's Hospital (ACH)", "Foothills Medical Centre (FMC)", "Peter Lougheed Centre (PLC)", "Rockyview General Hospital (RGH)", "South Health Campus (SHC)", "Tom Baker Cancer Centre (TBCC)", "Canmore General Hospital",
+            "Alberta Hospital Edmonton", "Cross Cancer Institute", "Devon General Hospital", "Glenrose Rehabilitation Hospital", "Grey Nuns Community Hospital & Health Centre", "Leduc Community Hospital & Health Centre", "Misericordia Community Hospital", "Northeast Community Health Centre", "Royal Alexandra Hospital", "University of Alberta Hospital (Stollery Children's Hospital)"
+          ,"Chinook Regional Hospital", "Lloydminster Hospital (in Saskatchewan)", "Medicine Hat Regional Hospital", "Milk River Health Centre", "WestView Health Centre", "Vulcan Community Health Centre", "Whitecourt Healthcare Centre", "Burnaby Hospital", "Riverview Hospital", "Kelowna General Hospital", "Lions Gate Hospital", "South Okanagan General Hospital", "Eagle Ridge Hospital", "Richmond Hospital (RGH)", "Surrey Memorial Hospital", "Mills Memorial Hospital", 
+          "BC Cancer Agency", "British Columbia's Children's Hospital & Sunny Hill Health Centre for Children", "B.C. Women's Hospital & Health Centre", "G. F. Strong Centre", "Mary Pack Arthritis Centre", "St. Paul's Hospital", "Vancouver General Hospital", "Vancouver Hospital and Health Sciences Centre",
+        "Vernon Jubilee Hospital","Royal Jubilee Hospital","Victoria General Hospital", "Bethesda Hospital", "The Children's Hospital of Winnipeg", "Concordia Hospital", "Deer Lodge Centre", "Grace Hospital", "Health Sciences Centre", "Misericordia Health Centre", "Riverview Health Centre", "Saint Boniface General Hospital", "Seven Oaks General Hospital", "Victoria General Hospital"
+      ,"Chaleur Regional", "Campbellton Regional", "Restigouche Hospital", "l'Enfant-Jésus", "Edmundston Regional", "Dr. Everett Chalmers Regional", "Grand Falls General", "Grand Manan Hospital", "Miramichi Regional", "Dr. Georges-L.-Dumont", "Moncton", "Oromocto Public", "Hotel-Dieu of St. Joseph", "Sackville Memorial", "Centracare", "Saint John Regional", "St. Joseph's Hospital",
+      "Stella-Maris-De-Kent Hospital", "Hôtel-Dieu Saint-Joseph", "Charlotte County Hospital", "Sussex Health Centre", "Tracadie-Sheila Hospital", "Upper River Valley Hospital", "Janeway Children's Health and Rehabilitation Centre", "Hay River Regional Health Centre", "Inuvik Regional Hospital", "Stanton Territorial Hospital", "Eastern Memorial Hospital", "Digby General Hospital", "Glace Bay Hospital", "Guysborough Memorial Hospital", "Dartmouth General Hospital", "Dartmouth General Hospital", "Nova Scotia Hospital",
+      "IWK Health Centre", "Queen Elizabeth II Health Sciences Centre", "Musquodoboit Valley Memorial Hospital", "Hants Community Hospital", "Inverness Consolidated Memorial Hospital", "Fishermen's Memorial Hospital", "Soldiers Memorial Hospital", "Aberdeen Hospital", "Eastern Shore Memorial Hospital", "All Saints Springhill Hospital", "Cape Breton Regional Hospital", "Harbourview Hospital", "Lillian Fraser Memorial Hospital",
+      "Yarmouth Regional Hospital", "Qikiqtani General Hospital", "Lakeridge Health Ajax and Pickering", "Stevenson Memorial Hospital", "Royal Victoria Regional Health Centre", "Lakeridge Health Bowmanville", "Brampton Civic Hospital", "Brampton Memorial Hospital Campus", "Joseph Brant Hospital", "Campbellford Memorial Hospital", "Cambridge Memorial Hospital", "Northumberland Hills Hospital", "Collingwood General and Marine Hospital", "Georgetown Hospital", "Hamilton General Hospital", "McMaster Children's Hospital", "St. Peter's Hospital",
+      "Kingston General Hospital", "Hotel Dieu", "Providence Continuing Care Centre (PCCC)", "Kirkland and District Hospital", "Grand River Hospital", "St. Mary's General Hospital", "Children's Hospital at London Health Sciences Centre", "University Hospital", "Victoria Hospital", "Grey Bruce Health Services", "Grey Bruce Health Services", "Milton District Hospital", "Credit Valley Hospital", "Mississauga Hospital", "Oakville-Trafalgar Memorial Hospital", "Lakeridge Health Oshawa", "Children's Hospital of Eastern Ontario (CHEO)", "Montfort Hospital", "National Defence Medical Centre", "Civic Hospital", "General Hospital", "Riverside Hospital", 
+      "Queensway Carleton Hospital", "University of Ottawa Heart Institute", "Royal Ottawa Mental Health Centre", "Grey Bruce Health Services", "Peterborough Regional Health Centre", "Lakeridge Health Port Perry", "Bluewater Health", "Sault Area Hospital", "Health Sciences North", "Thunder Bay Regional Health Sciences Centre", "Baycrest Health Sciences", "Bellwood Health Services", "Bridgepoint Active Healthcare", "Casey House", "Centre for Addiction and Mental Health", "Centre for Addiction and Mental Health", "Centre for Addiction and Mental Health", "Centric Health Surgical Centre Toronto", "Etobicoke General Hospital", "Holland Bloorview Kids Rehabilitation Hospital", 
+      "Hospital for Sick Children", "Humber River Hospital, Wilson Site", "Michael Garron Hospital", "Mount Sinai Hospital", "North York General Hospital", "North York General Hospital, Branson Centre", "North York General Hospital, Seniors' Health Centre", "Princess Margaret Cancer Centre", "Providence Healthcare", "Queensway Health Centre", "Centenary Hospital", "Runnymede Healthcare Centre", "Scarborough General Hospital", "Birchmount Hospital", "St. Joseph's Health Centre", "St. Michael's Hospital", "Sunnybrook Health Sciences Centre", "Sunnybrook Holland Centre", "St. John's Rehab Hospital", "Toronto General Hospital", "Toronto Grace Health Centre", "Toronto Rehabilitation Institute",
+      "Toronto Western Hospital", "West Park Healthcare Centre", "Women's College Hospital", "Uxbridge Cottage Hospital", "Grey Bruce Health Services", "Markham Stouffville Hospital", "Mackenzie Richmond Hill Hospital", "Mackenzie Vaughan Hospital", "Shouldice Hernia Centre", "Southlake Regional Health Centre", "Hillsborough Hospital", "Queen Elizabeth Hospital", "Prince County Hospital", "Jewish Rehabilitation Hospital", "Hôpital Charles-LeMoyne", "Centre hospitalier Pierre-Boucher", "Royal Victoria Hospital", "Montreal Children's Hospital", "Shriners Hospital for Children", "Montreal Chest Institute", "Montreal General Hospital", "Allan Memorial Institute", "Montreal Neurological Hospital", "Hôpital de Lachine",
+      "Lakeshore General Hospital", "Jewish General Hospital", "St. Mary's Hospital", "Douglas Mental Health University Institute", "Centre hospitalier de l'Université de Montréal", "Hopital Notre-Dame", "Hôpital Maisonneuve-Rosemont", "Hôpital du Sacré-Coeur de Montréal", "Centre hospitalier universitaire Sainte-Justine", "Institut de cardiologie de Montréal", "Institut universitaire en santé mentale de Montréal", "Institut Philippe-Pinel de Montréal", "Hôpital Santa-Cabrini", "Hôpital de Verdun", "Hôpital de LaSalle", "Hôpital Jean-Talon", "Hôpital Rivière-des-Prairies", "Centre hospitalier Honoré-Mercier","Hôtel-Dieu de Québec", "Hôpital Saint-François d'Assise", "Centre hospitalier de l'Université Laval (CHUL)",
+      "Hôtel-Dieu de Québec", "Hôpital Saint-François d'Assise", "Saint Brigid's – Jeffery Hale Hospital", "Centre hospitalier de l'Université Laval (CHUL)", "Humboldt District Hospital", "Pasqua Hospital", "Royal University Hospital", "Saskatoon City Hospital", "St. Paul's Hospital", "Whitehorse General Hospital"];
+            /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
+            autocomplete(document.getElementById("institution"), medInst);
+            </script>
+          <p class="lead mt-4 newFont">Have An Account? <a href="/users/login">Login</a></p>
+        </div>
+      </div>
+    </div>
+    
+
+  </main><!-- End #main -->
+
+  
+
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/jquery/jquery.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/waypoints/jquery.waypoints.min.js"></script>
+  <script src="assets/vendor/counterup/counterup.min.js"></script>
+  <script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/venobox/venobox.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
