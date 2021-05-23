@@ -14,7 +14,7 @@ const User = require('../models/User');
 exports.registerHandle = (req, res) => {
     const {name, email, password, password2, registeredID, institution} = req.body
     let errors = [];
-    let whitelist = ['1111','2222']
+    let whitelist = ['12345']
 
 
     //------------ Checking required fields ------------//
