@@ -1,0 +1,7 @@
+1. format edm_vitals
+2. format nur_vitals
+3. combine all vitals based on patient, date/time
+4. analyze lactate and wbc count to see if overtime, data for 1 patient changes, if no statistically significant change (250 sepsis patients),
+then reduce file to 1 number per patient. Otherwise, tbd
+5. combine lactate and wbc with vitals
+6. figure out how we can answer the research problem(s) and combine all data previously processed with sepsis data
