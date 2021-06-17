@@ -77,7 +77,7 @@ exports.registerHandle = (req, res) => {
 
                 const output = `
                 <h2>Hello Doctor, </h2>
-                <p> Thank you for signing up for House AI! Please click on below link to activate your account</p>
+                <p> Thank you for signing up for HouseAI! Please click on below link to activate your account</p>
                 <p>${CLIENT_URL}/users/activate/${token}</p>
                 <p><b>NOTE: </b> The above activation link expires in 30 minutes.</p>
                 `;
@@ -99,7 +99,7 @@ exports.registerHandle = (req, res) => {
 
                 // send mail with defined transport object
                 const mailOptions = {
-                    from: '"House AI" <ml.HouseAI@gmail.com>', // sender address
+                    from: '"HouseAI" <ml.HouseAI@gmail.com>', // sender address
                     to: email, // list of receivers
                     subject: "Please Verify Your HouseAI Account", // Subject line
                     generateTextFromHTML: true,
