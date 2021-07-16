@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mlt LC_NUMERIC="C" version="6.21.0" title="Shotcut version 20.04.12" producer="main_bin">
+  <profile description="automatic" width="1280" height="720" progressive="1" sample_aspect_num="1" sample_aspect_den="1" display_aspect_num="1280" display_aspect_den="720" frame_rate_num="4698000" frame_rate_den="205601" colorspace="709"/>
+  <playlist id="main_bin">
+    <property name="xml_retain">1</property>
+  </playlist>
+  <producer id="black" in="00:00:00.000" out="00:00:05.252">
+    <property name="length">00:00:05.295</property>
+    <property name="eof">pause</property>
+    <property name="resource">0</property>
+    <property name="aspect_ratio">1</property>
+    <property name="mlt_service">color</property>
+    <property name="mlt_image_format">rgb24a</property>
+    <property name="set.test_audio">0</property>
+  </producer>
+  <playlist id="background">
+    <entry producer="black" in="00:00:00.000" out="00:00:05.252"/>
+  </playlist>
+  <producer id="producer0" in="00:00:00.000" out="00:01:12.298">
+    <property name="length">00:01:12.341</property>
+    <property name="eof">pause</property>
+    <property name="resource">3:C:/Users/jiaom/Videos/concept.mp4</property>
+    <property name="aspect_ratio">1</property>
+    <property name="seekable">1</property>
+    <property name="audio_index">1</property>
+    <property name="video_index">0</property>
+    <property name="mute_on_pause">1</property>
+    <property name="warp_speed">3</property>
+    <property name="warp_resource">C:/Users/jiaom/Videos/concept.mp4</property>
+    <property name="mlt_service">timewarp</property>
+    <property name="shotcut:producer">avformat</property>
+    <property name="video_delay">0</property>
+    <property name="shotcut:hash">97df9bad1c87ce4a5c51b487bdf0216e</property>
+    <property name="shotcut:skipConvert">1</property>
+    <property name="shotcut:caption">concept.mp4 (3x)</property>
+    <property name="global_feed">1</property>
+    <property name="xml">was here</property>
+    <filter id="filter0" out="00:00:05.252">
+      <property name="mlt_service">webvfx</property>
+      <property name="shotcut:filter">webvfxClip</property>
+      <property name="transparent">1</property>
+      <property name="mlt_resolution_scale">1</property>
+      <property name="resource">C:/Program Files/Shotcut/share/shotcut/qml/filters/webvfx_clip/filter-clip.html</property>
+      <property name="color">#ff000000</property>
+      <property name="radius">0</property>
+      <property name="rect">70 70 1063 612 1</property>
+      <property name="mlt_profile_scale_width">1</property>
+      <property name="mlt_profile_scale_height">1</property>
+      <property name="factory">loader</property>
+    </filter>
+  </producer>
+  <playlist id="playlist0">
+    <property name="shotcut:video">1</property>
+    <property name="shotcut:name">V1</property>
+    <entry producer="producer0" in="00:00:00.000" out="00:00:05.252"/>
+  </playlist>
+  <tractor id="tractor0" title="Shotcut version 20.04.12" global_feed="1" in="00:00:00.000" out="00:00:05.252">
+    <property name="shotcut">1</property>
+    <property name="shotcut:projectAudioChannels">2</property>
+    <property name="shotcut:projectFolder">0</property>
+    <track producer="background"/>
+    <track producer="playlist0"/>
+    <transition id="transition0">
+      <property name="a_track">0</property>
+      <property name="b_track">1</property>
+      <property name="mlt_service">mix</property>
+      <property name="always_active">1</property>
+      <property name="sum">1</property>
+    </transition>
+    <transition id="transition1">
+      <property name="a_track">0</property>
+      <property name="b_track">1</property>
+      <property name="version">0.9</property>
+      <property name="mlt_service">frei0r.cairoblend</property>
+      <property name="disable">1</property>
+    </transition>
+  </tractor>
+</mlt>
