@@ -545,7 +545,7 @@ section {
 # Clients
 --------------------------------------------------------------*/
 .clients {
-  background: #f3f9fd;
+  background: #f7fbfe;
   padding: 7px 0;
   text-align: center;
 }
@@ -1632,10 +1632,6 @@ section {
   
 }
 
-.container2 {
-  padding-left: 0 !important;
-  min-width: 100vw !important;
-}
 
 #footer .credits {
   font-size: 13px;
