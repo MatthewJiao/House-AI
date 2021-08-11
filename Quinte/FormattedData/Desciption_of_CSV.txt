@@ -1,0 +1,15 @@
+1 Formatted EDM Vitals
+2 Formatted NUR Vitals
+3 EDM and NUR Combined
+4 Combined Including Diag Descriptors/Patient descriptors
+5 Added in Lactate
+6 Added in WBC
+7 Sort by Patient Identifier
+8 Normalize by Time (relative minutes instead of dates)
+9 Sort data by Patient and Time
+10 Drop Unneeded Columns/Duplicated pairs/Copy patient info into Lab Rows/Sort
+11 Turning Diagnosis into Numerical values
+12 Normalize Lab values
+13 separate old data from the dataset; ie. jan 1 and aug 1 would be different sections
+14 One hot encode diagnosis and gender fields
+15 take out entries with very few time entries
