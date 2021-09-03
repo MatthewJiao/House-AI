@@ -14,3 +14,4 @@
 14 One hot encode diagnosis and gender fields
 15 take out entries with very few time entries
 16 took out weight column and ran some stats - 361 sepsis, 5514 non sepsis, 5875 total
+16a_sepsis_only just positive sepsis rows (56690)
