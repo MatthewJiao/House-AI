@@ -3,5 +3,5 @@ from invoke import task
 import app
 
 @task
-def start(c):
+def start_single(c):
     app.single_work() 
