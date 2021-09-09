@@ -17,7 +17,7 @@ import const
 
 def single_work():               #monitors a single patient
     count = 0
-    df_raw = pd.DataFrame
+    # df_raw = pd.DataFrame
 
     #for list of list implementation
     pt_identifier = []
@@ -69,23 +69,24 @@ def single_work():               #monitors a single patient
 
     
     while count<20:        #20 for now, should be indefinite waiting time
-        raw_input = input("Enter Values: ")
-        count+=1
-        
+        print("\n")
+        raw_input = input("Enter Values: ")        
         #preprocessed = preprocessing.insert_into_arrays(raw_input, preprocessed)
         preprocessed = preprocessing.insert_into_dict(raw_input, preprocessed)
         for s in preprocessed:
             print(s, ": ", preprocessed[s])
 
-        if count>const.INITIAL_WAIT:      #3 for now; if greater than 3 then run through the rules and models
-            result1 = rules.master_rules(preprocessed, count-1)
+        if count>=const.INITIAL_WAIT-1:      #3 for now; if greater than 3 then run through the rules and models
+            result1 = rules.master_rules(preprocessed, count)
             if result1 == True:
                 break
             else:
                 #continue with model
-                model_result = call_model.call(preprocessed, count-1)
+                model_result = call_model.call(preprocessed, count)
                 if model_result>const.ML_THRESHOLD:
                     print("Sepsis!")
                     break
                 else:
                     print("not done")
+
+        count+=1
