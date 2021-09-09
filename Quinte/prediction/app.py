@@ -39,8 +39,7 @@ def single_work():               #monitors a single patient
     Lactate_adjusted = []
     WBC_adjusted = []
 
-    # #what input is like
-
+    # what input is like
     #preprocessing changes the lists a bit
 
     #for dict of list implementation (faster speed, future proof, indexing)

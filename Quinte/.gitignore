@@ -1,1 +1,3 @@
 /venv
+/prediction/__pycache__
+/prediction/.pytest_cache

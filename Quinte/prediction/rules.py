@@ -69,6 +69,7 @@ def lactate_rule(input, index_hour) -> int:
         lactate_val = float(input["lactate_adjusted"][idx])
         if lactate_val > const.LACTATE_ADJUSTED_LIMIT:
             print("Lactate Over")
+            print("Lactate value: ", lactate_val)
             return 1
     
     return 0
@@ -130,7 +131,7 @@ def temp_rule(input, index_hour) -> int:
 
     temp_average = float(temp_sum/(len(index_hour)-zero_count))
 
-    if temp_average >= const.TEMP_LOWER_LIMIT or temp_average <= const.TEMP_LOWER_LIMIT:
+    if temp_average >= const.TEMP_UPPER_LIMIT or temp_average <= const.TEMP_LOWER_LIMIT:
         print("TEMP OVER/UNDER")
         print("temp_average: ", temp_average)
         return 1
@@ -144,7 +145,7 @@ def bp1_rule(input, index_hour) -> int:
     zero_count = 0
 
     for idx in index_hour:
-        val = int(input["pulse"][idx])
+        val = int(input["bp1"][idx])
         if val != 0:
             bp1_sum = bp1_sum + val
         else:
@@ -168,6 +169,7 @@ def wbc_rule(input, index_hour) -> int:
         wbc_val = float(input["wbc_adjusted"][idx])
         if wbc_val > const.WBC_ADJUSTED_LIMIT:
             print("WBC Over")
+            print("WBC value: ", wbc_val)
             return 1
     
     return 0
