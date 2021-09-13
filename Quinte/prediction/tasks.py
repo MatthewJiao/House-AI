@@ -16,3 +16,7 @@ def test_rules(c):
 @task
 def run_metrics(c):
     metrics.run_on_dataset()
+
+@task 
+def start_frontend(c):
+    c.run("python server.py")

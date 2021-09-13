@@ -1,5 +1,6 @@
 #main driver code
 
+import copy
 import pandas as pd
 import numpy as np
 import multiprocessing
@@ -15,7 +16,7 @@ import const
 # df1 = preprocessing.open_test_data("test_data.csv")
 
 
-def single_work():               #monitors a single patient
+def single_work(input = None, frontend = None):               #monitors a single patient
     count = 0
     # df_raw = pd.DataFrame
 
@@ -64,28 +65,70 @@ def single_work():               #monitors a single patient
     main_dict["lactate_adjusted"] = Lactate_adjusted
     main_dict["wbc_adjusted"] = WBC_adjusted
 
-    preprocessed = main_dict
+    if frontend and input:
+        fe = copy.deepcopy(main_dict)
+        #print ("TYPE: ",type(input))
+        # raw_input1 = "A1B2C3, 0, 100, 80, 65, 37, 20, 100, 13, Male, 3, 2-5, 5, 4-11"
+        # raw_input2 = "A1B2C3, 5, 100, 80, 65, 37, 20, 100, 13, Male, 3, 2-5, 5, 4-11"
+        # raw_input3 = "A1B2C3, 15, 100, 80, 65, 37, 20, 100, 13, Male, 3, 2-5, 5, 4-11"
+        # raw_input4 = "A1B2C3, 25, 100, 80, 65, 37, 20, 100, 13, Male, 3, 2-5, 5, 4-11"
+        input = input.split(", ")
+        raw_input1 = input[0:14]
+        raw_input2 = input[14:28]
+        raw_input3 = input[28:42]
+        raw_input4 = input[42:56]
 
-    
-    while count<20:        #20 for now, should be indefinite waiting time
-        print("\n")
-        raw_input = input("Enter Values: ")        
-        #preprocessed = preprocessing.insert_into_arrays(raw_input, preprocessed)
-        preprocessed = preprocessing.insert_into_dict(raw_input, preprocessed)
-        for s in preprocessed:
-            print(s, ": ", preprocessed[s])
+        new_1 = ""
+        new_2 = ""
+        new_3 = ""
+        new_4 = ""
 
-        if count>=const.INITIAL_WAIT-1:      #3 for now; if greater than 3 then run through the rules and models
-            result1 = rules.master_rules(preprocessed, count)
-            if result1 == True:
-                break
-            else:
-                #continue with model
-                model_result = call_model.call(preprocessed, count)
-                if model_result>const.ML_THRESHOLD:
-                    print("Sepsis!")
+        for x in range(14):
+            new_1 = new_1+raw_input1[x] + ", "
+            new_2 = new_2+raw_input2[x] + ", "
+            new_3 = new_3+raw_input3[x] + ", "
+            new_4 = new_4+raw_input4[x] + ", "
+        print("NEW_1: ", new_1)
+
+#A1B2C3, 0, 100, 80, 65, 37, 20, 100, 13, Male, 3, 2-5, 5, 4-11, A1B2C3, 0, 100, 80, 65, 37, 20, 100, 13, Male, 3, 2-5, 5, 4-11, A1B2C3, 0, 100, 80, 65, 37, 20, 100, 13, Male, 3, 2-5, 5, 4-11, A1B2C3, 0, 100, 80, 65, 37, 20, 100, 13, Male, 3, 2-5, 5, 4-11
+
+        fe = preprocessing.insert_into_dict(new_1, fe)
+        fe = preprocessing.insert_into_dict(new_2, fe)
+        fe = preprocessing.insert_into_dict(new_3, fe)
+        fe = preprocessing.insert_into_dict(new_4, fe) 
+
+        result1 = rules.master_rules(fe, 0)
+
+        if result1==True:
+            return "Sepsis!"
+
+        else:
+            return "No Sepsis Detected"
+
+
+    else:
+        preprocessed = copy.deepcopy(main_dict)
+
+        
+        while count<20:        #20 for now, should be indefinite waiting time
+            print("\n")
+            raw_input = input("Enter Values: ")        
+            #preprocessed = preprocessing.insert_into_arrays(raw_input, preprocessed)
+            preprocessed = preprocessing.insert_into_dict(raw_input, preprocessed)
+            for s in preprocessed:
+                print(s, ": ", preprocessed[s])
+
+            if count>=const.INITIAL_WAIT-1:      #3 for now; if greater than 3 then run through the rules and models
+                result1 = rules.master_rules(preprocessed, count)
+                if result1 == True:
                     break
                 else:
-                    print("not done")
+                    #continue with model
+                    model_result = call_model.call(preprocessed, count)
+                    if model_result>const.ML_THRESHOLD:
+                        print("Sepsis!")
+                        break
+                    else:
+                        print("not done")
 
-        count+=1
+            count+=1

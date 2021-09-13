@@ -6,3 +6,4 @@ ray[default]==1.5.2
 ray[serve]==1.5.2 #multiprocessing
 invoke == 1.6.0
 tensorflow == 2.6.0
+flask==2.0.1

@@ -33,7 +33,7 @@ def master_rules(dict_of_lists, curr) -> bool:
 
     #auto return rules here
     if age_rule(dict_of_lists, curr) == True: 
-        return True
+        return False
     #elif other auto-return-rule
 
     #next, a bunch of conditions. if 2 of them are true (1), then we return sepsis. else, none
