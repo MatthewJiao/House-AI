@@ -2,18 +2,23 @@ from flask import Flask, render_template, request
 import tasks
 import app as prediction_app
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder = "sepsis_front_end")
 
 @app.route('/')
 def index():
-  return render_template('index.html')
+  return render_template('index.ejs')
 
 
-@app.route('/submit_sepsis', methods=['POST'])
+@app.route('/', methods=['POST'])
 def my_form_post():
-    text = request.form['text']
-    result = prediction_app.single_work(input=text, frontend=True)
-    return result
+    text = ""
+    text = request.form['values']
+    if text == "":
+        result = "Please enter some values"
+        return render_template('index.ejs', result=result)
+    else:
+      result = prediction_app.single_work(input=text, frontend=True)
+      return render_template('index.ejs', result=result)
 
   
 

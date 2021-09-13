@@ -12,10 +12,6 @@ import preprocessing
 import rules
 import const
 
-#preprocessing to a usable format
-# df1 = preprocessing.open_test_data("test_data.csv")
-
-
 def single_work(input = None, frontend = None):               #monitors a single patient
     count = 0
     # df_raw = pd.DataFrame
@@ -40,10 +36,6 @@ def single_work(input = None, frontend = None):               #monitors a single
     Lactate_adjusted = []
     WBC_adjusted = []
 
-    # what input is like
-    #preprocessing changes the lists a bit
-
-    #for dict of list implementation (faster speed, future proof, indexing)
     main_dict = {}
 
     main_dict["pt_identifier"] = pt_identifier
@@ -72,23 +64,25 @@ def single_work(input = None, frontend = None):               #monitors a single
         # raw_input2 = "A1B2C3, 5, 100, 80, 65, 37, 20, 100, 13, Male, 3, 2-5, 5, 4-11"
         # raw_input3 = "A1B2C3, 15, 100, 80, 65, 37, 20, 100, 13, Male, 3, 2-5, 5, 4-11"
         # raw_input4 = "A1B2C3, 25, 100, 80, 65, 37, 20, 100, 13, Male, 3, 2-5, 5, 4-11"
-        input = input.split(", ")
-        raw_input1 = input[0:14]
-        raw_input2 = input[14:28]
-        raw_input3 = input[28:42]
-        raw_input4 = input[42:56]
+        try:
+            input = input.split(", ")
+            raw_input1 = input[0:14]
+            raw_input2 = input[14:28]
+            raw_input3 = input[28:42]
+            raw_input4 = input[42:56]
 
-        new_1 = ""
-        new_2 = ""
-        new_3 = ""
-        new_4 = ""
+            new_1 = ""
+            new_2 = ""
+            new_3 = ""
+            new_4 = ""
 
-        for x in range(14):
-            new_1 = new_1+raw_input1[x] + ", "
-            new_2 = new_2+raw_input2[x] + ", "
-            new_3 = new_3+raw_input3[x] + ", "
-            new_4 = new_4+raw_input4[x] + ", "
-        print("NEW_1: ", new_1)
+            for x in range(14):
+                new_1 = new_1+raw_input1[x] + ", "
+                new_2 = new_2+raw_input2[x] + ", "
+                new_3 = new_3+raw_input3[x] + ", "
+                new_4 = new_4+raw_input4[x] + ", "
+        except:
+            return "Please Enter 4 Rows of Data"
 
 #A1B2C3, 0, 100, 80, 65, 37, 20, 100, 13, Male, 3, 2-5, 5, 4-11, A1B2C3, 0, 100, 80, 65, 37, 20, 100, 13, Male, 3, 2-5, 5, 4-11, A1B2C3, 0, 100, 80, 65, 37, 20, 100, 13, Male, 3, 2-5, 5, 4-11, A1B2C3, 0, 100, 80, 65, 37, 20, 100, 13, Male, 3, 2-5, 5, 4-11
 
