@@ -66,38 +66,48 @@ def single_work(input = None, frontend = None):               #monitors a single
         # raw_input4 = "A1B2C3, 25, 100, 80, 65, 37, 20, 100, 13, Male, 3, 2-5, 5, 4-11"
         try:
             input = input.split(", ")
-            raw_input1 = input[0:14]
-            raw_input2 = input[14:28]
-            raw_input3 = input[28:42]
-            raw_input4 = input[42:56]
+            rows = int(len(input)/14)
+            raw_input_list = []
+            
+            for row in range(rows):
+                first = row*14
+                second = row*14 + 14
+                raw_input_list.append(input[first:second])
 
-            new_1 = ""
-            new_2 = ""
-            new_3 = ""
-            new_4 = ""
+            new_str_list = []
+            for row2 in range(rows):
+                new_str_list.append("")
 
-            for x in range(14):
-                new_1 = new_1+raw_input1[x] + ", "
-                new_2 = new_2+raw_input2[x] + ", "
-                new_3 = new_3+raw_input3[x] + ", "
-                new_4 = new_4+raw_input4[x] + ", "
+            for row3 in range(rows):
+                for x in range(14):
+                    if x != 13:
+                        new_str_list[row3] = new_str_list[row3]+raw_input_list[row3][x] + ", "
+                    else:
+                        new_str_list[row3] = new_str_list[row3]+raw_input_list[row3][x]
+
         except:
-            return "Please Enter 4 Rows of Data"
+            return "Please Enter 3+ Rows of Data"
 
 #A1B2C3, 0, 100, 80, 65, 37, 20, 100, 13, Male, 3, 2-5, 5, 4-11, A1B2C3, 0, 100, 80, 65, 37, 20, 100, 13, Male, 3, 2-5, 5, 4-11, A1B2C3, 0, 100, 80, 65, 37, 20, 100, 13, Male, 3, 2-5, 5, 4-11, A1B2C3, 0, 100, 80, 65, 37, 20, 100, 13, Male, 3, 2-5, 5, 4-11
+#A1B2C3, 0, 100, 80, 65, 37, 20, 100, 19, Male, 32, 2-5, 5, 4-11, A1B2C3, 0, 100, 80, 65, 37, 20, 100, 19, Male, 13, 2-5, 5, 4-11, A1B2C3, 0, 100, 80, 65, 37, 20, 100, 19, Male, 0, 2-5, 5, 4-11, A1B2C3, 0, 100, 80, 65, 37, 20, 100, 19, Male, 3, 2-5, 5, 4-11
+        # fe = preprocessing.insert_into_dict(new_1, fe)
+        # fe = preprocessing.insert_into_dict(new_2, fe)
+        # fe = preprocessing.insert_into_dict(new_3, fe)
+        # fe = preprocessing.insert_into_dict(new_4, fe) 
 
-        fe = preprocessing.insert_into_dict(new_1, fe)
-        fe = preprocessing.insert_into_dict(new_2, fe)
-        fe = preprocessing.insert_into_dict(new_3, fe)
-        fe = preprocessing.insert_into_dict(new_4, fe) 
+        print("rows: ", rows)
+        print("Raw input list", raw_input_list)
+        print("new str list ", new_str_list)
+        for row4 in range(rows):
+            fe = preprocessing.insert_into_dict(new_str_list[row4], fe)
 
         result1 = rules.master_rules(fe, 0)
 
         if result1==True:
-            return "Sepsis!"
+            return "Sepsis was detected or is imminent in the patient."
 
         else:
-            return "No Sepsis Detected"
+            return "No Sepsis Detected. Inputs are normal."
 
 
     else:
