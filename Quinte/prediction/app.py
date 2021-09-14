@@ -101,7 +101,7 @@ def single_work(input = None, frontend = None):               #monitors a single
         for row4 in range(rows):
             fe = preprocessing.insert_into_dict(new_str_list[row4], fe)
 
-        result1 = rules.master_rules(fe, 0)
+        result1 = rules.master_rules(fe, rows)
 
         if result1==True:
             return "Sepsis was detected or is imminent in the patient."
