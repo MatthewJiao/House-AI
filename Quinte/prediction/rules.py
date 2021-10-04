@@ -57,8 +57,8 @@ def master_rules(dict_of_lists, curr) -> bool:
 def age_rule(input, curr) -> bool:
     age = input["age_number"][curr]
 
-    if math.isnan(age) == False:
-        if age<=const.MIN_AGE:
+    if math.isnan(float(age)) == False:
+        if float(age)<=const.MIN_AGE:
             # print("Too Young for Prediction!")
             return True
         else:
@@ -85,7 +85,7 @@ def rr_rule(input, index_hour) -> int:
     zero_count = 0
     for idx in index_hour:
         val = input["rr"][idx]
-        if val != 0 and math.isnan(val)==False and val != "nan" :
+        if val != 0 and math.isnan(float(val))==False and val != "nan" :
             val = int(val)
             rr_sum = rr_sum + val
         else:
@@ -110,7 +110,7 @@ def pulse_rule(input, index_hour) -> int:
 
     for idx in index_hour:
         val = input["pulse"][idx]
-        if val != 0 and math.isnan(val)==False and val != "nan" :
+        if val != 0 and math.isnan(float(val))==False and val != "nan" :
             val = int(val)
             pulse_sum = pulse_sum + val
         else:
@@ -135,7 +135,7 @@ def temp_rule(input, index_hour) -> int:
 
     for idx in index_hour:
         val = input["temp"][idx]
-        if val != 0 and math.isnan(val)==False and val != "nan" :
+        if val != 0 and math.isnan(float(val))==False and val != "nan" :
             val = int(val)
             temp_sum = temp_sum + val
         else:
@@ -160,7 +160,7 @@ def bp1_rule(input, index_hour) -> int:
 
     for idx in index_hour:
         val = input["bp1"][idx]
-        if val != 0 and math.isnan(val)==False and val != "nan" :
+        if val != 0 and math.isnan(float(val))==False and val != "nan" :
             val = int(val)
             bp1_sum = bp1_sum + val
         else:
