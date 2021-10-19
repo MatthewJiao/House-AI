@@ -2,6 +2,6 @@ House AI is centralized ai-based data processing solution that can study and ana
 
 ![Screenshot](Demo.JPG)
 
-http://houseai.tech/
+https://houseai.tech/
 
 https://devpost.com/software/house-ai

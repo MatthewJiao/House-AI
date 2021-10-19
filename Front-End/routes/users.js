@@ -7,6 +7,9 @@ const authController = require('./authController')
 //------------ Login Route ------------//
 router.get('/login', (req, res) => res.render('login'));
 
+router.get('/sepsis', (req, res) => res.render('sepsis'));
+router.post('/sepsis', authController.sepsis);
+
 //------------ Forgot Password Route ------------//
 router.get('/forgot', (req, res) => res.render('forgot'));
 
