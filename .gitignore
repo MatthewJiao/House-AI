@@ -1,0 +1,6 @@
+/venv
+/Quinte/prediction/__pycache__
+/Quinte/prediction/.pytest_cache
+
+/Quinte/FormattedData
+/Quinte/original_data
